@@ -31,16 +31,7 @@
         restrict: true,
         templateUrl: 'app/views/premio/form.html',
         controller: 'CriarPremioController',
-        controllerAs: 'ctrl',
-        resolve: {
-          premio: [
-            'PremioService', function(PremioService) {
-              return PremioService.findAll().then(function(result) {
-                return result.data;
-              });
-            }
-          ]
-        }      
+        controllerAs: 'ctrl',     
       })
 
       .state('premio.listar', {
@@ -49,6 +40,15 @@
         templateUrl: 'app/views/premio/list.html',
         controller: 'PremioController',
         controllerAs: 'ctrl'
+        resolve: {
+          premio: [
+            'PremioService', function(PremioService) {
+              return PremioService.findAll().then(function(result) {
+                return result.data;
+              });
+            }
+          ]
+        } 
       });
 
     

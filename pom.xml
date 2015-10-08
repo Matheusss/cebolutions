@@ -271,7 +271,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>email-overview</finalName>
+		<finalName>cebolutions</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -299,7 +299,7 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.0</version>
 				<configuration>
-					<path>/email-overview</path>
+					<path>/cebolutions</path>
 					<port>9090</port>
 				</configuration>
 			</plugin>

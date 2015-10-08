@@ -22,6 +22,9 @@ public class User extends AbstractEntity {
 	
 	@Column(name="CPF")
 	private String cpf;
+	
+	@Column(name="USER")
+	private String user; 
 
 	public String getSenha() {
 		return senha;
@@ -53,5 +56,13 @@ public class User extends AbstractEntity {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
 	}
 }

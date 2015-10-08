@@ -21,57 +21,83 @@ import com.cebolutions.top.car.form.UserForm;
 import com.cebolutions.top.car.repository.UserRepository;
 
 @RestController
-@RequestMapping(value="/user")
+@RequestMapping(value = "/user")
 public class UserController {
-	
+
 	@Autowired
 	private UserRepository repository;
 
-	@RequestMapping(method=GET)
-	@Transactional(readOnly=true)
-	public List<UserDTO> list(){
+	@RequestMapping(method = GET)
+	@Transactional(readOnly = true)
+	public List<UserDTO> list() {
 		List<User> users = (List<User>) repository.findAll();
-		
-		return users.stream()
-				.map(UserDTO::new)
-				.collect(Collectors.toList());
+
+		return users.stream().map(UserDTO::new).collect(Collectors.toList());
 	}
-	
-	@RequestMapping(value="/{id}", method=GET)
-	@Transactional(readOnly=true)
-	public UserDTO findById(@PathVariable("id") Long id){
+
+	@RequestMapping(value = "/{id}", method = GET)
+	@Transactional(readOnly = true)
+	public UserDTO findById(@PathVariable("id") Long id) {
 		User user = repository.findOne(id);
 		return new UserDTO(user);
 	}
-	
-	@RequestMapping(method=POST)
+
+	@RequestMapping(method = POST)
 	@Transactional
-	public User create(@RequestBody UserForm form){
+	public User create(@RequestBody UserForm form) {
 		User user = new User();
 		user.setEmail(form.getEmail());
 		user.setSenha(form.getSenha());
-		
+
 		return repository.save(user);
 	}
-	
-	@RequestMapping(value = "/{id}", method=RequestMethod.PUT)
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@Transactional
-	public User update(@PathVariable("id") Long id, @RequestBody UserForm form){
+	public User update(@PathVariable("id") Long id, @RequestBody UserForm form) {
 		User user = repository.findOne(id);
-		user.setEmail(form.getEmail());
-		user.setSenha(form.getSenha());
+		String email = form.getEmail();
+		String senha = form.getSenha();
+		user.setEmail(email);
+		user.setSenha(senha);
 		
+	   /* UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(email, senha);
+	    Authentication authentication = authenticationManager.authenticate(authRequest);
+	    SecurityContext securityContext = SecurityContextHolder.getContext();
+	    securityContext.setAuthentication(authentication);
+
+	    // Create a new session and add the security context.
+	    HttpSession session = request.getSession(true);
+	    session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);*/
+
+
 		return repository.save(user);
 	}
-	
-	@RequestMapping(value="/{id}", method = RequestMethod.DELETE)
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@Transactional
-	public List<User> delete(@PathVariable("id") Long id){
+	public List<User> delete(@PathVariable("id") Long id) {
 		List<User> findAll = new ArrayList<User>();
 		repository.delete(id);
-		findAll = (List<User>)repository.findAll();
-		
+		findAll = (List<User>) repository.findAll();
+
 		return findAll;
 	}
+
+/*	@RequestMapping(value = "/login", method = GET)
+	@Transactional
+	public User login(@RequestBody UserForm form) {
+		List<User> users = (List<User>) repository.findAll();
+
+		for (User u : users) {
+
+			if (form.getEmail().matches(u.getEmail())) {
+				if (form.getSenha().matches(u.getSenha())){
+					
+				}
+			}
+		}*/
+
+	//}
 
 }
