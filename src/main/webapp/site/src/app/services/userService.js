@@ -4,7 +4,7 @@
     angular
       .module('cebolutions.services')
       .service('UserService', [
-      '$rootScope', '$http', 'httpUtils', 'urlConfig', function($rootScope, $http, httpUtils, urlConfig) {
+      '$rootScope', '$http', 'urlConfig', function($rootScope, $http, urlConfig) {
 
       return {
         findAll: function() {

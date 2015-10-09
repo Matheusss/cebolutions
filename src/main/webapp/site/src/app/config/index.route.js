@@ -38,7 +38,7 @@
       })
 
       .state('user.create', {
-        url           : '/create',
+        url           : 'create',
         restrict      : true,
         templateUrl   : 'app/views/web/user/form.html',
         controller    : 'CreateUserController'
@@ -46,7 +46,7 @@
       })
 
       .state('user.list', {
-        url           : '/list',
+        url           : 'list',
         restrict      : true,
         templateUrl   : 'app/views/web/user/list.html',
         controller    : 'UserController',
