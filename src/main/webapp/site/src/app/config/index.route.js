@@ -50,15 +50,15 @@
         restrict      : true,
         templateUrl   : 'app/views/web/user/list.html',
         controller    : 'UserController',
-        resolve: {
-          users: [
-            'UserService', function(UserService) {
-              return UserService.findAll().then(function(result) {
-                return result.data;
-              });
-            }
-          ]
-        }
+        // resolve: {
+        //   users: [
+        //     'UserService', function(UserService) {
+        //       return UserService.findAll().then(function(result) {
+        //         return result.data;
+        //       });
+        //     }
+        //   ]
+        // }
       });
 
       // .state('premio', {

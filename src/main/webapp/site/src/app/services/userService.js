@@ -29,6 +29,7 @@
             }
           });
         },
+  
         excluir: function(id) {
           return $http({
             url: urlConfig.baseUrl + "/user/" + id,
