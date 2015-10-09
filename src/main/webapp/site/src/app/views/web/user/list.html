@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <h3 class="text-center" style="color:#c9242c">USUÁRIOS</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <button class="btn btn-spark pull-right" ng-disabled="btnDisabled" ng-click="newUser()">Novo usúario</button>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div style="margin-top:15px;">
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <table class="table table-bordered" style="margin: 0 10px 0 0;">
+          <thead>
+            <tr class="headerTable">
+              <th class="th-center"><a href="">E-MAIL</a></th>
+              <th class="th-center"><a href="">SENHA</a></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="user in users" ng-mouseover="openPopover($index)">
+              <td align="center">{{user.email}}</td>
+              <td align="center">{{user.senha}}</td>
+              <td align="center">
+                <button class="btn btn-spark" alt="Alterar usuario" title="Alterar usuario" ng-disabled="btnDisabled" >
+                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                </button>
+                <button class="btn btn-spark" alt="Excluir usuario" title="Excluir usuario" ng-disabled="btnDisabled" ng-click="excluirUsuario(user)">
+                  <span class="glyphicon glyphicon-trash"></span>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <button class="btn btn-spark pull-left" ui-sref="home">
+        Voltar
+      </button>
+    </div>
+  </div>
