@@ -3,9 +3,9 @@
 
       angular.module('cebolutions.controllers')
       .controller('UserController', [
-        '$scope', '$location', '$timeout', '$http', 'urlConfig', 'users', '$state', 'UserService', 'Feedback', function($scope, $location, $timeout, $http, urlConfig, users, $state, UserService, Feedback) {
+        '$scope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'UserService', 'Feedback', function($scope, $location, $timeout, $http, urlConfig, $state, UserService, Feedback) {
 
-          $scope.users = users;
+          $scope.users = [];
           $scope.btnDisabled = false;
 
           // $scope.alterarUser = function(user) {
@@ -14,7 +14,7 @@
           //   });
           // };
 
-          $scope.novoUser = function() {
+          $scope.newUser = function() {
             return $state.go('user.create');
           };
 

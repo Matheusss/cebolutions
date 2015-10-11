@@ -33,10 +33,10 @@ function browserSyncInit(baseDir, browser) {
    *
    * For more details and option, https://github.com/chimurai/http-proxy-middleware/blob/v0.0.5/README.md
    */
-  // server.middleware = proxyMiddleware('/users', {target: 'http://jsonplaceholder.typicode.com', proxyHost: 'jsonplaceholder.typicode.com'});
+   server.middleware = proxyMiddleware('/cebolutions', {target: 'http://localhost:9090'});
 
   browserSync.instance = browserSync.init({
-    startPath: '/',
+    startPath: '/src',
     server: server,
     browser: browser
   });
@@ -49,6 +49,7 @@ browserSync.use(browserSyncSpa({
 gulp.task('serve', ['watch'], function () {
   browserSyncInit([path.join(conf.paths.tmp, '/serve'), conf.paths.src]);
 });
+
 
 gulp.task('serve:dist', ['build'], function () {
   browserSyncInit(conf.paths.dist);

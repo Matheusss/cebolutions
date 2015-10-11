@@ -7,8 +7,8 @@
     .constant('malarkey', malarkey)
     .constant('toastr', toastr)
     .constant('moment', moment)
-    .constant('urlConfig', {
-      baseUrl: '/cebolutions'
-    });
+    .constant("urlConfig",{
+    baseUrl: '/cebolutions'
+  });
 
 })();
