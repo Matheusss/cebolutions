@@ -52,20 +52,20 @@ public abstract class AbstractControllerTest {
 	@Autowired
 	private WebApplicationContext context;
 	
-	@Resource
-    private FilterChainProxy springSecurityFilterChain;
+//	@Resource
+//    private FilterChainProxy springSecurityFilterChain;
 	
 	@Autowired
 	private TransactionTemplate transactionManager;
 	
-	private MockHttpSession session;
+//	private MockHttpSession session;
 	
 	@Before 
 	public void setup() {
 		
 		this.mockMvc = MockMvcBuilders
 				.webAppContextSetup(this.context)
-				.addFilter(springSecurityFilterChain)
+//				.addFilter(springSecurityFilterChain)
 				.build();
 		clear();
 		
@@ -93,7 +93,7 @@ public abstract class AbstractControllerTest {
 	    transactionManager.execute(action);
 	}
 	
-	public AbstractControllerTest signIn() throws Exception {
+/*	public AbstractControllerTest signIn() throws Exception {
 
 		MockHttpServletRequestBuilder post = MockMvcRequestBuilders.post("/login/authenticate");
 		post.param("username", "overview");
@@ -103,7 +103,7 @@ public abstract class AbstractControllerTest {
 		session = (MockHttpSession) mockMvc.perform(post).andExpect(status().isOk()).andReturn().getRequest().getSession();
 
 		return this;
-	}
+	}*/
 
 	// UTIL
 	protected MockHttpServletRequestBuilder get(Object... variables) {
@@ -147,7 +147,7 @@ public abstract class AbstractControllerTest {
 	}
 
 	protected MvcResult perform(final MockHttpServletRequestBuilder requestBuilder, final ResultMatcher resultMatcher) throws Exception {
-		requestBuilder.session(session);
+//		requestBuilder.session(session);
 		return mockMvc.perform(requestBuilder).andExpect(resultMatcher).andDo(print()).andReturn();
 	}
 }
