@@ -1,7 +1,10 @@
 package com.cebolutions.top.car.test.init;
 
+import static com.cebolutions.top.car.init.AppProfile.TEST;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import com.cebolutions.top.car.init.AppConfig;
+import com.cebolutions.top.car.init.AppWebConfig;
 
 import java.io.UnsupportedEncodingException;
 
@@ -14,6 +17,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.security.web.FilterChainProxy;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
@@ -30,16 +34,15 @@ import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.cebolutions.top.car.init.AppConfig;
-import com.cebolutions.top.car.init.AppWebConfig;
+import aleph.TestPersistentContext;
+
 import com.jayway.jsonassert.JsonAssert;
 import com.jayway.jsonassert.JsonAsserter;
-
-import aleph.TestPersistentContext;
 
 @Transactional
 @TransactionConfiguration(defaultRollback=true)
 @WebAppConfiguration
+@ActiveProfiles(TEST)
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { AppTestProvider.class, AppConfig.class, AppWebConfig.class})
 public abstract class AbstractControllerTest {

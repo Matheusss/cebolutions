@@ -1,5 +1,10 @@
 package com.cebolutions.top.car.init;
 
+import static com.cebolutions.top.car.init.AppProfile.DEV;
+import static com.cebolutions.top.car.init.AppProfile.PROD;
+import static com.cebolutions.top.car.init.AppProfile.QA;
+import static com.cebolutions.top.car.init.AppProfile.TEST;
+
 import java.beans.PropertyVetoException;
 
 import javax.sql.DataSource;
@@ -7,13 +12,18 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 @Configuration
 public class AppDataSource {
 
+	@Profile({ DEV, PROD, QA })
 	public static class CommomDataSource {
 
 		private static final String DB_URL = "db.url";
@@ -28,6 +38,7 @@ public class AppDataSource {
 		private Environment env;
 
 		@Bean
+		@Primary
 		public DataSource dataSource() throws PropertyVetoException {
 
 			ComboPooledDataSource dataSource = new ComboPooledDataSource();
@@ -39,6 +50,16 @@ public class AppDataSource {
 			dataSource.setIdleConnectionTestPeriod(IDLE_TEST_TEST_TIME);
 
 			return dataSource;
+		}
+	}
+
+	@Profile({ TEST })
+	public static class TestDataSource {
+		@Bean
+		public DataSource dataSource() {
+			return new EmbeddedDatabaseBuilder()
+				.setType(EmbeddedDatabaseType.H2)
+				.build();
 		}
 	}
 }

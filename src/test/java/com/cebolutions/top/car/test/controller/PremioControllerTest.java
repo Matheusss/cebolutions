@@ -1,16 +1,16 @@
 package com.cebolutions.top.car.test.controller;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import com.cebolutions.top.car.test.builders.PremioBuilder;
-import com.cebolutions.top.car.test.init.AbstractControllerTest;
-import com.cebolutions.top.car.test.init.ControllerBase;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+
+import com.cebolutions.top.car.test.builders.PremioBuilder;
+import com.cebolutions.top.car.test.init.AbstractControllerTest;
+import com.cebolutions.top.car.test.init.ControllerBase;
 
 @ControllerBase("/premio")
 public class PremioControllerTest extends AbstractControllerTest  {
@@ -19,24 +19,7 @@ public class PremioControllerTest extends AbstractControllerTest  {
 	public void before() throws Exception {
 
 	}
-	
-	@Test
-	public void deveriaListarIntegrantesPorPremio() throws Exception{
-		
-		PremioBuilder.premio().nome("premio");
-		PremioBuilder.premio().nome("premio 2");
-		PremioBuilder.premio().nome("premio 1");
-		PremioBuilder.premio().nome("premio 3");
-		PremioBuilder.premio().nome("premio 4");
-		saveAll();
-		
-		MockHttpServletRequestBuilder mock = get();
-		
-		MvcResult mvcResult = perform(mock, status().isOk());
-		
-		jsonAssert(mvcResult).assertThat("$", hasSize(5));
-	}
-		
+
 	@Test
 	public void testFindById() throws Exception{
 		PremioBuilder premioBuilder = PremioBuilder.premio().nome("premio");
