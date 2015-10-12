@@ -1,4 +1,4 @@
-package com.cebolutions.top.car.test.init;
+/*package com.cebolutions.top.car.test.init;
 
 import static com.cebolutions.top.car.init.AppProfile.TEST;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -93,7 +93,7 @@ public abstract class AbstractControllerTest {
 	    transactionManager.execute(action);
 	}
 	
-/*	public AbstractControllerTest signIn() throws Exception {
+	public AbstractControllerTest signIn() throws Exception {
 
 		MockHttpServletRequestBuilder post = MockMvcRequestBuilders.post("/login/authenticate");
 		post.param("username", "overview");
@@ -103,7 +103,7 @@ public abstract class AbstractControllerTest {
 		session = (MockHttpSession) mockMvc.perform(post).andExpect(status().isOk()).andReturn().getRequest().getSession();
 
 		return this;
-	}*/
+	}
 
 	// UTIL
 	protected MockHttpServletRequestBuilder get(Object... variables) {
@@ -151,3 +151,4 @@ public abstract class AbstractControllerTest {
 		return mockMvc.perform(requestBuilder).andExpect(resultMatcher).andDo(print()).andReturn();
 	}
 }
+*/
