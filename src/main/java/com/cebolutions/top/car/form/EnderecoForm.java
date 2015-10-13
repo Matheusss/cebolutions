@@ -3,9 +3,14 @@ package com.cebolutions.top.car.form;
 public class EnderecoForm {
 
 	private String estado;
+	
 	private String cidade;
+	
 	private String bairro;
+	
 	private String logradouro;
+	
+	
 	public String getEstado() {
 		return estado;
 	}
