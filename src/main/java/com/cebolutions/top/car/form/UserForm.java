@@ -6,13 +6,22 @@ import java.util.List;
 public class UserForm {
 	
 	private String senha;
+	
 	private String email;
+	
 	private String nome;
+	
 	private String sobrenome;
+	
 	private String cpf;
+	
 	private String cnh;
+	
 	private Date dataNascimento;
+	
 	private String cep;
+	
+	
 	private List<Long> enderecoId;
 	
 	public String getSenha() {
