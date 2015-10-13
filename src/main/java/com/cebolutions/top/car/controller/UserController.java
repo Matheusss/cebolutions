@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cebolutions.top.car.dto.UserDTO;
+import com.cebolutions.top.car.entity.Endereco;
 import com.cebolutions.top.car.entity.User;
 import com.cebolutions.top.car.form.UserForm;
+import com.cebolutions.top.car.repository.EnderecoRepository;
 import com.cebolutions.top.car.repository.UserRepository;
 
 @RestController
@@ -26,40 +28,73 @@ public class UserController {
 
 	@Autowired
 	private UserRepository repository;
-
-	@RequestMapping(method = GET)
+	
+	@Autowired
+	private EnderecoRepository enderecoRepository;
+	
 	@Transactional(readOnly = true)
+	@RequestMapping(method = GET)
 	public List<UserDTO> list() {
 		List<User> users = (List<User>) repository.findAll();
-
-		return users.stream().map(UserDTO::new).collect(Collectors.toList());
+		return users.stream()
+				.map(UserDTO::new)
+				.collect(Collectors.toList());
+	}
+	
+	@Transactional(readOnly = true)
+	@RequestMapping(value = "/{id}", method = GET)
+	public UserDTO findById(@PathVariable("id") Long id) {
+		return new UserDTO(repository.findOne(id));
 	}
 
-	@RequestMapping(value = "/{id}", method = GET)
-	@Transactional(readOnly = true)
-	public UserDTO findById(@PathVariable("id") Long id) {
-		User user = repository.findOne(id);
+	@Transactional
+	@RequestMapping(method = POST)
+//	@ResponseStatus(value = HttpStatus.CREATED)
+	public UserDTO create(@RequestBody UserForm form) {
+		User user = new User();
+		List<Endereco> enderecos = new ArrayList<Endereco>();
+		
+		user.setEmail(form.getEmail());
+		user.setSenha(form.getSenha());
+		user.setNome(form.getNome());
+		user.setSobrenome(form.getSobrenome());
+		user.setCpf(form.getCpf());
+		user.setCnh(form.getCnh());
+		user.setDataNascimento(form.getDataNascimento());
+		user.setCep(form.getCep());
+		
+		for (Long id : form.getEnderecoId()) {
+			enderecos.add(enderecoRepository.findOne(id));
+		}
+		user.setEndereco(enderecos);
+		
+
+		repository.save(user);
 		return new UserDTO(user);
 	}
 
-	@RequestMapping(method = POST)
 	@Transactional
-	public User create(@RequestBody UserForm form) {
-		User user = new User();
-		user.setEmail(form.getEmail());
-		user.setSenha(form.getSenha());
-
-		return repository.save(user);
-	}
-
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	@Transactional
-	public User update(@PathVariable("id") Long id, @RequestBody UserForm form) {
+	public UserDTO update(@PathVariable("id") Long id, @RequestBody UserForm form) {
 		User user = repository.findOne(id);
+		List<Endereco> enderecos = new ArrayList<Endereco>();
+
 		String email = form.getEmail();
 		String senha = form.getSenha();
 		user.setEmail(email);
 		user.setSenha(senha);
+		
+		user.setNome(form.getNome());
+		user.setSobrenome(form.getSobrenome());
+		user.setCpf(form.getCpf());
+		user.setCnh(form.getCnh());
+		user.setDataNascimento(form.getDataNascimento());
+		user.setCep(form.getCep());
+		
+		for (Long enderecoId : form.getEnderecoId()) {
+			enderecos.add(enderecoRepository.findOne(enderecoId));
+		}
+		user.setEndereco(enderecos);
 		
 	   /* UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(email, senha);
 	    Authentication authentication = authenticationManager.authenticate(authRequest);
@@ -71,17 +106,24 @@ public class UserController {
 	    session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);*/
 
 
-		return repository.save(user);
-	}
+		repository.save(user);
+		return new UserDTO(user);
+		}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@Transactional
-	public List<User> delete(@PathVariable("id") Long id) {
-		List<User> findAll = new ArrayList<User>();
+	public UserDTO delete(@PathVariable("id") Long id) {
+		
+		User user = repository.findOne(id);
+		repository.delete(user);
+		
+		return new UserDTO(user);
+		
+/*		List<User> findAll = new ArrayList<User>();
 		repository.delete(id);
 		findAll = (List<User>) repository.findAll();
 
-		return findAll;
+		return findAll;*/
 	}
 
 /*	@RequestMapping(value = "/login", method = GET)
