@@ -42,7 +42,7 @@ public class User extends AbstractEntity {
 	@Column(name="CNH")
 	private String cnh;
 	
-	@NotNull
+	/*@NotNull*/
 	@Column(name="DT_NASCIMENTO")
 	private Date dataNascimento;
 	
