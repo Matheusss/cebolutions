@@ -1,5 +1,9 @@
 package com.cebolutions.top.car.entity;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -26,8 +30,20 @@ public class Carro extends AbstractEntity {
 	@Column(name="DESCRICAO")
 	private String descricao;
 	
-	@Column(name="ESPECIFICACOES")
-	private String specs;
+	@Column(name="IMAGENS")
+	private List<String> imagens = new ArrayList<String>();
+	
+	@Column(name="ANO")
+	private Date ano;
+	
+	@Column(name="CV")
+	private Long cv;
+	
+	@Column(name="MOTOR")
+	private String motor;
+	
+/*	@Column(name="ESPECIFICACOES")
+	private String specs;*/
 
 	public String getModelo() {
 		return modelo;
@@ -69,12 +85,44 @@ public class Carro extends AbstractEntity {
 		this.descricao = descricao;
 	}
 
-	public String getSpecs() {
+	public List<String> getImagens() {
+		return imagens;
+	}
+
+	public void setImagens(List<String> imagens) {
+		this.imagens = imagens;
+	}
+
+	public Date getAno() {
+		return ano;
+	}
+
+	public void setAno(Date ano) {
+		this.ano = ano;
+	}
+
+	public Long getCv() {
+		return cv;
+	}
+
+	public void setCv(Long cv) {
+		this.cv = cv;
+	}
+
+	public String getMotor() {
+		return motor;
+	}
+
+	public void setMotor(String motor) {
+		this.motor = motor;
+	}
+
+/*	public String getSpecs() {
 		return specs;
 	}
 
 	public void setSpecs(String specs) {
 		this.specs = specs;
-	}
+	}*/
 
 }
