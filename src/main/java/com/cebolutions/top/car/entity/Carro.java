@@ -1,5 +1,6 @@
 package com.cebolutions.top.car.entity;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,9 +34,14 @@ public class Carro extends AbstractEntity {
 	private String descricao;
 	
 	@ElementCollection
-	@CollectionTable(name="IMAGENS", joinColumns = @JoinColumn(name="CARRO_IAMGENS"))
+	@CollectionTable(name="IMAGENS", joinColumns = @JoinColumn(name="CARRO_IMAGENS"))
 	@Column(name="IMAGEM")
 	private List<String> imagens = new ArrayList<String>();
+	
+/*	@ElementCollection
+	@CollectionTable(name="IMAGES", joinColumns = @JoinColumn(name="CARRO_IMAGES"))
+	@Column(name="IMAGE")
+	private List<Blob> images = new ArrayList<Blob>();*/
 	
 	@Column(name="ANO")
 	private Date ano;
@@ -120,6 +126,14 @@ public class Carro extends AbstractEntity {
 	public void setMotor(String motor) {
 		this.motor = motor;
 	}
+
+/*	public List<Blob> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Blob> images) {
+		this.images = images;
+	}*/
 
 /*	public String getSpecs() {
 		return specs;
