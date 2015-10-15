@@ -1,6 +1,5 @@
 package com.cebolutions.top.car.entity;
 
-import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +18,9 @@ public class Carro extends AbstractEntity {
 	
 	@Column(name="MODELO")
 	private String modelo;
+	
+	@Column(name="PRECO")
+	private Long preco;
 	
 	@Column(name="PLACA")
 	private String placa;
@@ -49,8 +51,13 @@ public class Carro extends AbstractEntity {
 	@Column(name="CV")
 	private Long cv;
 	
+	
+	//0 - 60mph
 	@Column(name="MOTOR")
-	private String motor;
+	private Long motor;
+	
+	@Column(name="TOP_SPEED")
+	private Long topSpeed;
 	
 /*	@Column(name="ESPECIFICACOES")
 	private String specs;*/
@@ -119,12 +126,28 @@ public class Carro extends AbstractEntity {
 		this.cv = cv;
 	}
 
-	public String getMotor() {
+	public Long getTopSpeed() {
+		return topSpeed;
+	}
+
+	public void setTopSpeed(Long topSpeed) {
+		this.topSpeed = topSpeed;
+	}
+
+	public Long getMotor() {
 		return motor;
 	}
 
-	public void setMotor(String motor) {
+	public void setMotor(Long motor) {
 		this.motor = motor;
+	}
+
+	public Long getPreco() {
+		return preco;
+	}
+
+	public void setPreco(Long preco) {
+		this.preco = preco;
 	}
 
 /*	public List<Blob> getImages() {
