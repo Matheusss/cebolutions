@@ -1,8 +1,5 @@
 package com.cebolutions.top.car.dto;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.cebolutions.top.car.entity.Carro;
 import com.cebolutions.top.car.entity.Estoque;
 
@@ -10,27 +7,14 @@ public class EstoqueDTO {
 	
 	private Long id;
 	
-	private List<CarroDTO> carros = new ArrayList<CarroDTO>();
+	private Carro carro;
 	
 	private Long quantidade;
 	
 	public EstoqueDTO(Estoque estoque){
 		this.id = estoque.getId();
-		if (estoque.getCarros() != null){
-			for (Carro c : estoque.getCarros()) {
-				this.carros.add(new CarroDTO(c));
-			}
-		}
-		
+		this.carro = estoque.getCarro();
 		this.quantidade = estoque.getQuantidade();
-	}
-
-	public List<CarroDTO> getCarros() {
-		return carros;
-	}
-
-	public void setCarros(List<CarroDTO> carros) {
-		this.carros = carros;
 	}
 
 	public Long getQuantidade() {
@@ -47,6 +31,14 @@ public class EstoqueDTO {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Carro getCarro() {
+		return carro;
+	}
+
+	public void setCarro(Carro carro) {
+		this.carro = carro;
 	}
 
 }
