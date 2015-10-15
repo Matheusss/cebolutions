@@ -17,11 +17,7 @@ public class Venda extends AbstractEntity {
 	
 	@Column(name="VALOR_TOTAL")
 	private Double valorTotal;
-	
-	public LocalDateTime getDataVenda() {
-		return dataVenda;
-	}
-	
+
 	@ManyToOne
 	@JoinColumn(name="USUARIO_ID")
 	private User usuario;
@@ -29,6 +25,12 @@ public class Venda extends AbstractEntity {
 	@ManyToOne
 	@JoinColumn(name="CARRO_ID")
 	private Carro carro;
+	
+	
+	
+	public LocalDateTime getDataVenda() {
+		return dataVenda;
+	}
 
 	public void setDataVenda(LocalDateTime dataVenda) {
 		this.dataVenda = dataVenda;
