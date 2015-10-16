@@ -1,7 +1,6 @@
 package com.cebolutions.top.car.entity;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CollectionTable;
@@ -10,6 +9,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,8 +29,9 @@ public class Carro extends AbstractEntity {
 	@JoinColumn(name="MARCA_ID")
 	private Marca marca;
 	
-	@Column(name="COR")
-	private String cor;
+	@OneToOne
+	@JoinColumn(name="CARRO_COR")
+	private Cor cor;
 	
 	@Column(name="DESCRICAO")
 	private String descricao;
@@ -46,7 +47,7 @@ public class Carro extends AbstractEntity {
 	private List<Blob> images = new ArrayList<Blob>();*/
 	
 	@Column(name="ANO")
-	private Date ano;
+	private Long ano;
 	
 	@Column(name="CV")
 	private Long cv;
@@ -86,14 +87,6 @@ public class Carro extends AbstractEntity {
 		this.marca = marca;
 	}
 
-	public String getCor() {
-		return cor;
-	}
-
-	public void setCor(String cor) {
-		this.cor = cor;
-	}
-
 	public String getDescricao() {
 		return descricao;
 	}
@@ -110,11 +103,11 @@ public class Carro extends AbstractEntity {
 		this.imagens = imagens;
 	}
 
-	public Date getAno() {
+	public Long getAno() {
 		return ano;
 	}
 
-	public void setAno(Date ano) {
+	public void setAno(Long ano) {
 		this.ano = ano;
 	}
 
@@ -148,6 +141,14 @@ public class Carro extends AbstractEntity {
 
 	public void setPreco(Long preco) {
 		this.preco = preco;
+	}
+
+	public Cor getCor() {
+		return cor;
+	}
+
+	public void setCor(Cor cor) {
+		this.cor = cor;
 	}
 
 /*	public List<Blob> getImages() {
