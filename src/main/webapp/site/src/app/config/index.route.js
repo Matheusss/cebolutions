@@ -61,6 +61,15 @@
         // }
       });
 
+      .state('car.details', {
+        url           : 'details',
+        restrict      : true,
+        templateUrl   : 'app/views/web/car/details.html',
+        controller    : 'CarController'
+
+      })
+
+
       // .state('premio', {
       //   url:'/',
       //   restrict: true,

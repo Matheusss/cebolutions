@@ -1,17 +1,21 @@
-<div class="container menu">
+<div class="container menu" ng-controller="CarController">
 
   <div>
 <div>
-    <button onclick="mudar(0)">Vermelho</button>
-    <button onclick="mudar(1)">Azul</button>
-    <button onclick="mudar(2)">Preto</button>
-    <button onclick="mudar(3)">Amarelo</button>
+    <button ng-click="mudar(0)">Vermelho</button>
+    <button ng-click="mudar(1)">Azul</button>
+    <button ng-click="mudar(2)">Preto</button>
+    <button ng-click="mudar(3)">Amarelo</button>
   </div>
 
-  <button onclick="mudar(4)">Proximo</button>
+  <button ng-click="mudar(4)">Proximo</button>
   <div id="default" style="position: absolute;">
-    <img id="car" src="default.png">
+    <img id="car" src="../../../img/mustang/default.png">
   </div>
+
+  
+
+
   
 
   
