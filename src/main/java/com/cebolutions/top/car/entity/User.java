@@ -1,8 +1,8 @@
 package com.cebolutions.top.car.entity;
 
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -40,16 +40,16 @@ public class User extends AbstractEntity {
 	@Column(name="CNH")
 	private String cnh;
 	
-	@NotNull
+	/*@NotNull*/
 	@Column(name="DT_NASCIMENTO")
-	private LocalDate dataNascimento;
+	private Date dataNascimento;
 	
 	@Column(name="CEP")
-	private Long cep;
+	private String cep;
 
 	@ManyToMany
 	@JoinTable(name="ENDERECO_USUARIO", joinColumns = @JoinColumn(name="USER_ID"), inverseJoinColumns = @JoinColumn(name="ENDERECO_ID"))
-	private Set<Endereco> endereco = new HashSet<>();
+	private List<Endereco> endereco = new ArrayList<>(); 
 	
 /*	@Column(name="USER")
 	private String user;*/ 
@@ -102,28 +102,28 @@ public class User extends AbstractEntity {
 		this.cnh = cnh;
 	}
 
-	public LocalDate getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public void setDataNascimento(LocalDate dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
-
-	public Set<Endereco> getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Set<Endereco> endereco) {
-		this.endereco = endereco;
-	}
-
-	public Long getCep() {
+	public String getCep() {
 		return cep;
 	}
 
-	public void setCep(Long cep) {
+	public void setCep(String cep) {
 		this.cep = cep;
+	}
+
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public List<Endereco> getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(List<Endereco> endereco) {
+		this.endereco = endereco;
 	}
 
 
