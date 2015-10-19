@@ -31,9 +31,9 @@ public class MarcaController {
 	@Transactional(readOnly=true)
 	@RequestMapping(method=GET)
 	public List<MarcaDTO> list(){
-		 List<Marca> endereco = (List<Marca>) repository.findAll();
+		 List<Marca> marca = (List<Marca>) repository.findAll();
 		 
-		 return endereco.stream()
+		 return marca.stream()
 			.map(MarcaDTO::new)
 			.collect(Collectors.toList());
 	}
