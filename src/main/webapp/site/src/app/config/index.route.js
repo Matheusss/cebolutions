@@ -59,12 +59,13 @@
         //     }
         //   ]
         // }
-      });
+      })
 
       .state('car', {
-        url           : 'car',
+        url           : '/',
         restrict      : true,
-        templateUrl   : 'app/views/web/car/car.html',
+        abstract      : true,
+        templateUrl   : 'app/views/web/car/car.html'
       })
 
 
@@ -74,7 +75,7 @@
         templateUrl   : 'app/views/web/car/details.html',
         controller    : 'CarController'
 
-      })
+      });
 
 
       // .state('premio', {

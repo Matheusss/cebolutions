@@ -1,6 +1,6 @@
 angular.module('cebolutions.controllers')
     .controller('CarController', [
-        '$scope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'UserService', 'Feedback', function($scope, $location, $timeout, $http, urlConfig, $state, UserService, Feedback) {
+        '$scope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'Feedback', function($scope, $location, $timeout, $http, urlConfig, $state, Feedback) {
 
         $scope.car = [];
 
