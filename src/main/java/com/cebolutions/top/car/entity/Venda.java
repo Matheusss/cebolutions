@@ -24,7 +24,10 @@ public class Venda extends AbstractEntity {
 	
 	@ManyToOne
 	@JoinColumn(name="CARRO_ID")
-	private Carro carro;
+	private CarroVenda carro;
+	
+	@Column(name="VENDA_COMPLETA")
+	private Boolean vendaCompleta;
 	
 	
 	
@@ -52,12 +55,21 @@ public class Venda extends AbstractEntity {
 		this.usuario = usuario;
 	}
 
-	public Carro getCarro() {
+	public CarroVenda getCarro() {
 		return carro;
 	}
 
-	public void setCarro(Carro carro) {
+	public void setCarro(CarroVenda carro) {
 		this.carro = carro;
 	}
+
+	public Boolean getVendaCompleta() {
+		return vendaCompleta;
+	}
+
+	public void setVendaCompleta(Boolean vendaCompleta) {
+		this.vendaCompleta = vendaCompleta;
+	}
+
 
 }
