@@ -11,7 +11,7 @@ public class CarroDTO {
 
 	private String modelo;
 	
-	private Long preco;
+	private Double preco;
 	
 	private Marca marca;
 	
@@ -55,11 +55,11 @@ public class CarroDTO {
 		this.modelo = modelo;
 	}
 
-	public Long getPreco() {
+	public Double getPreco() {
 		return preco;
 	}
 
-	public void setPreco(Long preco) {
+	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
 

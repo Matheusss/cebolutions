@@ -20,7 +20,7 @@ public class Carro extends AbstractEntity {
 	private String modelo;
 	
 	@Column(name="PRECO")
-	private Long preco;
+	private Double preco;
 	
 	@Column(name="PLACA")
 	private String placa;
@@ -135,11 +135,11 @@ public class Carro extends AbstractEntity {
 		this.motor = motor;
 	}
 
-	public Long getPreco() {
+	public Double getPreco() {
 		return preco;
 	}
 
-	public void setPreco(Long preco) {
+	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
 

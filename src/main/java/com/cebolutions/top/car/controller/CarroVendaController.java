@@ -35,7 +35,6 @@ public class CarroVendaController {
 	CarroRepository carroRepository;
 	
 	@Autowired
-	
 	CorRepository corRepository;
 
 	@Transactional

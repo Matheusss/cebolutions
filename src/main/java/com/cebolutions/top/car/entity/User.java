@@ -51,6 +51,16 @@ public class User extends AbstractEntity {
 	@JoinTable(name="ENDERECO_USUARIO", joinColumns = @JoinColumn(name="USER_ID"), inverseJoinColumns = @JoinColumn(name="ENDERECO_ID"))
 	private List<Endereco> endereco = new ArrayList<>(); 
 	
+	//DADOS VENDA
+	@Column(name="NUMERO_CARTAO")
+	private Long numeroCartao;
+	
+	@Column(name="DT_CARTAO")
+	private Date dtCartao;
+	
+	@Column(name="APROVADO")
+	private Boolean aprovado;
+	
 /*	@Column(name="USER")
 	private String user;*/ 
 
@@ -124,6 +134,30 @@ public class User extends AbstractEntity {
 
 	public void setEndereco(List<Endereco> endereco) {
 		this.endereco = endereco;
+	}
+
+	public Long getNumeroCartao() {
+		return numeroCartao;
+	}
+
+	public void setNumeroCartao(Long numeroCartao) {
+		this.numeroCartao = numeroCartao;
+	}
+
+	public Date getDtCartao() {
+		return dtCartao;
+	}
+
+	public void setDtCartao(Date dtCartao) {
+		this.dtCartao = dtCartao;
+	}
+
+	public Boolean getAprovado() {
+		return aprovado;
+	}
+
+	public void setAprovado(Boolean aprovado) {
+		this.aprovado = aprovado;
 	}
 
 
