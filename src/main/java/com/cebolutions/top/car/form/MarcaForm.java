@@ -1,12 +1,14 @@
 package com.cebolutions.top.car.form;
 
+import java.sql.Blob;
+
 public class MarcaForm {
 
 	private Long id;
 	
 	private String nome;
 	
-	private String logo;
+	private Blob logo;
 	
 	
 	public Long getId() {
@@ -21,10 +23,10 @@ public class MarcaForm {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getLogo() {
+	public Blob getLogo() {
 		return logo;
 	}
-	public void setLogo(String logo) {
+	public void setLogo(Blob logo) {
 		this.logo = logo;
 	}
 	
