@@ -29,8 +29,6 @@ public class Venda extends AbstractEntity {
 	@Column(name="VENDA_COMPLETA")
 	private Boolean vendaCompleta;
 	
-	
-	
 	public LocalDateTime getDataVenda() {
 		return dataVenda;
 	}
