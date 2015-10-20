@@ -1,6 +1,5 @@
 package com.cebolutions.top.car.form;
 
-import java.sql.Blob;
 
 public class MarcaForm {
 
@@ -8,7 +7,7 @@ public class MarcaForm {
 	
 	private String nome;
 	
-	private Blob logo;
+	private String logo;
 	
 	
 	public Long getId() {
@@ -23,10 +22,10 @@ public class MarcaForm {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Blob getLogo() {
+	public String getLogo() {
 		return logo;
 	}
-	public void setLogo(Blob logo) {
+	public void setLogo(String logo) {
 		this.logo = logo;
 	}
 	

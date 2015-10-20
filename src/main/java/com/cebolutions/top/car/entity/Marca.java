@@ -4,8 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import java.sql.Blob;
-
 @Entity
 @Table(name="MARCA")
 public class Marca extends AbstractEntity {
@@ -14,7 +12,7 @@ public class Marca extends AbstractEntity {
 	private String nome;
 	
 	@Column(name="LOGO")
-	private Blob logo;
+	private String logo;
 
 	public String getNome() {
 		return nome;
@@ -24,11 +22,11 @@ public class Marca extends AbstractEntity {
 		this.nome = nome;
 	}
 
-	public Blob getLogo() {
+	public String getLogo() {
 		return logo;
 	}
 
-	public void setLogo(Blob logo) {
+	public void setLogo(String logo) {
 		this.logo = logo;
 	}
 	

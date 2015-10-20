@@ -1,7 +1,6 @@
 package com.cebolutions.top.car.dto;
 
 import com.cebolutions.top.car.entity.Marca;
-import java.sql.Blob;
 
 public class MarcaDTO {
 	
@@ -9,7 +8,7 @@ public class MarcaDTO {
 	
 	private String nome;
 	
-	private Blob logo;
+	private String logo;
 	
 	public MarcaDTO(Marca marca){
 		this.id = marca.getId();
@@ -33,11 +32,11 @@ public class MarcaDTO {
 		this.nome = nome;
 	}
 
-	public Blob getLogo() {
+	public String getLogo() {
 		return logo;
 	}
 
-	public void setLogo(Blob logo) {
+	public void setLogo(String logo) {
 		this.logo = logo;
 	}
 
