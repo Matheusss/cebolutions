@@ -12,44 +12,80 @@
     $urlRouterProvider.otherwise('/home');
 
     $stateProvider
-    // .state('web', {
-    //   url: '',
-    //   abstract: true,
-    //   views: {
-    //     "": {
-    //       templateUrl: 'app/views/web/web.html',
-    //       controller: 'WebController'
-    //     }
-    //   }
-    // })
-
-      .state('home', {
-        url: '/home',
-        templateUrl: 'app/views/web/main.html',
-        controller: 'MainController',
-        controllerAs: 'main'
+      .state('web', {
+        url: '',
+        abstract: true,
+        views: {
+          "": {
+            templateUrl: 'app/views/web/web.html',
+            controller: 'WebController'
+          },
+          "header@web": {
+            templateUrl: 'app/views/web/header.html',
+            controller: 'HeaderController'
+          }
+        }
       })
 
-      .state('user', {
+      .state('web.home', {
+        url: '/home',
+        controllerAs: 'main',
+        views: {
+          "": {
+            templateUrl: 'app/views/web/main.html',
+            controller: 'MainController'
+          },
+          "header@web": {
+            templateUrl: 'app/views/web/header.html',
+            controller:  'HeaderController'
+          }
+        }
+      })
+
+      .state('web.user', {
         url           : '/',
         restrict      : true,
         abstract      : true,
-        templateUrl   : 'app/views/web/user/user.html'
+        views: {
+          "": {
+            templateUrl   : 'app/views/web/user/user.html'
+          },
+          "header@web": {
+            templateUrl: 'app/views/web/header.html',
+            controller:  'HeaderController'
+          }
+        }
       })
 
-      .state('user.create', {
+      .state('web.user.create', {
         url           : 'create',
         restrict      : true,
-        templateUrl   : 'app/views/web/user/form.html',
-        controller    : 'CreateUserController'
-
+        views: {
+          "": {
+            templateUrl   : 'app/views/web/user/form.html',
+            controller    : 'CreateUserController'
+          },
+          "header@web": {
+            templateUrl: 'app/views/web/header.html',
+            controller:  'HeaderController'
+          }
+        }
       })
 
-      .state('user.list', {
+      .state('web.user.list', {
         url           : 'list',
         restrict      : true,
-        templateUrl   : 'app/views/web/user/list.html',
-        controller    : 'UserController',
+
+        views: {
+          "": {
+            templateUrl   : 'app/views/web/user/list.html',
+            controller    : 'UserController'
+          },
+          "header@web": {
+            templateUrl: 'app/views/web/header.html',
+            controller:  'HeaderController'
+          }
+        }
         // resolve: {
         //   users: [
         //     'UserService', function(UserService) {
@@ -61,19 +97,34 @@
         // }
       })
 
-      .state('car', {
+      .state('web.car', {
         url           : '/',
         restrict      : true,
         abstract      : true,
-        templateUrl   : 'app/views/web/car/car.html'
+        views: {
+          "": {
+            templateUrl   : 'app/views/web/car/car.html'
+          },
+          "header@web": {
+            templateUrl: 'app/views/web/header.html',
+            controller: 'HeaderController'
+          }
+        }
       })
 
 
-      .state('car.details', {
+      .state('web.car.details', {
         url           : 'details',
         restrict      : true,
-        templateUrl   : 'app/views/web/car/details.html',
-        controller    : 'CarController'
+        views: {
+          "": {
+              templateUrl   : 'app/views/web/car/details.html',
+              controller    : 'CarController'          },
+          "header@web": {
+            templateUrl: 'app/views/web/header.html',
+            controller: 'HeaderController'
+          }
+        }
 
       });
 
