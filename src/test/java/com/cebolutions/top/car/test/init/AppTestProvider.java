@@ -1,4 +1,4 @@
-/*package com.cebolutions.top.car.test.init;
+package com.cebolutions.top.car.test.init;
 
 import javax.sql.DataSource;
 
@@ -39,4 +39,3 @@ public class AppTestProvider {
 		return new JdbcTemplate(dataSource);
 	}
 }
-*/

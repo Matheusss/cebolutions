@@ -1,4 +1,4 @@
-/*package com.cebolutions.top.car.test.init;
+package com.cebolutions.top.car.test.init;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
@@ -29,4 +29,3 @@ public class AssertUtil {
 		return new AssertUtil(json);
 	}
 }
-*/

@@ -1,4 +1,4 @@
-/*package com.cebolutions.top.car.test.init;
+package com.cebolutions.top.car.test.init;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -11,4 +11,3 @@ public @interface ControllerBase {
 	String value();
 }
 
-*/

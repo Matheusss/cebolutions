@@ -1,4 +1,4 @@
-/*package com.cebolutions.top.car.test.builders;
+package com.cebolutions.top.car.test.builders;
 
 import com.cebolutions.top.car.entity.Premio;
 import aleph.AbstractBuilder;
@@ -19,4 +19,3 @@ public class PremioBuilder extends AbstractBuilder<Premio>{
 		return set("valor", valor);
 	}
 }
-*/

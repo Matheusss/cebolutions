@@ -1,22 +1,16 @@
-/*package com.cebolutions.top.car.test.init;
+package com.cebolutions.top.car.test.init;
 
 import static com.cebolutions.top.car.init.AppProfile.TEST;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import com.cebolutions.top.car.init.AppConfig;
-import com.cebolutions.top.car.init.AppWebConfig;
 
 import java.io.UnsupportedEncodingException;
 
-import javax.annotation.Resource;
 import javax.transaction.Transactional;
 
 import org.apache.commons.lang.StringUtils;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mock.web.MockHttpSession;
-import org.springframework.security.web.FilterChainProxy;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -36,6 +30,8 @@ import org.springframework.web.context.WebApplicationContext;
 
 import aleph.TestPersistentContext;
 
+import com.cebolutions.top.car.init.AppConfig;
+import com.cebolutions.top.car.init.AppWebConfig;
 import com.jayway.jsonassert.JsonAssert;
 import com.jayway.jsonassert.JsonAsserter;
 
@@ -92,18 +88,6 @@ public abstract class AbstractControllerTest {
 	protected void inTransaction(TransactionCallback<Object> action) {
 	    transactionManager.execute(action);
 	}
-	
-	public AbstractControllerTest signIn() throws Exception {
-
-		MockHttpServletRequestBuilder post = MockMvcRequestBuilders.post("/login/authenticate");
-		post.param("username", "overview");
-		post.param("password", "overview");
-		
-		
-		session = (MockHttpSession) mockMvc.perform(post).andExpect(status().isOk()).andReturn().getRequest().getSession();
-
-		return this;
-	}
 
 	// UTIL
 	protected MockHttpServletRequestBuilder get(Object... variables) {
@@ -151,4 +135,3 @@ public abstract class AbstractControllerTest {
 		return mockMvc.perform(requestBuilder).andExpect(resultMatcher).andDo(print()).andReturn();
 	}
 }
-*/

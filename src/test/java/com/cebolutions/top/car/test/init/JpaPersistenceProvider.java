@@ -1,4 +1,4 @@
-/*package com.cebolutions.top.car.test.init;
+package com.cebolutions.top.car.test.init;
 
 
 import java.util.ArrayList;
@@ -71,4 +71,4 @@ public class JpaPersistenceProvider implements PersistenceProvider {
 		});
 
 	}
-}*/
+}

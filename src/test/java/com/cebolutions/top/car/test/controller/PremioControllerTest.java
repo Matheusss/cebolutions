@@ -1,4 +1,4 @@
-/*package com.cebolutions.top.car.test.controller;
+package com.cebolutions.top.car.test.controller;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -71,4 +71,4 @@ public class PremioControllerTest extends AbstractControllerTest  {
 		
 	}
 
-}	*/
+}	
