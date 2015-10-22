@@ -1,19 +1,15 @@
 package com.cebolutions.top.car.form;
 
+import java.util.List;
+
 
 public class EstoqueForm {
 
-//	private Long carroId;
+	private List<Long> carroId;
 	
 	private Long quantidade;
 
-//	public Long getCarroId() {
-//		return carroId;
-//	}
-//
-//	public void setCarroId(Long carroId) {
-//		this.carroId = carroId;
-//	}
+
 
 	public Long getQuantidade() {
 		return quantidade;
@@ -21,6 +17,14 @@ public class EstoqueForm {
 
 	public void setQuantidade(Long quantidade) {
 		this.quantidade = quantidade;
+	}
+
+	public List<Long> getCarroId() {
+		return carroId;
+	}
+
+	public void setCarroId(List<Long> carroId) {
+		this.carroId = carroId;
 	}
 	
 }

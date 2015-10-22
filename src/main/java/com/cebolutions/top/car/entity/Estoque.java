@@ -1,9 +1,11 @@
 package com.cebolutions.top.car.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -12,9 +14,8 @@ import javax.validation.constraints.Min;
 @Table(name="ESTOQUE")
 public class Estoque extends AbstractEntity {
 	
-	@OneToOne
-	@JoinColumn(name="CARRO_ID")
-	private Carro carro;
+	@OneToMany(mappedBy="estoque")
+	private List<CarroVenda> carroVenda = new ArrayList<>();
 	
 	@Column(name="QUANTIDADE")
 	@Min(2)
@@ -30,14 +31,13 @@ public class Estoque extends AbstractEntity {
 		this.quantidade = quantidade;
 	}
 
-	public Carro getCarro() {
-		return carro;
+	public List<CarroVenda> getCarroVenda() {
+		return carroVenda;
 	}
 
-	public void setCarro(Carro carro) {
-		this.carro = carro;
+	public void setCarroVenda(List<CarroVenda> carroVenda) {
+		this.carroVenda = carroVenda;
 	}
-	
-	
 
+	
 }

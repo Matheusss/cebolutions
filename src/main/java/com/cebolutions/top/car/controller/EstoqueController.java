@@ -4,6 +4,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,9 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cebolutions.top.car.dto.EstoqueDTO;
+import com.cebolutions.top.car.entity.CarroVenda;
 import com.cebolutions.top.car.entity.Estoque;
 import com.cebolutions.top.car.form.EstoqueForm;
-import com.cebolutions.top.car.repository.CarroRepository;
+import com.cebolutions.top.car.repository.CarroVendaRepository;
 import com.cebolutions.top.car.repository.EstoqueRepository;
 
 @RestController
@@ -29,7 +31,7 @@ public class EstoqueController {
 	EstoqueRepository repository;
 	
 	@Autowired
-	CarroRepository carroRepository;
+	CarroVendaRepository carroVendaRepository;
 	
 	@Transactional(readOnly=true)
 	@RequestMapping(method=GET)
@@ -53,8 +55,12 @@ public class EstoqueController {
 //	@ResponseStatus(value = HttpStatus.CREATED)
 	public EstoqueDTO create(@RequestBody EstoqueForm form) {
 		Estoque estoque = new Estoque();
+		List<CarroVenda> carros = new ArrayList<CarroVenda>();
 		
-		estoque.setCarro(carroRepository.findOne(form.getCarroId()));
+		for (Long id : form.getCarroId()) {
+			carros.add(carroVendaRepository.findOne(id));
+		}
+		estoque.setCarroVenda(carros);
 		estoque.setQuantidade(form.getQuantidade());
 		
 		repository.save(estoque);

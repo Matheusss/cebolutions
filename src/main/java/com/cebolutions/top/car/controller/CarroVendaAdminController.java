@@ -45,7 +45,7 @@ public class CarroVendaAdminController {
 		return new CarroVendaDTO(carrosVenda);
 	}
 	
-	@Transactional
+/*	@Transactional
 	@RequestMapping(value="/estoque/{id}", method=PUT)
 	public CarroVendaDTO updateEstoque(@PathVariable("id") Long id, EstoqueForm form){
 		CarroVenda carro = repository.findOne(id);
@@ -55,6 +55,6 @@ public class CarroVendaAdminController {
 		
 		return new CarroVendaDTO(carro);
 		
-	}
+	}*/
 
 }

@@ -1,19 +1,28 @@
 package com.cebolutions.top.car.dto;
 
-import com.cebolutions.top.car.entity.Carro;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.cebolutions.top.car.entity.CarroVenda;
 import com.cebolutions.top.car.entity.Estoque;
 
 public class EstoqueDTO {
 	
 	private Long id;
 	
-	private Carro carro;
+	private List<CarroVendaDTO> carros = new ArrayList<CarroVendaDTO>();
 	
 	private Long quantidade;
 	
 	public EstoqueDTO(Estoque estoque){
 		this.id = estoque.getId();
-		this.carro = estoque.getCarro();
+
+		if(estoque.getCarroVenda() != null){
+			for (CarroVenda c : estoque.getCarroVenda()) {
+				this.carros.add(new CarroVendaDTO(c));
+			}
+		}
+		
 		this.quantidade = estoque.getQuantidade();
 	}
 
@@ -33,12 +42,13 @@ public class EstoqueDTO {
 		this.id = id;
 	}
 
-	public Carro getCarro() {
-		return carro;
+	public List<CarroVendaDTO> getCarros() {
+		return carros;
 	}
 
-	public void setCarro(Carro carro) {
-		this.carro = carro;
+	public void setCarros(List<CarroVendaDTO> carros) {
+		this.carros = carros;
 	}
+
 
 }

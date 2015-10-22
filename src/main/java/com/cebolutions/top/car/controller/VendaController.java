@@ -4,6 +4,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -58,14 +60,15 @@ public class VendaController {
 		Venda venda = new Venda();
 		CarroVenda carro = carroVendaRepository.findOne(form.getCarroId());
 		Cor cor = corRepository.findOne(carro.getCor().getId());
-		Estoque estoque = estoqueRepository.findByCarroVenda(carro);
+		//Estoque estoque = estoqueRepository.findByCarroVenda(carro);
+		List<Estoque> estoque = (List<Estoque>) estoqueRepository.findByCarroVenda(carro);
 		
 		venda.setDataVenda(LocalDateTime.now());
 		venda.setCarro(carroVendaRepository.findOne(form.getCarroId()));
 		venda.setUsuario(userRepository.findOne(form.getUsuarioId()));
 		venda.setValorTotal(service.valorVendaTotal(carro.getId(), cor.getId()));
 		venda.setVendaCompleta(false);
-		estoque.setQuantidade(estoque.getQuantidade() - 1);
+		//estoque.setQuantidade(estoque.getQuantidade() - 1);
 		
 		
 		venda = repository.save(venda);
@@ -77,7 +80,7 @@ public class VendaController {
 	public VendaDTO update(@PathVariable("id") Long id){
 		Venda venda = repository.findOne(id);
 		User user = userRepository.findOne(venda.getUsuario().getId());
-		Estoque estoque = estoqueRepository.findByCarroVenda(venda.getCarro());
+		//Estoque estoque = estoqueRepository.findByCarroVenda(venda.getCarro());
 
 		
 		if(user.getAprovado()){
@@ -85,10 +88,10 @@ public class VendaController {
 			venda = repository.save(venda);
 		} if(!user.getAprovado()) {
 			venda.setVendaCompleta(false);
-			estoque.setQuantidade(estoque.getQuantidade() + 1);
+			//estoque.setQuantidade(estoque.getQuantidade() + 1);
 			venda = repository.save(venda);
 		} else {
-			estoque.setQuantidade(estoque.getQuantidade() + 1);
+			//estoque.setQuantidade(estoque.getQuantidade() + 1);
 			repository.delete(venda.getId());
 			carroVendaRepository.delete(venda.getCarro().getId());
 		}
