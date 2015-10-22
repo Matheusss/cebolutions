@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cebolutions.top.car.dto.VendaDTO;
 import com.cebolutions.top.car.entity.CarroVenda;
 import com.cebolutions.top.car.entity.Cor;
+import com.cebolutions.top.car.entity.Estoque;
 import com.cebolutions.top.car.entity.User;
 import com.cebolutions.top.car.entity.Venda;
 import com.cebolutions.top.car.form.VendaForm;
 import com.cebolutions.top.car.repository.CarroVendaRepository;
 import com.cebolutions.top.car.repository.CorRepository;
+import com.cebolutions.top.car.repository.EstoqueRepository;
 import com.cebolutions.top.car.repository.UserRepository;
 import com.cebolutions.top.car.repository.VendaRepository;
 import com.cebolutions.top.car.service.VendaService;
@@ -45,6 +47,9 @@ public class VendaController {
 	@Autowired
 	private VendaService service;
 	
+	@Autowired
+	private EstoqueRepository estoqueRepository;
+	
 	@Transactional
 	@RequestMapping(method=POST)
 	@ResponseStatus(value=HttpStatus.CREATED)
@@ -53,12 +58,15 @@ public class VendaController {
 		Venda venda = new Venda();
 		CarroVenda carro = carroVendaRepository.findOne(form.getCarroId());
 		Cor cor = corRepository.findOne(carro.getCor().getId());
+		Estoque estoque = estoqueRepository.findByCarroVenda(carro);
 		
 		venda.setDataVenda(LocalDateTime.now());
 		venda.setCarro(carroVendaRepository.findOne(form.getCarroId()));
 		venda.setUsuario(userRepository.findOne(form.getUsuarioId()));
 		venda.setValorTotal(service.valorVendaTotal(carro.getId(), cor.getId()));
 		venda.setVendaCompleta(false);
+		estoque.setQuantidade(estoque.getQuantidade() - 1);
+		
 		
 		venda = repository.save(venda);
 		return new VendaDTO(venda);
@@ -69,14 +77,18 @@ public class VendaController {
 	public VendaDTO update(@PathVariable("id") Long id){
 		Venda venda = repository.findOne(id);
 		User user = userRepository.findOne(venda.getUsuario().getId());
+		Estoque estoque = estoqueRepository.findByCarroVenda(venda.getCarro());
+
 		
 		if(user.getAprovado()){
 			venda.setVendaCompleta(true);
 			venda = repository.save(venda);
 		} if(!user.getAprovado()) {
 			venda.setVendaCompleta(false);
+			estoque.setQuantidade(estoque.getQuantidade() + 1);
 			venda = repository.save(venda);
 		} else {
+			estoque.setQuantidade(estoque.getQuantidade() + 1);
 			repository.delete(venda.getId());
 			carroVendaRepository.delete(venda.getCarro().getId());
 		}
