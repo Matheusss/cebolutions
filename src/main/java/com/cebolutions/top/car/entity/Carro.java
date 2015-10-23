@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name="CARRO")
@@ -30,7 +32,7 @@ public class Carro extends AbstractEntity {
 	private Marca marca;
 	
 	@OneToOne
-	@JoinColumn(name="CARRO_COR")
+	@JoinColumn(name="COR_ID")
 	private Cor cor;
 	
 	@Column(name="DESCRICAO")
@@ -59,6 +61,11 @@ public class Carro extends AbstractEntity {
 	
 	@Column(name="TOP_SPEED")
 	private Long topSpeed;
+	
+	@Column(name="QUANTIDADE")
+	@Min(2)
+	@Max(5)
+	private Long quantidade;
 	
 /*	@Column(name="ESPECIFICACOES")
 	private String specs;*/
@@ -149,6 +156,14 @@ public class Carro extends AbstractEntity {
 
 	public void setCor(Cor cor) {
 		this.cor = cor;
+	}
+
+	public Long getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(Long quantidade) {
+		this.quantidade = quantidade;
 	}
 
 /*	public List<Blob> getImages() {

@@ -1,6 +1,5 @@
 package com.cebolutions.top.car.controller;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,10 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cebolutions.top.car.dto.CarroVendaDTO;
 import com.cebolutions.top.car.entity.CarroVenda;
-import com.cebolutions.top.car.entity.Estoque;
-import com.cebolutions.top.car.form.EstoqueForm;
 import com.cebolutions.top.car.repository.CarroVendaRepository;
-import com.cebolutions.top.car.repository.EstoqueRepository;
 
 @RestController
 @RequestMapping(value="/admin/carros")
@@ -24,9 +20,6 @@ public class CarroVendaAdminController {
 	
 	@Autowired
 	CarroVendaRepository repository;
-	
-	@Autowired
-	private EstoqueRepository estoqueRepository;
 	
 	@Transactional(readOnly=true)
 	@RequestMapping(value="/vendidos/", method=GET)

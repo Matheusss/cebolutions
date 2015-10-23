@@ -17,9 +17,9 @@ public class CarroVenda extends AbstractEntity{
 	@JoinColumn(name="COR_ID")
 	private Cor cor;
 	
-	@ManyToOne
+/*	@ManyToOne
 	@JoinColumn(name="ESTOQUE_ID")
-	private Estoque estoque = new Estoque();
+	private Estoque estoque = new Estoque();*/
 
 	public Carro getCarro() {
 		return carro;
