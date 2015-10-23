@@ -1,4 +1,4 @@
-package com.cebolutions.top.car.repository;
+/*package com.cebolutions.top.car.repository;
 
 import java.util.List;
 
@@ -11,3 +11,4 @@ public interface EstoqueRepository extends CrudRepository<Estoque, Long> {
 
 	List<Estoque> findByCarroVenda(CarroVenda carro);
 }
+*/
