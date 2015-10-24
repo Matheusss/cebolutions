@@ -1,47 +1,57 @@
 <div class="container menu" ng-controller="CarController">
+    <div>
+        <div style="width: 200px; height: 350px;">
+        <p>Escolha a  cor</p>
+            <div ng-click="{{mudar('red')}}" style="height: 20px;width: 20px;background-color: red;border: 1px solid;margin: 5px;position:relative;float: left;">
+            </div> 
+            <p>R$ 1000,00</p>
+        <div style="height: 20px;width: 20px;background-color: blue;border: 1px solid;margin: 5px;position: relative;float: left;">
+            
+        </div>
+        <p>R$ 1000,00</p>
+        <div style="height: 20px;width: 20px;background-color: black;border: 1px solid;margin: 5px;position: relative;float: left;">
+            
+        </div>
+        <p>R$ 1000,00</p>
+        <div style="height: 20px;width: 20px;background-color: yellow;border: 1px solid;margin: 5px;position: relative;float: left;">
+            
+        </div>
+        <p>R$ 1000,00</p>
 
-  <div>
-<div style="    width: 200px;
-    height: 200px;">
-<p>Escolha a  cor</p>
-<div style="height: 20px;
-    width: 20px;
-    background-color: red;
-    border: 1px solid;margin: 5px;position: relative;
-    float: left;"></div> <p>R$ 1000,00</p>
-    <div style="height: 20px;
-    width: 20px;
-    background-color: blue;
-    border: 1px solid;margin: 5px;position: relative;
-    float: left;"></div><p>R$ 1000,00</p>
-    <div style="height: 20px;
-    width: 20px;
-    background-color: black;
-    border: 1px solid;margin: 5px;position: relative;
-    float: left;"></div><p>R$ 1000,00</p>
-    <div style="height: 20px;
-    width: 20px;
-    background-color: yellow;
-    border: 1px solid;margin: 5px;position: relative;
-    float: left;"></div><p>R$ 1000,00</p>
+        <button ng-click="mudar('red')">Vermelho</button>
+        <button ng-click="{{mudar('blue')}}">Azul</button>
+        <button ng-click="mudar('black')">Preto</button>
+        <button ng-click="mudar('yellow')">Amarelo</button>
+        <button ng-click="mudar('white')">Branco</button>
+        <button ng-click="mudar('gray')">Cinza</button>
+    </div>
 
-    <button ng-click="mudar(0)">Vermelho</button>
-    <button ng-click="mudar(1)">Azul</button>
-    <button ng-click="mudar(2)">Preto</button>
-    <button ng-click="mudar(3)">Amarelo</button>
-  </div>
+      <button ng-click="mudar(4)">Proximo</button>
+      <!-- <div id="default" style="position: absolute;">
+        <img id="car" src="http://192.168.1.8:80/img/mustang/default.png">
+      </div> -->
+      {{selectedColor}}
+      {{selectedColor == 'red'}}
+      <div id="bg" style="position: absolute;">
+        <img id="car" src="http://192.168.1.8:80/img/mustang/bg.png">
+    </div>
+    <div id="red" style="position: absolute;" ng-show="selectedColor == 'red'" ng-repeat="car in car.red" >
+        <img id="car" src="{{car}}">
+    </div>
+    <div id="yellow" style="position: absolute;" ng-show="selectedColor == 'yellow'" ng-repeat="car in car.yellow" >
+        <img id="car" src="{{car}}">
+    </div>
+    <div id="gray" style="position: absolute;" ng-show="selectedColor == 'gray'" ng-repeat="car in car.gray" >
+        <img id="car" src="{{car}}">
+    </div>
+    <div id="white" style="position: absolute;" ng-show="selectedColor == 'white'" ng-repeat="car in car.white" >
+        <img id="car" src="{{car}}">
+    </div>
+    <div id="black" style="position: absolute;" ng-show="selectedColor == 'black'" ng-repeat="car in car.black" >
+        <img id="car" src="{{car}}">
+    </div>
 
-  <button ng-click="mudar(4)">Proximo</button>
-  <div id="default" style="position: absolute;">
-    <img id="car" src="../../../img/mustang/default.png">
-  </div>
-
-  
-
-
-  
-
-  
-</div>
-
+    <div id="blue" style="position: absolute;" ng-show="selectedColor == 'blue'" ng-repeat="car in car.blue" >
+        <img id="car" src="{{car}}">
+    </div>
 </div>
