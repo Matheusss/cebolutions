@@ -9,8 +9,8 @@
   function routeConfig($stateProvider, $urlRouterProvider, $httpProvider) {
 
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-    $urlRouterProvider.otherwise('/home');
 
+    $urlRouterProvider.otherwise('/home');
     $stateProvider
       .state('web', {
         url: '',
@@ -43,7 +43,7 @@
       })
 
       .state('web.user', {
-        url           : '/',
+        url           : '/user',
         restrict      : true,
         abstract      : true,
         views: {
@@ -58,7 +58,7 @@
       })
 
       .state('web.user.create', {
-        url           : 'create',
+        url           : '/create',
         restrict      : true,
         views: {
           "": {
@@ -73,7 +73,7 @@
       })
 
       .state('web.user.list', {
-        url           : 'list',
+        url           : '/list',
         restrict      : true,
 
         views: {
@@ -84,21 +84,22 @@
           "header@web": {
             templateUrl: 'app/views/web/header.html',
             controller:  'HeaderController'
+          },
+          resolve: {
+            users: [
+              'UserService', function(UserService) {
+                return UserService.findAll().then(function(result) {
+                  return result.data;
+                });
+              }
+            ]
           }
         }
-        // resolve: {
-        //   users: [
-        //     'UserService', function(UserService) {
-        //       return UserService.findAll().then(function(result) {
-        //         return result.data;
-        //       });
-        //     }
-        //   ]
-        // }
+
       })
 
       .state('web.car', {
-        url           : '/',
+        url           : '/car',
         restrict      : true,
         abstract      : true,
         views: {
@@ -114,7 +115,7 @@
 
 
       .state('web.car.details', {
-        url           : 'details',
+        url           : '/details',
         restrict      : true,
         views: {
           "": {

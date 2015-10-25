@@ -36,7 +36,7 @@ function browserSyncInit(baseDir, browser) {
    server.middleware = proxyMiddleware('/cebolutions', {target: 'http://localhost:9090'});
 
   browserSync.instance = browserSync.init({
-    startPath: '/src',
+    /*startPath: '/src',*/
     server: server,
     browser: browser
   });

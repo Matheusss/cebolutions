@@ -15,7 +15,7 @@
           // };
 
           $scope.newUser = function() {
-            return $state.go('user.create');
+            return $state.go('web.user.create');
           };
 
           return $scope.excluirUser = function(user) {
