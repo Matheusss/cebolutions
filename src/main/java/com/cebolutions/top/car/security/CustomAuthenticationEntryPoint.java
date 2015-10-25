@@ -1,4 +1,4 @@
-/*package com.cebolutions.top.car.security;
+package com.cebolutions.top.car.security;
 
 import java.io.IOException;
 
@@ -19,4 +19,3 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
 		response.sendError(HttpStatus.UNAUTHORIZED.value());
 	}
 }
-*/

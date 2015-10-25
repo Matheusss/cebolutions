@@ -10,37 +10,29 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="USER")
 public class User extends AbstractEntity {
 
-	@NotNull
 	@Column(name="SENHA")
 	private String senha; 
 	
-	@NotNull
 	@Column(name="EMAIL")
 	private String email;
 	
-	@NotNull
 	@Column(name="NOME")
 	private String nome;
 	
-	@NotNull
 	@Column(name="SOBRENOME")
 	private String sobrenome;
 	
-	@NotNull
 	@Column(name="CPF")
 	private String cpf;
 	
-	@NotNull
 	@Column(name="CNH")
 	private String cnh;
 	
-	/*@NotNull*/
 	@Column(name="DT_NASCIMENTO")
 	private Date dataNascimento;
 	
@@ -61,8 +53,8 @@ public class User extends AbstractEntity {
 	@Column(name="APROVADO")
 	private Boolean aprovado;
 	
-/*	@Column(name="USER")
-	private String user;*/ 
+	@Column(name = "USER")
+	private String user;
 
 	public String getSenha() {
 		return senha;
@@ -161,11 +153,11 @@ public class User extends AbstractEntity {
 	}
 
 
-/*	public String getUser() {
+	public String getUser() {
 		return user;
 	}
 
 	public void setUser(String user) {
 		this.user = user;
-	}*/
+	}
 }

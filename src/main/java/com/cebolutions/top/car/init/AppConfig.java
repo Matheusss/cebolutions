@@ -6,5 +6,5 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @PropertySource(value = "classpath:config/dev.properties", ignoreResourceNotFound = true)
-@Import({ AppDataSource.class, AppPersistenceConfig.class })
+@Import({ AppDataSource.class, AppPersistenceConfig.class, AppSecurityConfig.class })
 public class AppConfig {}

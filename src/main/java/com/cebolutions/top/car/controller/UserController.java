@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -55,7 +57,10 @@ public class UserController {
 		List<Endereco> enderecos = new ArrayList<Endereco>();
 		
 		user.setEmail(form.getEmail());
-		user.setSenha(form.getSenha());
+		
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		user.setSenha(passwordEncoder.encode(form.getSenha()));
+		
 		user.setNome(form.getNome());
 		user.setSobrenome(form.getSobrenome());
 		user.setCpf(form.getCpf());
@@ -63,10 +68,10 @@ public class UserController {
 		user.setDataNascimento(form.getDataNascimento());
 		user.setCep(form.getCep());
 		
-		for (Long id : form.getEnderecoId()) {
+/*		for (Long id : form.getEnderecoId()) {
 			enderecos.add(enderecoRepository.findOne(id));
 		}
-		user.setEndereco(enderecos);
+		user.setEndereco(enderecos);*/
 		
 
 		repository.save(user);

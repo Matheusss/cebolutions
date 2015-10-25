@@ -6,7 +6,7 @@ import com.cebolutions.top.car.entity.User;
 
 public interface UserRepository extends CrudRepository<User, Long> {
 
-/*	User findByEmail(String email);
+	User findByEmail(String email);
 
-	User findByUser(String name);*/
+	User findByUser(String name);
 }

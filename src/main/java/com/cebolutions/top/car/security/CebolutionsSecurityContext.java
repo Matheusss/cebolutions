@@ -1,4 +1,4 @@
-/*package com.cebolutions.top.car.security;
+package com.cebolutions.top.car.security;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -30,4 +30,3 @@ public class CebolutionsSecurityContext implements ApplicationContextAware {
 		context = applicationContext;
 	}
 }
-*/

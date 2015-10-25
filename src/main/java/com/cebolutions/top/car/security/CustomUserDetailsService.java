@@ -1,4 +1,4 @@
-/*package com.cebolutions.top.car.security;
+package com.cebolutions.top.car.security;
 
 import static java.util.Arrays.asList;
 
@@ -37,4 +37,3 @@ public class CustomUserDetailsService implements UserDetailsService {
 		return new org.springframework.security.core.userdetails.User(user.getUser(), user.getSenha(), asList(new SimpleGrantedAuthority("ROLE_USER")));
 	}
 }
-*/
