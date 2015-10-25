@@ -196,17 +196,17 @@ aside {
 }
 
 header {
-    position: relative!important;
-    width: 100%!important;
-    min-height: auto!important;
-    text-align: center!important;
-    color: #fff!important;
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    text-align: center;
+    color: #fff;
     background-image: url(http://localhost/cebolutions/header.jpg)!important;
-    background-position: center!important;
-    -webkit-background-size: cover!important;
-    -moz-background-size: cover!important;
-    background-size: cover!important;
-    -o-background-size: cover!important;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
 }
 
 header .header-content {
@@ -234,7 +234,15 @@ header .header-content .header-content-inner p {
     color: rgba(255,255,255,.7)!important;
 }
 
-@media(min-width:768px) {
+@media(min-width: 100%){
+    .container {
+        width: 100%!important;
+    }
+}
+
+
+/*@media(min-width:768px) {
+
     header {
         min-height: 100%!important;
     }
@@ -260,7 +268,7 @@ header .header-content .header-content-inner p {
         max-width: 80%!important;
         font-size: 18px!important;
     }
-}
+}*/
 
 .section-heading {
     margin-top: 0!important;
