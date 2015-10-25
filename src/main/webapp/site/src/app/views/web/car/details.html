@@ -2,28 +2,29 @@
     <div>
         <div style="width: 200px; height: 350px;">
         <p>Escolha a  cor</p>
-            <div ng-click="{{mudar('red')}}" style="height: 20px;width: 20px;background-color: red;border: 1px solid;margin: 5px;position:relative;float: left;">
+            <div ng-click="mudarCor('red')" style="height: 20px;width: 20px;background-color: red;border: 1px solid;margin: 5px;position:relative;float: left; cursor:pointer">
             </div> 
             <p>R$ 1000,00</p>
-        <div style="height: 20px;width: 20px;background-color: blue;border: 1px solid;margin: 5px;position: relative;float: left;">
+        <div ng-click="mudar('blue')"style="height: 20px;width: 20px;background-color: blue;border: 1px solid;margin: 5px;position: relative;float: left;cursor:pointer">
             
         </div>
         <p>R$ 1000,00</p>
-        <div style="height: 20px;width: 20px;background-color: black;border: 1px solid;margin: 5px;position: relative;float: left;">
+        <div ng-click="mudarCor('black')" style="height: 20px;width: 20px;background-color: black;border: 1px solid;margin: 5px;position: relative;float: left;cursor:pointer">
             
         </div>
         <p>R$ 1000,00</p>
-        <div style="height: 20px;width: 20px;background-color: yellow;border: 1px solid;margin: 5px;position: relative;float: left;">
+        <div ng-click="mudarCor('yellow')" style="height: 20px;width: 20px;background-color: yellow;border: 1px solid;margin: 5px;position: relative;float: left;cursor:pointer">
             
         </div>
         <p>R$ 1000,00</p>
-
-        <button ng-click="mudar('red')">Vermelho</button>
-        <button ng-click="{{mudar('blue')}}">Azul</button>
-        <button ng-click="mudar('black')">Preto</button>
-        <button ng-click="mudar('yellow')">Amarelo</button>
-        <button ng-click="mudar('white')">Branco</button>
-        <button ng-click="mudar('gray')">Cinza</button>
+        <div ng-click="mudarCor('gray')" style="height: 20px;width: 20px;background-color: gray;border: 1px solid;margin: 5px;position: relative;float: left;cursor:pointer">
+            
+        </div>
+        <p>R$ 1000,00</p>
+        <div ng-click="mudarCor('white')" style="height: 20px;width: 20px;background-color: white;border: 1px solid;margin: 5px;position: relative;float: left;cursor:pointer">
+            
+        </div>
+        <p>R$ 1000,00</p>
     </div>
 
       <button ng-click="mudar(4)">Proximo</button>
@@ -32,7 +33,7 @@
       </div> -->
       {{selectedColor}}
       {{selectedColor == 'red'}}
-      <div id="bg" style="position: absolute;">
+      <!--<div id="bg" style="position: absolute;">
         <img id="car" src="http://192.168.1.8:80/img/mustang/bg.png">
     </div>
     <div id="red" style="position: absolute;" ng-show="selectedColor == 'red'" ng-repeat="car in car.red" >
@@ -53,5 +54,31 @@
 
     <div id="blue" style="position: absolute;" ng-show="selectedColor == 'blue'" ng-repeat="car in car.blue" >
         <img id="car" src="{{car}}">
-    </div>
+    </div> -->
+
+    <!--<div style="height: 305px">
+        <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
+          <uib-slide ng-repeat="car in car.black" active="slide.active">
+            <img ng-src="{{car}}" style="margin:auto;">
+            <div class="carousel-caption">
+              <h4>Slide {{$index}}</h4>
+              <p>{{slide.text}}</p>
+            </div>
+          </uib-slide>
+        </uib-carousel>
+  </div>-->
+  <div style="height: 305px">
+    <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
+      <uib-slide ng-repeat="slide in slides" active="slide.active">
+        <img ng-src="{{slide.image}}" style="margin:auto;">
+        <div class="carousel-caption">
+          <h4>Slide {{$index}}</h4>
+          <p>{{slide.text}}</p>
+        </div>
+      </uib-slide>
+    </uib-carousel>
+  </div>
 </div>
+
+
+   
