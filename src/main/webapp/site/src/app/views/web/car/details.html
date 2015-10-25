@@ -51,12 +51,13 @@
 
 <div class="container menu">
     <div>
-<!--         <div style="width: 200px; height: 350px;">
+         <div style="width: auto; height: 350px;">
         <p>Escolha a  cor</p>
             <div ng-click="mudarCor('red')" style="height: 20px;width: 20px;background-color: red;border: 1px solid;margin: 5px;position:relative;float: left; cursor:pointer">
             </div> 
             <p>R$ 1000,00</p>
-        <div ng-click="mudar('blue')"style="height: 20px;width: 20px;background-color: blue;border: 1px solid;margin: 5px;position: relative;float: left;cursor:pointer">
+
+        <div ng-click="mudarCor('blue')"style="height: 20px;width: 20px;background-color: blue;border: 1px solid;margin: 5px;position: relative;float: left;cursor:pointer">
             
         </div>
         <p>R$ 1000,00</p>
@@ -77,7 +78,8 @@
         </div>
         <p>R$ 1000,00</p>
     </div> 
-
+    {{selectedColor}}
+<!--
       <button ng-click="mudar(4)">Proximo</button>
       <!-- <div id="default" style="position: absolute;">
         <img id="car" src="http://192.168.1.8:80/img/mustang/default.png">
@@ -107,18 +109,49 @@
         <img id="car" src="{{car}}">
     </div> -->
 
-    <!--<div style="height: 305px">
-        <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
-          <uib-slide ng-repeat="car in car.black" active="slide.active">
+    <div style="height: 305px">
+
+        <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'black'">
+        
+         <!-- <uib-slide ng-repeat="car in car.{{selectedColor}}" active="slide.active">
             <img ng-src="{{car}}" style="margin:auto;">
             <div class="carousel-caption">
               <h4>Slide {{$index}}</h4>
               <p>{{slide.text}}</p>
             </div>
+          </uib-slide> -->
+          <uib-slide ng-repeat="car in car.black"  active="slide.active">
+            <img ng-src="{{car}}" style="margin:auto;">
+          </uib-slide>
+
+        </uib-carousel>
+        <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'red'">
+          <uib-slide ng-repeat="car in car.red" ng-show="selectedColor == 'red'" active="slide.active">
+            <img ng-src="{{car}}" style="margin:auto;">
           </uib-slide>
         </uib-carousel>
-  </div>-->
-<div style="height: 305px">
+        <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'yellow'">
+          <uib-slide ng-repeat="car in car.yellow" ng-show="selectedColor == 'yellow'" active="slide.active">
+            <img ng-src="{{car}}" style="margin:auto;">
+          </uib-slide>
+        </uib-carousel>
+        <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'gray'">
+          <uib-slide ng-repeat="car in car.gray" ng-show="selectedColor == 'gray'" active="slide.active">
+            <img ng-src="{{car}}" style="margin:auto;">
+          </uib-slide>
+        </uib-carousel>
+        <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'blue'">
+          <uib-slide ng-repeat="car in car.blue" ng-show="selectedColor == 'blue'" active="slide.active">
+            <img ng-src="{{car}}" style="margin:auto;">
+          </uib-slide>
+        </uib-carousel>
+        <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'white'">
+          <uib-slide ng-repeat="car in car.white" ng-show="selectedColor == 'white'" active="slide.active">
+            <img ng-src="{{car}}" style="margin:auto;">
+          </uib-slide>
+        </uib-carousel>
+  </div>
+<!--<div style="height: 305px">
     <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
       <uib-slide ng-repeat="slide in slides" active="slide.active">
         <img ng-src="{{slide.image}}" style="margin:auto;">
@@ -143,7 +176,7 @@
       Interval, in milliseconds: <input type="number" class="form-control" ng-model="myInterval">
       <br />Enter a negative number or 0 to stop the interval.
     </div>
-  </div>
+  </div>-->
 </div>
 </div>
 
