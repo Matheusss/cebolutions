@@ -1,6 +1,57 @@
-<div class="container menu" ng-controller="CarController">
+<style type="text/css">
+  .carousel-fade {
+  .carousel-inner {
+    .item {
+      opacity: 0;
+      -webkit-transition-property: opacity;
+      transition-property: opacity;
+    }
+
+    .active {
+      opacity: 1;
+    }
+
+    .active.left,
+    .active.right {
+      left: 0;
+      opacity: 0;
+      z-index: 1;
+    }
+
+    .next.left,
+    .prev.right {
+      opacity: 1;
+    }
+  }
+
+  .carousel-control {
+    z-index: 2;
+  }
+}
+
+@media all and (transform-3d), (-webkit-transform-3d) {
+    .carousel-inner > .item.next,
+    .carousel-inner > .item.active.right {
+      -webkit-transform: translate3d( 0, 0, 0);
+      transform: translate3d( 0, 0, 0);
+    }
+    .carousel-inner > .item.prev,
+    .carousel-inner > .item.active.left {
+      -webkit-transform: translate3d( 0, 0, 0);
+      transform: translate3d( 0, 0, 0);
+    }
+    .carousel-inner > .item.next.left,
+    .carousel-inner > .item.prev.right,
+    .carousel-inner > .item.active {
+       -webkit-transform: translate3d(0, 0, 0);
+       transform: translate3d(0, 0, 0);
+    }
+}
+</style>
+
+<div class="container menu">
     <div>
-        <div style="width: 200px; height: 350px;">
+<!--         <div style="width: 200px; height: 350px;">
         <p>Escolha a  cor</p>
             <div ng-click="mudarCor('red')" style="height: 20px;width: 20px;background-color: red;border: 1px solid;margin: 5px;position:relative;float: left; cursor:pointer">
             </div> 
@@ -25,12 +76,12 @@
             
         </div>
         <p>R$ 1000,00</p>
-    </div>
+    </div> 
 
       <button ng-click="mudar(4)">Proximo</button>
       <!-- <div id="default" style="position: absolute;">
         <img id="car" src="http://192.168.1.8:80/img/mustang/default.png">
-      </div> -->
+      </div> 
       {{selectedColor}}
       {{selectedColor == 'red'}}
       <!--<div id="bg" style="position: absolute;">
@@ -67,7 +118,7 @@
           </uib-slide>
         </uib-carousel>
   </div>-->
-  <div style="height: 305px">
+<div style="height: 305px">
     <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
       <uib-slide ng-repeat="slide in slides" active="slide.active">
         <img ng-src="{{slide.image}}" style="margin:auto;">
@@ -78,6 +129,22 @@
       </uib-slide>
     </uib-carousel>
   </div>
+  <div class="row">
+    <div class="col-md-6">
+      <button type="button" class="btn btn-info" ng-click="addSlide()">Add Slide</button>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="noWrapSlides">
+          Disable Slide Looping
+        </label>
+      </div>
+    </div>
+    <div class="col-md-6">
+      Interval, in milliseconds: <input type="number" class="form-control" ng-model="myInterval">
+      <br />Enter a negative number or 0 to stop the interval.
+    </div>
+  </div>
+</div>
 </div>
 
 
