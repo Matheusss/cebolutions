@@ -27,6 +27,40 @@
         }
       })
 
+      .state('admin', {
+        url: '/admin',
+        abstract: true,
+        views: {
+          "": {
+            templateUrl: 'app/views/web/web-admin.html',
+            controller: 'WebAdminController'
+          },
+          "header-admin@web": {
+            templateUrl: 'app/views/web/header-admin.html',
+            controller: 'HeaderAdminController'
+          }
+        }
+      })
+
+      .state('admin.home', {
+        url: '/home',
+        controllerAs: 'main',
+        views: {
+          "": {
+            templateUrl: 'app/views/web/main-admin.html',
+            controller: 'MainController'
+          },
+          "header-admin@web": {
+            templateUrl: 'app/views/web/header-admin.html',
+            controller:  'HeaderAdminController'
+          },
+          "navbar-admin@web": {
+            templateUrl: 'app/views/web/navbar-admin.html',
+            controller:  'HeaderAdminController'
+          }
+        }
+      })
+
       .state('web.home', {
         url: '/home',
         controllerAs: 'main',
