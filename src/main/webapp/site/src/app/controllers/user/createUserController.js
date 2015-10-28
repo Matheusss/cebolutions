@@ -10,10 +10,6 @@ angular.module('cebolutions.controllers')
     $scope.btnDisabled = false;
     $scope.tipoForm = 'NOVO USUÁRIO';
 
-    $scope.closeModal = function(){
-      $modalInstance.close();
-    }
-
     return $scope.save = function(user) {
 
       $scope.btnDisabled = true;

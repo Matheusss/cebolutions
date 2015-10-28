@@ -1,9 +1,9 @@
 
   <div class="modal-header">
-    <button type="button" class="close" ng-click="ctrl.closeModal()">×</button>
+    <button type="button" class="close" ng-click="closeModal()">×</button>
     <h3>LOGIN</h3>
   </div>
-  <modal title="Login form" visible="showModal">
+  <div class="modal-body" title="Login form" visible="showModal">
     <form role="form">
       <div class="form-group">
         <label for="email">Email address</label>
@@ -13,6 +13,10 @@
         <label for="password">Password</label>
         <input type="password" class="form-control" id="password" placeholder="Password" />
       </div>
-      <button type="submit" class="btn btn-default">Submit</button>
     </form>
-  </modal>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-default">Submit</button>
+    <button class="btn btn-default" type="button" ng-click="closeModal()">Cancel</button>
+  </div>
+ 
