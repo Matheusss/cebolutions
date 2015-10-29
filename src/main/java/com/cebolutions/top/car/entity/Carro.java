@@ -39,8 +39,7 @@ public class Carro extends AbstractEntity {
 	private String descricao;
 	
 	@ElementCollection
-	@CollectionTable(name="IMAGENS", joinColumns = @JoinColumn(name="CARRO_IMAGENS"))
-	@Column(name="IMAGEM")
+	@CollectionTable(name="IMAGENS")
 	private List<String> imagens = new ArrayList<String>();
 	
 /*	@ElementCollection
