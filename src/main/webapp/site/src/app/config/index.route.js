@@ -170,13 +170,8 @@
         views: {
           "": {
             templateUrl   : 'app/views/web/car/list.html',
-            controller    : 'CarController'
-          },
-          "header@web": {
-            templateUrl: 'app/views/web/header.html',
-            controller:  'HeaderController'
-          },
-          resolve: {
+            controller    : 'CarController',
+            resolve: {
             cars: [
               'CarService', function(CarService) {
                 return CarService.findAll().then(function(result) {
@@ -185,7 +180,13 @@
               }
             ]
           }
+          },
+          "header@web": {
+            templateUrl: 'app/views/web/header.html',
+            controller:  'HeaderController'
+          }         
         }
+
 
       });
 

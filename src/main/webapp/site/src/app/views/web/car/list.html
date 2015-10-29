@@ -1,0 +1,35 @@
+  <style type="text/css">
+  #page-top {
+    margin-top: 100px!important;
+  }
+  </style>
+  <div id="page-top">
+    <div class="container">
+      <div class="row" >
+        <div class="col-lg-12">
+          <h1 class="page-header">Audi
+            <small></small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a ui-sref="web.home">Home</a>
+            </li>
+            <li class="active">Audi</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div ng-repeat="c in carros">
+      <div class="row">
+            <div class="col-md-6 img-marcas">
+                <a ui-sref="web.car.details">
+                    <img ng-src="{{c.marca.logo}}" height="100%" width="100%"/>
+                </a>
+                <h3>
+                    <a ui-sref="web.car.details">{{c.modelo}}</a>
+                </h3>
+                <p></p>
+            </div>
+        </div>
+    </div>
+    
+  </div>

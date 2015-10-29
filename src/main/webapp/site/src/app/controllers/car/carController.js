@@ -3,9 +3,11 @@
 
     angular.module('cebolutions.controllers')
     .controller('CarController', [
-        '$scope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'Feedback', function($scope, $location, $timeout, $http, urlConfig, $state, Feedback) {
+        '$scope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'Feedback', 'cars', function($scope, $location, $timeout, $http, urlConfig, $state, Feedback, cars) {
 
         
+        $scope.carros = cars;
+
         $scope.myInterval = 0;
         $scope.noWrapSlides = false;
        /* var slides = $scope.slides = [];
