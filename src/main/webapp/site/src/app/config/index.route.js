@@ -161,6 +161,32 @@
           }
         }
 
+      })
+
+      .state('web.car.list', {
+        url           : '/list',
+        restrict      : true,
+
+        views: {
+          "": {
+            templateUrl   : 'app/views/web/car/list.html',
+            controller    : 'CarController'
+          },
+          "header@web": {
+            templateUrl: 'app/views/web/header.html',
+            controller:  'HeaderController'
+          },
+          resolve: {
+            cars: [
+              'CarService', function(CarService) {
+                return CarService.findAll().then(function(result) {
+                  return result.data;
+                });
+              }
+            ]
+          }
+        }
+
       });
 
 
