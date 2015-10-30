@@ -3,35 +3,33 @@
 
     angular
       .module('cebolutions.services')
-      .service('CarService', [
+      .service('MarcaService', [
       '$rootScope', '$http', 'urlConfig', function($rootScope, $http, urlConfig) {
 
       return {
         findAll: function() {
           return $http({
-            url: urlConfig.baseUrl + "/carro",
+            url: urlConfig.baseUrl + "/marca",
             method: "GET"
           });
         },
         recuperar: function(id) {
           return $http({
-            url: urlConfig.baseUrl + "/carro/" + id,
+            url: urlConfig.baseUrl + "/marca/" + id,
             method: "GET"
           });
         },
-
-        findByMarca: function(marcaId) {
+        findByPrincipal: function() {
           return $http({
-            url: urlConfig.baseUrl + "/carro/carros/" + marcaId,
+            url: urlConfig.baseUrl + "/carro/",
             method: "GET"
           });
         },
-
-        editar: function(id, carro) {
+        editar: function(id, marca) {
           return $http({
-            url: urlConfig.baseUrl + "/carro/" + id,
+            url: urlConfig.baseUrl + "/marca/" + id,
             method: "PUT",
-            data: carro,
+            data: marca,
             headers: {
               "Content-Type": "application/json"
             }
@@ -40,15 +38,15 @@
   
         excluir: function(id) {
           return $http({
-            url: urlConfig.baseUrl + "/carro/" + id,
+            url: urlConfig.baseUrl + "/marca/" + id,
             method: "DELETE"
           });
         },
-        create: function(carro) {
+        create: function(marca) {
           return $http({
-            url: urlConfig.baseUrl + "/carro",
+            url: urlConfig.baseUrl + "/marca",
             method: "POST",
-            data: carro,
+            data: marca,
             headers: {
               "Content-Type": "application/json"
             }

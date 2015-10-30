@@ -63,11 +63,19 @@
 
       .state('web.home', {
         url: '/home',
-        controllerAs: 'main',
         views: {
           "": {
             templateUrl: 'app/views/web/main.html',
-            controller: 'MainController'
+            controller: 'MainController',
+            resolve: {
+              marcasPrincipais: [
+                'MarcaService', function(MarcaService) {
+                  return MarcaService.findByPrincipal().then(function(result) {
+                    return result.data;
+                  });
+                }
+              ]
+          }
           },
           "header@web": {
             templateUrl: 'app/views/web/header.html',

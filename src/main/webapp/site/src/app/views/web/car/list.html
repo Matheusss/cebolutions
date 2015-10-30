@@ -1,6 +1,6 @@
   <style type="text/css">
   #page-top {
-    margin-top: 100px!important;
+    margin-top: 15px!important;
   }
   </style>
   <div id="page-top">
@@ -19,17 +19,17 @@
       </div>
     </div>
     <div ng-repeat="c in carros">
-      <div class="row">
+      
             <div class="col-md-6 img-marcas">
                 <a ui-sref="web.car.details">
-                    <img ng-src="{{c.marca.logo}}" height="100%" width="100%"/>
+                    <img ng-src="{{c.imagens[0]}}" height="100%" width="100%"/>
                 </a>
                 <h3>
                     <a ui-sref="web.car.details">{{c.modelo}}</a>
                 </h3>
                 <p></p>
             </div>
-        </div>
+        
     </div>
     
   </div>

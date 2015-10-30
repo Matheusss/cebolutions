@@ -22,7 +22,7 @@
         </div>
       </div>
     </section>
-<section class="bg-2 " id="services">
+    <section class="bg-2 " id="services">
           <div class="container-fluid">
               <div class="row no-gutter">
                   <div class="container">
@@ -37,70 +37,27 @@
           </div>
       </div>
   </section>
+
     <section class="no-padding-bottom" id="marcas">
       <div class="container-fluid">
         <div class="row no-gutter">
-          <div class="col-lg-4 col-sm-6">
-            <a href="marcas.html" class="marcas-box">
-              <img src="../app/img/marcas/audi.jpg" class="img-responsive" alt="Audi">
+        <div ng-repeat="m in marcas">
+            <div class="col-lg-4 col-sm-6 personalizado">
+            <a ui-sref="web.car.list" class="marcas-box" ng-click="getMarcaId(m)">
+              <img ng-src="{{m.logo}}" class="img-responsive" alt="{{m.nome}}">
               <div class="marcas-box-caption">
                 <div class="marcas-box-caption-content">
                   <h4 class="project-name">
-                    Audi
+                    {{m.nome}}
                   </h4>
                 </div>
               </div>
             </a>
           </div>
-          <div class="col-lg-4 col-sm-6">
-            <a ui-sref="web.car.list" class="marcas-box">
-              <img src="../app/img/marcas/ferrari.jpg" class="img-responsive" alt="Ferrari">
-              <div class="marcas-box-caption">
-                <div class="marcas-box-caption-content">
-                  <div class="project-name">
-                    Ferrari
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <a href="#" class="marcas-box">
-              <img src="../app/img/marcas/porsche.jpg" class="img-responsive" alt="Porsche">
-              <div class="marcas-box-caption">
-                <div class="marcas-box-caption-content">
-                  <div class="project-name">
-                    Porsche
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <a href="#" class="marcas-box">
-              <img src="../app/img/marcas/lamborghini.jpg" class="img-responsive" alt="Lamborghini">
-              <div class="marcas-box-caption">
-                <div class="marcas-box-caption-content">
-                  <div class="project-name">
-                    Lamborghini
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <a href="#" class="marcas-box">
-              <img src="../app/img/marcas/bmw.jpg" class="img-responsive" alt="BMW">
-              <div class="marcas-box-caption">
-                <div class="marcas-box-caption-content">
-                  <div class="project-name">
-                    BMW
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="col-lg-4 col-sm-6">
+        </div>
+          
+          
+         <div class="col-lg-4 col-sm-6">
             <a href="#" class="marcas-box">
               <img src="../app/img/marcas/mercedes.jpg" class="img-responsive" alt="Outros">
               <div class="marcas-box-caption">
@@ -111,7 +68,7 @@
                 </div>
               </div>
             </a>
-          </div>
+          </div> 
         </div>
       </div>
     </section>

@@ -1,39 +1,22 @@
 (function() {
   'use strict';
 
-  angular
-    .module('cebolutions')
-    .controller('MainController', MainController);
+    angular.module('cebolutions.controllers')
+    .controller('MainController', [
+        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'Feedback', 'marcasPrincipais', 'MarcaService', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, Feedback, marcasPrincipais, MarcaService) {
+          
+          $scope.marcas = marcasPrincipais;
 
-  /** @ngInject */
-  function MainController($timeout, webDevTec, toastr) {
-    // var vm = this;
+          return $scope.getMarcaId = function(marca){
+           MarcaService.recuperar(marca.id).then(function(result){
+            console.log(result.data)
+            var results = result.data;
+             $rootScope.$broadcast('marca:id', results);
+             return $state.go('web.car.list');
+           });
 
-    // vm.awesomeThings = [];
-    // vm.classAnimation = '';
-    // vm.creationDate = 1443379491378;
-    // vm.showToastr = showToastr;
+          }
 
-    // activate();
-
-    // function activate() {
-    //   getWebDevTec();
-    //   $timeout(function() {
-    //     vm.classAnimation = 'rubberBand';
-    //   }, 4000);
-    // }
-
-    // function showToastr() {
-    //   toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
-    //   vm.classAnimation = '';
-    // }
-
-    // function getWebDevTec() {
-    //   vm.awesomeThings = webDevTec.getTec();
-
-    //   angular.forEach(vm.awesomeThings, function(awesomeThing) {
-    //     awesomeThing.rank = Math.random();
-    //   });
-    // }
-  }
+/*          $rootScope.$broadcast('marca:id', );
+*/    }]);
 })();
