@@ -162,7 +162,15 @@
         views: {
           "": {
               templateUrl   : 'app/views/web/car/details.html',
-              controller    : 'CarController'          },
+              controller    : 'CarController',
+              resolve: {
+                cars: [
+                  'CarService', function(CarService) {
+                    return null 
+                  }
+                ]
+              }
+            },
           "header@web": {
             templateUrl: 'app/views/web/header.html',
             controller: 'HeaderController'
