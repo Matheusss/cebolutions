@@ -13,6 +13,9 @@ public class Marca extends AbstractEntity {
 	
 	@Column(name="LOGO")
 	private String logo;
+	
+	@Column(name="MARCAS_PRINCIPAIS")
+	private Boolean principal;
 
 	public String getNome() {
 		return nome;
@@ -28,6 +31,14 @@ public class Marca extends AbstractEntity {
 
 	public void setLogo(String logo) {
 		this.logo = logo;
+	}
+
+	public Boolean getPrincipal() {
+		return principal;
+	}
+
+	public void setPrincipal(Boolean principal) {
+		this.principal = principal;
 	}
 	
 
