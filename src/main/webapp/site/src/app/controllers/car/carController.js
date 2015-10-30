@@ -2,28 +2,13 @@
   'use strict';
 
     angular.module('cebolutions.controllers')
-    .controller('CarController', [
-        '$scope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'Feedback', 'cars', function($scope, $location, $timeout, $http, urlConfig, $state, Feedback, cars) {
+    .controller('CarController', ['$scope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'Feedback', 'cars', function($scope, $location, $timeout, $http, urlConfig, $state, Feedback, cars) {
 
         
         $scope.carros = cars;
 
         $scope.myInterval = 0;
         $scope.noWrapSlides = false;
-       /* var slides = $scope.slides = [];
-        
-  $scope.addSlide = function() {
-    var newWidth = 600 + slides.length + 1;
-    slides.push({
-      image: '//placekitten.com/' + newWidth + '/300',
-      text: ['More','Extra','Lots of','Surplus'][slides.length % 4] + ' ' +
-        ['Cats', 'Kittys', 'Felines', 'Cutes'][slides.length % 4]
-    });
-  };
-  for (var i=0; i<4; i++) {
-    $scope.addSlide();
-  }
-        */
         $scope.car = {
             red: ["http://localhost/img/mustang/red/redBack.png","http://localhost/img/mustang/red/redSide.png","http://localhost/img/mustang/red/redFront.png" ],
             yellow: ["http://localhost/img/mustang/yellow/yellowBack.png","http://localhost/img/mustang/yellow/yellowSide.png","http://localhost/img/mustang/yellow/yellowFront.png" ],
