@@ -25,12 +25,12 @@
   }
         */
         $scope.car = {
-            red: ["http://192.168.1.10:80/img/mustang/red/redBack.png","http://192.168.1.10:80/img/mustang/red/redSide.png","http://192.168.1.10:80/img/mustang/red/redFront.png" ],
-            yellow: ["http://192.168.1.10:80/img/mustang/yellow/yellowBack.png","http://192.168.1.10:80/img/mustang/yellow/yellowSide.png","http://192.168.1.10:80/img/mustang/yellow/yellowFront.png" ],
-            gray: ["http://192.168.1.10:80/img/mustang/gray/grayBack.png","http://192.168.1.10:80/img/mustang/gray/graySide.png","http://192.168.1.10:80/img/mustang/gray/grayFront.png" ],
-            white: ["http://192.168.1.10:80/img/mustang/white/whiteBack.png","http://192.168.1.10:80/img/mustang/white/whiteSide.png","http://192.168.1.10:80/img/mustang/white/whiteFront.png" ],
-            black: ["http://192.168.1.10:80/img/mustang/black/blackBack.png","http://192.168.1.10:80/img/mustang/black/blackSide.png","http://192.168.1.10:80/img/mustang/black/blackFront.png" ],
-            blue: ["http://192.168.1.10:80/img/mustang/blue/blueBack.png","http://192.168.1.10:80/img/mustang/blue/blueSide.png","http://192.168.1.10:80/img/mustang/blue/blueFront.png" ]
+            red: ["http://localhost/img/mustang/red/redBack.png","http://localhost/img/mustang/red/redSide.png","http://localhost/img/mustang/red/redFront.png" ],
+            yellow: ["http://localhost/img/mustang/yellow/yellowBack.png","http://localhost/img/mustang/yellow/yellowSide.png","http://localhost/img/mustang/yellow/yellowFront.png" ],
+            gray: ["http://localhost/img/mustang/gray/grayBack.png","http://localhost/img/mustang/gray/graySide.png","http://localhost/img/mustang/gray/grayFront.png" ],
+            white: ["http://localhost/img/mustang/white/whiteBack.png","http://localhost/img/mustang/white/whiteSide.png","http://localhost/img/mustang/white/whiteFront.png" ],
+            black: ["http://localhost/img/mustang/black/blackBack.png","http://localhost/img/mustang/black/blackSide.png","http://localhost/img/mustang/black/blackFront.png" ],
+            blue: ["http://localhost/img/mustang/blue/blueBack.png","http://localhost/img/mustang/blue/blueSide.png","http://localhost/img/mustang/blue/blueFront.png" ]
         };
 
         $scope.selectedColor = 'black';
