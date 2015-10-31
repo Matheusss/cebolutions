@@ -49,7 +49,7 @@ public class CarroController {
 	}
 	
 	@Transactional
-	@RequestMapping(value="/carros/{marcaId}", method=GET)
+	@RequestMapping(value="/marcas/{marcaId}", method=GET)
 	public List<CarroDTO> findByMarca(@PathVariable("marcaId") Long marcaId){
 		
 		Marca marca = marcaRepository.findOne(marcaId);
@@ -61,7 +61,7 @@ public class CarroController {
 				.collect(Collectors.toList());
 	}
 	
-	@RequestMapping(value="/", method=GET)
+	@RequestMapping(value="/marcasPrincipais", method=GET)
 	@Transactional(readOnly=true)
 	public List<MarcaDTO>findByPrincipal(){
 		
