@@ -180,6 +180,33 @@
       })
 
       .state('web.car.list', {
+        url           : '/:marcaId/list',
+        restrict      : true,
+        params  : {'marcaId': null},
+
+        views: {
+          "": {
+            templateUrl   : 'app/views/web/car/list.html',
+            controller    : 'CarController',
+            resolve: {
+            cars: [
+              'CarService', function(CarService) {
+                return CarService.findAll().then(function(result) {
+                  return result.data;
+                });
+              }
+            ]
+          }
+          },
+          "header@web": {
+            templateUrl: 'app/views/web/header.html',
+            controller:  'HeaderController'
+          }         
+        }
+
+
+      })
+      .state('web.car.listAll', {
         url           : '/list',
         restrict      : true,
 

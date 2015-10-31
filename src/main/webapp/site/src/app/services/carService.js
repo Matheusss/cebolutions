@@ -22,7 +22,7 @@
 
         findByMarca: function(marcaId) {
           return $http({
-            url: urlConfig.baseUrl + "/carro/carros/" + marcaId,
+            url: urlConfig.baseUrl + "/carro/marcas/" + marcaId,
             method: "GET"
           });
         },

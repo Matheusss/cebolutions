@@ -3,17 +3,14 @@
 
     angular.module('cebolutions.controllers')
     .controller('MainController', [
-        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'Feedback', 'marcasPrincipais', 'MarcaService', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, Feedback, marcasPrincipais, MarcaService) {
+        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'Feedback', 'marcasPrincipais', 'MarcaService', 'SharingDataService', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, Feedback, marcasPrincipais, MarcaService, SharingDataService) {
           
           $scope.marcas = marcasPrincipais;
 
           return $scope.getMarcaId = function(marca){
-           MarcaService.recuperar(marca.id).then(function(result){
-            console.log(result.data)
-            var results = result.data;
-             $rootScope.$broadcast('marca:id', results);
-             return $state.go('web.car.list');
-           });
+            //var results = SharingDataService.setMarcaId(marca.id);
+            console.log(marca.id);
+             return $state.go('web.car.list', {marcaId: marca.id});
 
           }
 

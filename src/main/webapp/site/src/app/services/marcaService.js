@@ -21,7 +21,7 @@
         },
         findByPrincipal: function() {
           return $http({
-            url: urlConfig.baseUrl + "/carro/",
+            url: urlConfig.baseUrl + "/carro/marcasPrincipais",
             method: "GET"
           });
         },

@@ -3,15 +3,19 @@
 
     angular.module('cebolutions.controllers')
     .controller('CarController', [
-        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'Feedback', 'cars', 'CarService', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, Feedback, cars, CarService) {
+        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'Feedback', 'cars', 'CarService', 'SharingDataService', '$stateParams', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, Feedback, cars, CarService, SharingDataService, $stateParams) {
 
-        $scope.carros = '';
+        $scope.cars = cars;
+
+        CarService.findByMarca($stateParams.marcaId).then(function(result){
+          $scope.cars = result.data;
+        })
       
-        return $scope.$on('marca:id', function(results) {
+  /*      return $scope.$on('marca:id', function(results) {
           CarService.findByMarca(results.id).then(function(result){
             $scope.carros = result.data;
           });
-        });
+        });*/
 
         $scope.myInterval = 0;
         $scope.noWrapSlides = false;
