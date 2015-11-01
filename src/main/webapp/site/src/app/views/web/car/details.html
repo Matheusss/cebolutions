@@ -1,37 +1,33 @@
 <style type="text/css">
-  .carousel-fade {
-  .carousel-inner {
-    .item {
-      opacity: 0;
-      -webkit-transition-property: opacity;
-      transition-property: opacity;
-      transition: 1s;
-    }
 
-    .active {
-      opacity: 1;
-    }
-
-    .active.left,
+/*.active.left,
     .active.right {
       left: 0;
-      opacity: 0;
+      opacity: 0 !important;
       z-index: 1;
     }
 
     .next.left,
     .prev.right {
-      opacity: 1;
+      opacity: 1 !important;
     }
   }
+.item {
+      opacity: 0 !important;
+      -moz-transition: 2s ease-in-out opacity;
+  -webkit-transition: 2s ease-in-out opacity;
+  -o-transition: 2s ease-in-out opacity;
+  transition: 2s ease-in-out opacity;
+    }
+    .active {
+      opacity: 1 !important;
+    }
 
-  .carousel-control {
-    z-index: 2;
-  }
-  .bgCarousel {
-
-    background: url(http://192.168.1.10:80/img/bg.png);
-  }
+.image{
+    -moz-transition: .6s ease-in-out opacity;
+  -webkit-transition: .6s ease-in-out opacity;
+  -o-transition: .6s ease-in-out opacity;
+  transition: .6s ease-in-out opacity;
 }
 
 @media all and (transform-3d), (-webkit-transform-3d) {
@@ -51,15 +47,67 @@
        -webkit-transform: translate3d(0, 0, 0);
        transform: translate3d(0, 0, 0);
     }
+}*/
+
+#red:hover + .tip {
+    display: block !important;
+}
+#gray:hover + .tip {
+    display: block !important;
+}
+#blue:hover + .tip {
+    display: block !important;
+}
+#black:hover + .tip {
+    display: block !important;
+}
+#white:hover + .tip {
+    display: block !important;
+}
+#yellow:hover + .tip {
+    display: block !important;
+}
+.tip{
+    height: 70px;
+    width: 120px;
+    padding: 5px 0 0 10px;
+    position: absolute;
+
+    top: 30px;
+    background-color: #EEEEEE;
+    z-index: 100
+}
+.carousel .item {
+    opacity: 1 !important;
+      -webkit-transition: opacity .0.9s; /*adjust timing here */
+         -moz-transition: opacity .0.9s;
+           -o-transition: opacity .0.9s;
+              transition: opacity .0.9s;
+}
+.carousel-control {
+    background-image: none !important; /* remove background gradients on controls */
+}
+/* Fade controls with items */
+.next.left,
+.prev.right {
+    opacity: 1;
+    z-index: 1;
+}
+.active.left,
+.active.right {
+    opacity: 0;
+    z-index: 1;
 }
 </style>
 
 <div class="container menu">
+
+
     <div class="row" style="margin-top: 150px">
-        <div class="col-md-9" style="background-image: url(http://192.168.1.10:80/img/bg.png); background-size: cover">
+        <div class="col-md-8" style="background-image: url(http://localhost/img/bg.png); background-size: cover">
             <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'black'">
                 <uib-slide ng-repeat="car in car.black"  active="slide.active">
-                    <img ng-src="{{car}}" style="margin:auto;">
+                    <img class="image" ng-src="{{car}}" style="margin:auto;">
                 </uib-slide>
             </uib-carousel>
             <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'red'">
@@ -88,120 +136,181 @@
                 </uib-slide>
             </uib-carousel>
         </div>
-        <div class="col-md-3">
-            <div class="panel panel-default" style="width: 300px; height: 96%; position:relative; float: left; padding: 30px">
-                <div class="panel-heading">Escolha a  cor</div>
-                    <div class="panel-body">
-                        <div ng-click="mudarCor('red')" style="height: 20px;width: 20px;background-color: red;border: 1px solid;margin: 5px;position:relative;float: left; cursor:pointer">
-                        </div> 
-                        <p>R$ 1000,00</p>
+        <div class="col-md-4">
+                <h3>Coupé</h3>
+                <p>Arte perfomática. o R8 tênues os limites entre a arte e performance com um estilo exotico e desempenho de manipulaão para corresponder. Com a escolha de 3 motores potentes, é excelente em 'borrar' os arredores também.</p>
+                <ul>
+                    <li>430 top horsepower</li>
+                    <li>0-60 mph em 4.0s</li>
+                    <li>top speed de 168 mph</li>
+                    <li>Price: $117,150</li>
+                </ul>
+        </div>
+    </div>
 
-                        <div ng-click="mudarCor('blue')"style="height: 20px;width: 20px;background-color: blue;border: 1px solid;margin: 5px;position: relative;float: left;cursor:pointer">
-                            
+
+    <div class="row" style="margin-bottom: 30px; padding-bottom: 30px; background-color: ">
+        <div class="col-md-12">
+            <h4>Escolha a  cor</h4>
+                <div class="col-md-12">
+                    <div id="red" ng-click="mudarCor('red')" style="height: 40px; border-radius: 50%; width: 40px;background-color: #bc2b3c;border: 1px  solid #ccc;margin: 5px;position:relative;float: left; cursor:pointer"></div>
+                    <div class="tip" style="display: none;">
+                        <div>
+                            <h5>Vermelho</h5>
+                            <p><span> R$1.000,00</span></p>
                         </div>
-                        <p>R$ 1000,00</p>
-                        <div ng-click="mudarCor('black')" style="height: 20px;width: 20px;background-color: black;border: 1px solid;margin: 5px;position: relative;float: left;cursor:pointer">
-                            
-                        </div>
-                        <p>R$ 1000,00</p>
-                        <div ng-click="mudarCor('yellow')" style="height: 20px;width: 20px;background-color: yellow;border: 1px solid;margin: 5px;position: relative;float: left;cursor:pointer">
-                            
-                        </div>
-                        <p>R$ 1000,00</p>
-                        <div ng-click="mudarCor('gray')" style="height: 20px;width: 20px;background-color: gray;border: 1px solid;margin: 5px;position: relative;float: left;cursor:pointer">
-                            
-                        </div>
-                        <p>R$ 1000,00</p>
-                        <div ng-click="mudarCor('white')" style="height: 20px;width: 20px;background-color: white;border: 1px solid;margin: 5px;position: relative;float: left;cursor:pointer">
-                            
-                        </div>
-                        <p>R$ 1000,00</p>
                     </div>
-                </div> 
-            </div>
+
+                    <div id="blue" ng-click="mudarCor('blue')"style="height: 40px; border-radius: 50%; width: 40px;background-color: #24316c;border: 1px solid #ccc;margin: 5px;position: relative;float: left;cursor:pointer"></div>
+                    <div class="tip" style="display: none;">
+                        <div>
+                            <h5>Azul</h5>
+                            <p><span> R$1.000,00</span></p>
+                        </div>
+                    </div>
+
+                    <div id="black" ng-click="mudarCor('black')" style="height: 40px; border-radius: 50%; width: 40px;background-color: black;border: 1px solid #ccc;margin: 5px;position: relative;float: left;cursor:pointer"></div>
+                    <div class="tip" style="display: none;">
+                        <div>
+                            <h5>Preto</h5>
+                            <p><span> R$0,00</span></p>
+                        </div>
+                    </div>
+
+                    <div id="yellow" ng-click="mudarCor('yellow')" style="height: 40px; border-radius: 50%; width: 40px;background-color: #c6a624;border: 1px solid #ccc;margin: 5px;position: relative;float: left;cursor:pointer"></div>
+                    <div class="tip" style="display: none;">
+                        <div>
+                            <h5>Amarelo</h5>
+                            <p><span> R$1.500,00</span></p>
+                        </div>
+                    </div>
+                    <div id="gray" ng-click="mudarCor('gray')" style="height: 30px;width: 40px;background-color: #767676;border: 1px solid #ccc;margin: 5px;position: relative;float: left;cursor:pointer"></div>
+                    <div class="tip" style="display: none;">
+                        <div>
+                            <h5>Cinza</h5>
+                            <p><span> R$1.000,00</span></p>
+                        </div>
+                    </div>
+                    <div id="white" ng-click="mudarCor('white')" style="height: 40px; width: 40px;background-color: white;border: 1px solid #ccc;margin: 5px;position: relative;float: left;cursor:pointer"></div>
+                    <div class="tip" style="display: none;">
+                        <div>
+                            <h5>Branco</h5>
+                            <p><span> R$0,00</span></p>
+                        </div>
+                    </div>
+
+                </div>
+                    
         </div>
     </div>
     
-    <div class="container">
-  <h2>Example tab 2 (using standard nav-tabs)</h2></div>
 
-<div id="exTab2" class="container">
-  <ul class="nav nav-tabs">
-    <li class="active">
-      <a href="1" data-toggle="tab">Overview</a>
-    </li>
-    <li><a ng-href="#2" data-toggle="tab">Without clearfix</a>
-    </li>
-    <li><a href="#3" data-toggle="tab">Solution</a>
-    </li>
-  </ul>
-
-  <div class="tab-content ">
-    <div class="tab-pane active" id="1">
-      <h3>Standard tab panel created on bootstrap using nav-tabs</h3>
-    </div>
-    <div class="tab-pane" id="2">
-      <h3>Notice the gap between the content and tab after applying a background color</h3>
-    </div>
-    <div class="tab-pane" id="3">
-      <h3>add clearfix to tab-content (see the css)</h3>
-    </div>
-  </div>
-</div>
-
-
-    <div class="" style="width: 100%; height: 96%; position:relative; float: left; padding: 30px;">
-        <ul class="nav nav-tabs">
-          <li class="active"><a href="details/rodas" data-toggle="tab">Rodas</a></li>
-          <li ><a href="#film" data-toggle="tab">Insul-film</a></li>
-          <li role="presentation"><a href="#outros">Outros</a></li>
-        </ul>
-        <div class="tab-content">
-            <div class="tab-pane active" id="rodas">
-                <h4>Pane A</h4>
-                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-                    ac turpis egestas.</p>
-            </div>
-            <div class="tab-pane" id="film">
-                <h4>Pane B</h4>
-                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-                    ac turpis egestas.</p>
-            </div>
-            <div class="tab-pane" id="outros">
-                <h4>Pane C</h4>
-                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-                    ac turpis egestas.</p>
-            </div>
-            <div class="tab-pane" id="tab_d">
-                <h4>Pane D</h4>
-                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-                    ac turpis egestas.</p>
-            </div>
-        </div>
-    </div>  
-        <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="http://192.168.1.10:80/img/parts.png" alt="...">
-                <div class="caption">
-                    <h3>Roda A</h3>
-                    <p>.descricao </p>
-                    <p><a href="#" class="btn btn-primary" role="button">Adicionar ao carro</a></p>
+    <uib-tabset>
+        <uib-tab>
+            <tab-heading>
+                <span>Rodas</span>
+            </tab-heading>
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="http://localhost/img/mustang/rodas/4Go 228 R19_big.png" alt="...">
+                        <div class="caption">
+                            <h3>4Go 228 R19</h3>
+                            <p> R$ 5.000,00</p>
+                            <p><a href="#" class="btn btn-primary" role="button">Adicionar ao carro</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="http://localhost/img/mustang/rodas/MSW 24 R19_big.png" alt="...">
+                        <div class="caption">
+                            <h3>MSW 24 R19</h3>
+                            <p> R$ 8.000,00 </p>
+                            <p><a href="#" class="btn btn-primary" role="button">Adicionar ao carro</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="http://localhost/img/mustang/rodas/Zormer 2 R19_big.png" alt="...">
+                        <div class="caption">
+                            <h3>Zormer 2 R19</h3>
+                            <p>R$ 6.000,00 </p>
+                            <p><a href="#" class="btn btn-primary" role="button">Adicionar ao carro</a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="http://192.168.1.10:80/img/parts.png" alt="...">
-                <div class="caption">
-                    <h3>Roda B</h3>
-                    <p>.descricao </p>
-                    <p><a href="#" class="btn btn-primary" role="button">Adicionar ao carro</a></p>
+        </uib-tab>
+        <uib-tab>
+            <tab-heading>
+              <span>Insul-film</span>
+            </tab-heading>
+            
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="http://localhost/img/mustang/film/film20.png" alt="...">
+                        <div class="caption">
+                            <h3>GS3</h3>
+                            <p>R$ 100,00  </p>
+                            <p><a href="#" class="btn btn-primary" role="button">Adicionar ao carro</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="http://localhost/img/mustang/film/film50.png" alt="...">
+                        <div class="caption">
+                            <h3>GS4</h3>
+                            <p>R$ 200,00  </p>
+                            <p><a href="#" class="btn btn-primary" role="button">Adicionar ao carro</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="http://localhost/img/mustang/film/film80.png" alt="...">
+                        <div class="caption">
+                            <h3>GS5</h3>
+                            <p>R$ 300,00  </p>
+                            <p><a href="#" class="btn btn-primary" role="button">Adicionar ao carro</a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+
+        </uib-tab>
+        <uib-tab>
+            <tab-heading>
+              <span>hello</span><em>1</em>
+            </tab-heading>
+            
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="http://192.168.1.10:80/img/parts.png" alt="...">
+                        <div class="caption">
+                            <h3>Roda A</h3>
+                            <p>.descricao </p>
+                            <p><a href="#" class="btn btn-primary" role="button">Adicionar ao carro</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="http://192.168.1.10:80/img/parts.png" alt="...">
+                        <div class="caption">
+                            <h3>Roda B</h3>
+                            <p>.descricao </p>
+                            <p><a href="#" class="btn btn-primary" role="button">Adicionar ao carro</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </uib-tab>
+      
+    </uib-tabset>
 </div>
-
-
-   
