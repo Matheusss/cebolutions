@@ -207,7 +207,7 @@
 
       })
       .state('web.car.listAll', {
-        url           : '/list',
+        url           : '/listAll',
         restrict      : true,
 
         views: {
@@ -221,7 +221,14 @@
                   return result.data;
                 });
               }
-            ]
+            ]/*,
+            marcas: [
+              'MarcaService', function(MarcaService){
+                return MarcaService.findAll().then(function(result){
+                  return result.data;
+                });
+              }
+            ]*/
           }
           },
           "header@web": {

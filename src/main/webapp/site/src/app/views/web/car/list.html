@@ -7,18 +7,24 @@
     <div class="container">
       <div class="row" >
         <div class="col-lg-12">
-          <h1 class="page-header">Audi
+          <h1 class="page-header">{{marcaNome}}
             <small></small>
           </h1>
           <ol class="breadcrumb">
             <li><a ui-sref="web.home">Home</a>
             </li>
-            <li class="active">Audi</li>
+            <li class="active">{{marcaNome}}</li>
           </ol>
         </div>
+         <div class="col-sm-3 col-md-3 col-lg-3">
+            <input type="text" class="form-control" id="searchList" placeholder="Pesquisar" ng-model="search"/>
+        </div>
+          <div class="col-md-offset-5 col-sm-4 col-md-4 col-lg-4 col-md-offset-5 col-sm-offset-5">
+            <select class="form-control" ng-model="selectedMarca" ng-options="marca as marca.nome for marca in marcas | orderBy:'nome' track by marca.id" id="searchList" name="Marcas"></select>
+         </div>
       </div>
     </div>
-    <div ng-repeat="c in cars">
+    <div ng-repeat="c in cars |orderBy:sortKey:reverse|filter:search">
       
             <div class="col-md-6 img-marcas">
                 <a ui-sref="web.car.details">

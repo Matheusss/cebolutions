@@ -3,19 +3,41 @@
 
     angular.module('cebolutions.controllers')
     .controller('CarController', [
-        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'Feedback', 'cars', 'CarService', 'SharingDataService', '$stateParams', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, Feedback, cars, CarService, SharingDataService, $stateParams) {
+        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'Feedback', 'cars', 'CarService', '$stateParams', 'MarcaService', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, Feedback, cars, CarService, $stateParams, MarcaService) {
 
         $scope.cars = cars;
+        $scope.uiRouterState = $state;
 
-        CarService.findByMarca($stateParams.marcaId).then(function(result){
-          $scope.cars = result.data;
+        MarcaService.findAll().then(function(result){
+          $scope.marcas = result.data;
         })
+
+       /*$scope.getMarca = function (id) {
+          MarcaService.recuperar(id).then(function(result){
+            $scope.marcaId = result.data;
+            console.log(result.data);
+          })
+        }*/
+
+        $scope.$watch('selectedMarca', function(newVal, oldVal){
+          if(newVal){
+             CarService.findByMarca(newVal.id).then(function(result){
+            $scope.cars = result.data;
+          })
+          }
+        }) 
+
+        if($scope.uiRouterState.current.name === 'web.car.list'){
+           CarService.findByMarca($stateParams.marcaId).then(function(result){
+            $scope.cars = result.data;
+            $scope.marcaNome = result.data[0].marca.nome;
+          })
+        }
       
-  /*      return $scope.$on('marca:id', function(results) {
-          CarService.findByMarca(results.id).then(function(result){
-            $scope.carros = result.data;
-          });
-        });*/
+
+
+
+      
 
         $scope.myInterval = 0;
         $scope.noWrapSlides = false;
