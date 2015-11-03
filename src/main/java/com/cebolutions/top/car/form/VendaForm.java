@@ -1,5 +1,10 @@
 package com.cebolutions.top.car.form;
 
+import org.joda.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.cebolutions.top.car.json.LocalDateJsonDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 public class VendaForm {
 
@@ -10,6 +15,10 @@ public class VendaForm {
 	private Double valorTotal;
 	
 	private Boolean vendaCompleta;
+	
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	@JsonDeserialize(using = LocalDateJsonDeserializer.class)
+	private LocalDate data;
 
 	public Long getCarroId() {
 		return carroId;
@@ -41,5 +50,13 @@ public class VendaForm {
 
 	public void setVendaCompleta(Boolean vendaCompleta) {
 		this.vendaCompleta = vendaCompleta;
+	}
+
+	public LocalDate getData() {
+		return data;
+	}
+
+	public void setData(LocalDate data) {
+		this.data = data;
 	}
 }

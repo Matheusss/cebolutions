@@ -1,17 +1,20 @@
 package com.cebolutions.top.car.dto;
 
 
-import java.time.LocalDateTime;
+import org.joda.time.LocalDate;
 
 import com.cebolutions.top.car.entity.CarroVenda;
 import com.cebolutions.top.car.entity.User;
 import com.cebolutions.top.car.entity.Venda;
+import com.cebolutions.top.car.json.LocalDateJsonSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 public class VendaDTO {
 
 	private Long id;
 	
-	private LocalDateTime dataVenda;
+	@JsonSerialize(using=LocalDateJsonSerializer.class)
+	private LocalDate dataVenda;
 	
 	private Double valorTotal;
 	
@@ -23,7 +26,7 @@ public class VendaDTO {
 
 	public VendaDTO(Venda venda){
 		this.id = venda.getId();
-		this.dataVenda = venda.getDataVenda();
+		this.dataVenda = venda.getDate();
 		this.valorTotal = venda.getValorTotal();
 		this.usuario = venda.getUsuario();
 		this.carro = venda.getCarro();
@@ -39,11 +42,11 @@ public class VendaDTO {
 		this.id = id;
 	}
 
-	public LocalDateTime getDataVenda() {
+	public LocalDate getDataVenda() {
 		return dataVenda;
 	}
 
-	public void setDataVenda(LocalDateTime dataVenda) {
+	public void setDataVenda(LocalDate dataVenda) {
 		this.dataVenda = dataVenda;
 	}
 

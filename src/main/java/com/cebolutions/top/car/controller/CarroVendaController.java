@@ -2,8 +2,6 @@ package com.cebolutions.top.car.controller;
 
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,14 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cebolutions.top.car.dto.CarroVendaDTO;
 import com.cebolutions.top.car.entity.Carro;
 import com.cebolutions.top.car.entity.CarroVenda;
-import com.cebolutions.top.car.entity.Cor;
 import com.cebolutions.top.car.form.CarroVendaForm;
 import com.cebolutions.top.car.repository.CarroRepository;
 import com.cebolutions.top.car.repository.CarroVendaRepository;
 import com.cebolutions.top.car.repository.CorRepository;
 
 @RestController
-@RequestMapping(value="/{marcaNome}/{carroModelo}/customizar/")
+@RequestMapping(value="/carro/customizar/")
 public class CarroVendaController {
 	
 	@Autowired
@@ -40,13 +37,16 @@ public class CarroVendaController {
 	@Transactional
 	@RequestMapping(method=POST)
 	@ResponseStatus(value=HttpStatus.CREATED)
-	public CarroVendaDTO create(@RequestParam("carro") Long carroId){
+	public CarroVendaDTO create(@RequestParam("id") Long id, @RequestBody CarroVendaForm form){
+		
 		CarroVenda carroVenda = new CarroVenda();
-		Carro carro = carroRepository.findOne(carroId);
-		List<Cor> cor = (List<Cor>) corRepository.findAll();
+		Carro carro = carroRepository.findOne(id);
+//		List<Cor> cor = (List<Cor>) corRepository.findAll();
 		
 		carroVenda.setCarro(carro);
-		if(carro.getCor().isCorDefault()){
+		carroVenda.setCor(corRepository.findOne(form.getCorId()));
+		
+/*		if(carro.getCor().isCorDefault()){
 			carroVenda.setCor(carro.getCor());
 		} else {
 			for (Cor c : cor) {
@@ -54,13 +54,13 @@ public class CarroVendaController {
 					carroVenda.setCor(c);
 				}
 			}
-		}
+		}*/
 		
 		carroVenda = repository.save(carroVenda);
 		return new CarroVendaDTO(carroVenda);
 	}
 	
-	@Transactional
+/*	@Transactional
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public CarroVendaDTO update(@PathVariable("id") Long id, @RequestBody CarroVendaForm form){
 		CarroVenda carroVenda = repository.findOne(id);
@@ -69,7 +69,7 @@ public class CarroVendaController {
 		carroVenda = repository.save(carroVenda);
 		
 		return new CarroVendaDTO(carroVenda);
-	}
+	}*/
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@Transactional

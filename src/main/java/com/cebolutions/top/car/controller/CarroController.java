@@ -1,10 +1,10 @@
 package com.cebolutions.top.car.controller;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
-
+import java.util.Comparator;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +35,7 @@ public class CarroController {
 	@RequestMapping(method=GET)
 	public List<CarroDTO> list(){
 		 List<Carro> carros = (List<Carro>) repository.findAll();
+		 Collections.sort(carros, ComparatorPorId);
 		 
 		 return carros.stream()
 				.map(CarroDTO::new)
@@ -81,5 +82,11 @@ public class CarroController {
 
 		return findAll;
 	}
+	
+	public static Comparator<Carro> ComparatorPorId= new Comparator<Carro>() {
+		public int compare(Carro car, Carro car2) {
+			return car.getId().compareTo(car2.getId());
+		}
+	};
 
 }

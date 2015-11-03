@@ -9,6 +9,8 @@ import com.cebolutions.top.car.entity.Marca;
 
 public class CarroDTO {
 
+	private Long id;
+	
 	private String modelo;
 	
 	private Double preco;
@@ -30,6 +32,7 @@ public class CarroDTO {
 	private List<String> imagens = new ArrayList<String>();
 	
 	public CarroDTO(Carro carro){
+		this.id = carro.getId();
 		this.modelo = carro.getModelo();
 		this.preco = carro.getPreco();
 		this.marca = carro.getMarca();
@@ -125,5 +128,13 @@ public class CarroDTO {
 
 	public void setImagens(List<String> imagens) {
 		this.imagens = imagens;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 }
