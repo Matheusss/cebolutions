@@ -1,0 +1,52 @@
+ <div class="wrapper">
+ <div class="main-panel">
+ <div class="content">
+            <div class="container-fluid">    
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Meses</h4>
+                                <p class="category">Meses com mais vendas completas!</p>
+                            </div>
+                            
+                            <canvas id="pie" 
+                                    class="chart chart-pie"
+                                    chart-data="datas" 
+                                    chart-labels="months" 
+                                    chart-options=" {
+                                    animationSteps : 100,
+                                                      }">
+                            </canvas> 
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Carros</h4>
+                                <p class="category">Carros mais vendidos!</p>
+                            </div>
+                            
+                            <canvas id="pie" class="chart chart-pie"
+                            chart-data="datass" chart-labels="carsName">
+                            </canvas> 
+
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                    <canvas id="bar" class="chart chart-bar"
+                           chart-data="data" chart-labels="labels">
+                    </canvas>
+                </div>
+                </div>
+                    
+                
+                
+                
+                    
+                         
+            </div>    
+        </div>
+        </div>
+        </div>

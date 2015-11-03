@@ -578,7 +578,7 @@ video {
 
 /*     General overwrite     */
 body,
-.wrapper {
+/*.wrapper*/ {
   min-height: 100vh;
   position: relative;
 }
@@ -646,11 +646,11 @@ input:focus {
   margin-top: 50px;
 }
 
-.wrapper {
+/*.wrapper {
   position: relative;
   top: 0;
   height: 100vh;
-}
+}*/
 
 .sidebar {
   position: absolute;

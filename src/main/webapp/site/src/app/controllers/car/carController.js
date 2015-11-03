@@ -6,6 +6,7 @@
         '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'Feedback', 'cars', 'CarService', '$stateParams', 'MarcaService', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, Feedback, cars, CarService, $stateParams, MarcaService) {
 
         $scope.cars = cars;
+        console.log(cars.id);
         $scope.uiRouterState = $state;
 
         MarcaService.findAll().then(function(result){
