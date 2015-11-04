@@ -26,6 +26,9 @@ INSERT INTO `CARRO`(`ID`, `MARCA_ID`, `MODELO`, `PRECO`, `COR_ID`, `QUANTIDADE`)
 INSERT INTO `CARRO`(`ID`, `MARCA_ID`, `MODELO`, `PRECO`, `COR_ID`, `QUANTIDADE`) VALUES (5, 2, 'R8', 100000, 2, 5);
 INSERT INTO `CARRO`(`ID`, `MARCA_ID`, `MODELO`, `PRECO`, `COR_ID`, `QUANTIDADE`) VALUES (6, 2, 'A4', 90000, 2, 5);
 INSERT INTO `CARRO`(`ID`, `MARCA_ID`, `MODELO`, `PRECO`, `COR_ID`, `QUANTIDADE`) VALUES (7, 2, 'Q7', 50000, 1, 5);
+INSERT INTO `CARRO`(`ID`, `MARCA_ID`, `MODELO`, `PRECO`, `COR_ID`, `QUANTIDADE`) VALUES (13, 2, 'SPYDER', 50000, 1, 5);
+INSERT INTO `CARRO`(`ID`, `MARCA_ID`, `MODELO`, `PRECO`, `COR_ID`, `QUANTIDADE`) VALUES (14, 2, 'TT', 50000, 1, 5);
+INSERT INTO `CARRO`(`ID`, `MARCA_ID`, `MODELO`, `PRECO`, `COR_ID`, `QUANTIDADE`) VALUES (15, 2, 'TT CONVERSIVEL', 50000, 1, 5);
 
 /*PORSCHE*/
 INSERT INTO `CARRO`(`ID`, `MARCA_ID`, `MODELO`, `PRECO`, `COR_ID`, `QUANTIDADE`) VALUES (8, 6, 'CARRERA', 90000, 2, 5);
@@ -39,13 +42,49 @@ INSERT INTO `CARRO`(`ID`, `MARCA_ID`, `MODELO`, `PRECO`, `COR_ID`, `QUANTIDADE`)
 /*MERCEDES*/
 INSERT INTO `CARRO`(`ID`, `MARCA_ID`, `MODELO`, `PRECO`, `COR_ID`, `QUANTIDADE`) VALUES (11, 4, 'BENZ', 70000, 2, 5);
 
+/*MUSTANG*/
+INSERT INTO `CARRO`(`ID`, `MARCA_ID`, `MODELO`, `PRECO`, `COR_ID`, `QUANTIDADE`) VALUES (12, 3, 'COUPÉ', 50000, 1, 5);
 
 
+/*IMAGENS FERRARI*/
 INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(1, 'http://localhost/marcas/ferrari.jpg')
-INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(5, 'http://localhost/marcas/audi.jpg')
-INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(8, 'http://localhost/marcas/porsche.jpg')
-INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(9, 'http://localhost/marcas/lamborghini.jpg')
-INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(10, 'http://localhost/marcas/bmw.jpg')
+
+/*IMAGENS AUDI*/
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(5, 'http://localhost/marcas/audi.jpg');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(5, 'http://localhost/audi/r8/r82.png');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(5, 'http://localhost/audi/r8/r83.png');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(6, 'http://localhost/audi/a4.jpg');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(7, 'http://localhost/audi/q7.jpg');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(13, 'http://localhost/audi/spyder.jpg');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(14, 'http://localhost/audi/tt.jpg');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(15, 'http://localhost/audi/ttConversivel.jpg');
+
+
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(8, 'http://localhost/marcas/porsche.jpg');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(9, 'http://localhost/marcas/lamborghini.jpg');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(10, 'http://localhost/marcas/bmw.jpg');
+
+/*IMAGENS MUSTANG*/
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(12, 'http://localhost/img/mustang/red/redFront.png');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(12, 'http://localhost/img/mustang/red/redSide.png');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(12, 'hthttp://localhost/img/mustang/red/redBack.png');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(12, 'http://localhost/img/mustang/yellow/yellowFront.png');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(12, 'http://localhost/img/mustang/yellow/yellowSide.png');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(12, 'http://localhost/img/mustang/yellow/yellowBack.png');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(12, 'http://localhost/img/mustang/gray/grayFront.png');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(12, 'http://localhost/img/mustang/gray/graySide.png');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(12, 'http://localhost/img/mustang/gray/grayBack.png');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(12, 'http://localhost/img/mustang/white/whiteFront.png');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(12, 'http://localhost/img/mustang/white/whiteSide.png');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(12, 'http://localhost/img/mustang/white/whiteBack.png');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(12, 'http://localhost/img/mustang/black/blackFront.png');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(12, 'http://localhost/img/mustang/black/blackSide.png');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(12, 'http://localhost/img/mustang/black/blackBack.png');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(12, 'http://localhost/img/mustang/blue/blueFront.png');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(12, 'http://localhost/img/mustang/blue/blueSide.png');
+INSERT INTO `IMAGENS`(`CARRO_ID`, `IMAGENS`) VALUES(12, 'http://localhost/img/mustang/blue/blueBack.png');
+
+
 
 
 /*CARROS PERSONALIZADOS PARA VENDA (FERRARI)*/

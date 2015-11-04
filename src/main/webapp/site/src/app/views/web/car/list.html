@@ -27,8 +27,8 @@
     <div ng-repeat="c in cars |orderBy:sortKey:reverse|filter:search">
       
             <div class="col-md-6 img-marcas">
-                <a ui-sref="web.car.details">
-                    <img ng-src="{{c.imagens[0]}}" height="100%" width="100%"/>
+                <a ng-click="viewCar(c, marcaNome)" style="cursor:pointer;">
+                    <img ng-src="{{c.imagens[0]}}" height="100%!important" width="100%!important"/>
                 </a>
                 <h3>
                     <a ui-sref="web.car.details">{{c.modelo}}</a>

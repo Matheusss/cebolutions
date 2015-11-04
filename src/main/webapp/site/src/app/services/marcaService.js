@@ -19,6 +19,13 @@
             method: "GET"
           });
         },
+
+        findByRestantes: function() {
+          return $http({
+            url: urlConfig.baseUrl + "/carro/marcasRestantes",
+            method: "GET"
+          });
+        },
         findByPrincipal: function() {
           return $http({
             url: urlConfig.baseUrl + "/carro/marcasPrincipais",

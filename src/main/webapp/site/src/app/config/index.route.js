@@ -165,25 +165,31 @@
 
 
       .state('web.car.details', {
-        url           : '/details',
+        url           : '/details/:marcaNome/:id',
         restrict      : true,
+        params        : {'marcaNome': null},
+
+
         views: {
           "": {
-              templateUrl   : 'app/views/web/car/details.html',
-              controller    : 'CarController',
-              resolve: {
-                cars: [
-                  'CarService', function(CarService) {
-                    return null 
-                  }
-                ]
+            templateUrl   : 'app/views/web/car/details.html',
+            controller    : 'CarController',
+            resolve: {
+            carro: [
+              'CarService', '$stateParams', function(CarService, $stateParams) {
+                return CarService.recuperar($stateParams.id).then(function(result) {
+                  return result.data;
+                });
               }
-            },
+            ]
+          }
+          },
           "header@web": {
             templateUrl: 'app/views/web/header.html',
-            controller: 'HeaderController'
-          }
+            controller:  'HeaderController'
+          }         
         }
+
 
       })
 
@@ -195,9 +201,9 @@
         views: {
           "": {
             templateUrl   : 'app/views/web/car/list.html',
-            controller    : 'CarController',
+            controller    : 'CarListController',
             resolve: {
-            cars: [
+            carros: [
               'CarService', function(CarService) {
                 return CarService.findAll().then(function(result) {
                   return result.data;
@@ -215,15 +221,15 @@
 
       })
       .state('web.car.listAll', {
-        url           : '/listAll',
+        url           : '/list-all',
         restrict      : true,
 
         views: {
           "": {
             templateUrl   : 'app/views/web/car/list.html',
-            controller    : 'CarController',
+            controller    : 'CarListController',
             resolve: {
-            cars: [
+            carros: [
               'CarService', function(CarService) {
                 return CarService.findAll().then(function(result) {
                   return result.data;
@@ -237,6 +243,40 @@
                 });
               }
             ]*/
+          }
+          },
+          "header@web": {
+            templateUrl: 'app/views/web/header.html',
+            controller:  'HeaderController'
+          }         
+        }
+
+
+      })
+
+      .state('web.car.listOthers', {
+        url           : '/list-others',
+        restrict      : true,
+
+        views: {
+          "": {
+            templateUrl   : 'app/views/web/car/list.html',
+            controller    : 'CarListController',
+            resolve: {
+              carros: [
+              'CarService', function(CarService) {
+                return CarService.findAll().then(function(result) {
+                  return result.data;
+                });
+              }
+            ],
+              marcasRestantes: [
+                'MarcaService', function(MarcaService){
+                  return MarcaService.findByRestantes().then(function(result){
+                    return result.data;
+                  });
+                }
+              ]
           }
           },
           "header@web": {

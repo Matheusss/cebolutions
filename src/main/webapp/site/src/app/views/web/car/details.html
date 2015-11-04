@@ -98,13 +98,41 @@
     opacity: 0;
     z-index: 1;
 }
+
+  #page-top {
+    margin-top: 15px!important;
+  }
 </style>
+  
 
+<div id="page-top">
 <div class="container menu">
-
+      <div class="row" >
+        <div class="col-lg-12">
+          <h1 class="page-header">{{marcaNome}}
+            <small></small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a ui-sref="web.home">Home</a>
+            </li>
+            <li class="active">{{marcaNome}}</li>
+            <li class="active">{{carro.modelo}}</li>
+          </ol>
+        </div>
+    </div>
 
     <div class="row" style="margin-top: 150px">
         <div class="col-md-8" style="background-image: url(http://localhost/img/bg.png); background-size: cover">
+
+            <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
+                <uib-slide ng-repeat="i in carro.imagens" active="slide.active">
+                    <img ng-src="{{i}}" style="margin:auto;">
+                </uib-slide>
+            </uib-carousel>
+
+    <div ng-show="carro.modelo === COUPE">
+
+        
             <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'black'">
                 <uib-slide ng-repeat="car in car.black"  active="slide.active">
                     <img class="image" ng-src="{{car}}" style="margin:auto;">
@@ -136,16 +164,20 @@
                 </uib-slide>
             </uib-carousel>
         </div>
+        </div>
         <div class="col-md-4">
-                <h3>Coupé</h3>
-                <p>Arte perfomática. o R8 tênues os limites entre a arte e performance com um estilo exotico e desempenho de manipulaão para corresponder. Com a escolha de 3 motores potentes, é excelente em 'borrar' os arredores também.</p>
+                <h3>{{carro.modelo}}</h3>
+                <p>{{carro.descricao}}</p>
                 <ul>
-                    <li>430 top horsepower</li>
-                    <li>0-60 mph em 4.0s</li>
+                    <li>{{carro.cv}} top horsepower</li>
+                    <li>0-60 mph em {{carro.motor}}s</li>
                     <li>top speed de 168 mph</li>
-                    <li>Price: $117,150</li>
+                    <li>Price: ${{carro.preco}}</li>
                 </ul>
         </div>
+    
+
+
     </div>
 
 
@@ -313,4 +345,5 @@
         </uib-tab>
       
     </uib-tabset>
+</div>
 </div>
