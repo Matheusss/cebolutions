@@ -124,15 +124,16 @@
     <div class="row" style="margin-top: 150px">
         <div class="col-md-8" style="background-image: url(http://localhost/img/bg.png); background-size: cover">
 
+        <div ng-hide="carro.modelo === 'COUPE'">
             <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
                 <uib-slide ng-repeat="i in carro.imagens" active="slide.active">
                     <img ng-src="{{i}}" style="margin:auto;">
                 </uib-slide>
             </uib-carousel>
+        </div>
 
-    <div ng-show="carro.modelo === COUPE">
+    <div ng-if="carro.modelo === 'COUPE'">
 
-        
             <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'black'">
                 <uib-slide ng-repeat="car in car.black"  active="slide.active">
                     <img class="image" ng-src="{{car}}" style="margin:auto;">

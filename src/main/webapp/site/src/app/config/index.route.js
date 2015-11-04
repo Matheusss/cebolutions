@@ -1,17 +1,17 @@
-(function() {
-  'use strict';
+  (function() {
+    'use strict';
 
-  angular
+    angular
     .module('cebolutions')
     .config(routeConfig);
 
-  /** @ngInject */
-  function routeConfig($stateProvider, $urlRouterProvider, $httpProvider) {
+    /** @ngInject */
+    function routeConfig($stateProvider, $urlRouterProvider, $httpProvider) {
 
-    $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
-    $urlRouterProvider.otherwise('/home');
-    $stateProvider
+      $urlRouterProvider.otherwise('/home');
+      $stateProvider
       .state('web', {
         url: '',
         abstract: true,
@@ -35,13 +35,13 @@
             controller: 'MainController',
             resolve: {
               marcasPrincipais: [
-                'MarcaService', function(MarcaService) {
-                  return MarcaService.findByPrincipal().then(function(result) {
-                    return result.data;
-                  });
-                }
+              'MarcaService', function(MarcaService) {
+                return MarcaService.findByPrincipal().then(function(result) {
+                  return result.data;
+                });
+              }
               ]
-          }
+            }
           },
           "header@web": {
             templateUrl: 'app/views/web/header.html',
@@ -72,14 +72,14 @@
             templateUrl: 'app/views/web/main-admin.html',
             controller: 'AdminController',
             resolve: {
-            cars: [
+              cars: [
               'VendaService', function(VendaService) {
                 return VendaService.getByCar().then(function(result) {
                   return result.data;
                 });
               }
-            ]
-          }
+              ]
+            }
           },
           "header@admin": {
             templateUrl: 'app/views/web/header-admin.html',
@@ -137,11 +137,11 @@
           },
           resolve: {
             users: [
-              'UserService', function(UserService) {
-                return UserService.findAll().then(function(result) {
-                  return result.data;
-                });
-              }
+            'UserService', function(UserService) {
+              return UserService.findAll().then(function(result) {
+                return result.data;
+              });
+            }
             ]
           }
         }
@@ -169,20 +169,19 @@
         restrict      : true,
         params        : {'marcaNome': null},
 
-
         views: {
           "": {
             templateUrl   : 'app/views/web/car/details.html',
             controller    : 'CarController',
             resolve: {
-            carro: [
+              carro: [
               'CarService', '$stateParams', function(CarService, $stateParams) {
                 return CarService.recuperar($stateParams.id).then(function(result) {
                   return result.data;
                 });
               }
-            ]
-          }
+              ]
+            }
           },
           "header@web": {
             templateUrl: 'app/views/web/header.html',
@@ -196,21 +195,21 @@
       .state('web.car.list', {
         url           : '/:marcaId/list',
         restrict      : true,
-        params  : {'marcaId': null},
+        params        : {'marcaId': null},
 
         views: {
           "": {
             templateUrl   : 'app/views/web/car/list.html',
             controller    : 'CarListController',
             resolve: {
-            carros: [
+              carros: [
               'CarService', function(CarService) {
                 return CarService.findAll().then(function(result) {
                   return result.data;
                 });
               }
-            ]
-          }
+              ]
+            }
           },
           "header@web": {
             templateUrl: 'app/views/web/header.html',
@@ -229,30 +228,30 @@
             templateUrl   : 'app/views/web/car/list.html',
             controller    : 'CarListController',
             resolve: {
-            carros: [
+              carros: [
               'CarService', function(CarService) {
                 return CarService.findAll().then(function(result) {
                   return result.data;
                 });
               }
-            ]/*,
-            marcas: [
-              'MarcaService', function(MarcaService){
-                return MarcaService.findAll().then(function(result){
-                  return result.data;
-                });
+              ]/*,
+              marcas: [
+                'MarcaService', function(MarcaService){
+                  return MarcaService.findAll().then(function(result){
+                    return result.data;
+                  });
+                }
+                ]*/
               }
-            ]*/
+            },
+            "header@web": {
+              templateUrl: 'app/views/web/header.html',
+              controller:  'HeaderController'
+            }         
           }
-          },
-          "header@web": {
-            templateUrl: 'app/views/web/header.html',
-            controller:  'HeaderController'
-          }         
-        }
 
 
-      })
+        })
 
       .state('web.car.listOthers', {
         url           : '/list-others',
@@ -269,15 +268,15 @@
                   return result.data;
                 });
               }
-            ],
+              ],
               marcasRestantes: [
-                'MarcaService', function(MarcaService){
-                  return MarcaService.findByRestantes().then(function(result){
-                    return result.data;
-                  });
-                }
+              'MarcaService', function(MarcaService){
+                return MarcaService.findByRestantes().then(function(result){
+                  return result.data;
+                });
+              }
               ]
-          }
+            }
           },
           "header@web": {
             templateUrl: 'app/views/web/header.html',
@@ -287,32 +286,6 @@
 
 
       });
+    }
 
-
-      // .state('premio', {
-      //   url:'/',
-      //   restrict: true,
-      //   abstract: true,
-      //   templateUrl: 'app/views/web/premio/premio.html',
-      // })
-
-      // .state('premio.criar', {
-      //   url:'create',
-      //   restrict: true,
-      //   templateUrl: 'app/views/web/premio/form.html',
-      //   controller: 'CriarPremioController',
-      //   controllerAs: 'ctrl',     
-      // })
-
-      // .state('premio.listar', {
-      //   url:'list',
-      //   restrict: true,
-      //   templateUrl: 'app/views/web/premio/list.html',
-      //   controller: 'PremioController',
-      //   controllerAs: 'ctrl'
-      // });
-
-    
-  }
-
-})();
+  })();

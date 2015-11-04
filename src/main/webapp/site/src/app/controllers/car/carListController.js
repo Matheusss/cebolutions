@@ -1,52 +1,63 @@
-(function() {
-  'use strict';
+    (function() {
+      'use strict';
 
-    angular.module('cebolutions.controllers')
-    .controller('CarListController', [
-        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'carros', 'CarService', '$stateParams', 'MarcaService', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, carros, CarService, $stateParams, MarcaService) {
+      angular.module('cebolutions.controllers')
+      .controller('CarListController', [
+        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'carros', 'CarService', '$stateParams', 'MarcaService', '$filter', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, carros, CarService, $stateParams, MarcaService, $filter) {
 
-        $scope.cars = carros;
-       // $scope.marcasRestantes = marcasRestantes;
-        $scope.uiRouterState = $state;
-        $scope.arrayCarros = [];
 
-        MarcaService.findAll().then(function(result){
-          $scope.marcas = result.data;
-        })
 
-          $scope.$watch('selectedMarca', function(newVal, oldVal){
-            if(newVal){
-               CarService.findByMarca(newVal.id).then(function(result){
-                  $scope.cars = result.data;
-                  $stateParams.marcaId = newVal.id;
-                  $scope.marcaNome = newVal.nome;
-                 // console.log($scope.uiRouterState.params.marcaId);
-            })
+          $scope.cars = [];
+
+           // $scope.marcasRestantes = marcasRestantes;
+           $scope.uiRouterState = $state;
+           $scope.arrayCarros = [];
+
+           MarcaService.findAll().then(function(result){
+            $scope.marcas = result.data;
+            if($scope.uiRouterState.current.name === 'web.car.list'){
+              $scope.selectedMarca = $filter('filter')($scope.marcas, {id: $stateParams.marcaId})[0];
             }
-          }) 
+          });
 
-        if($scope.uiRouterState.current.name === 'web.car.list'){
-           CarService.findByMarca($stateParams.marcaId).then(function(result){
-            $scope.cars = result.data;
-            $scope.marcaNome = result.data[0].marca.nome;
-          }) 
-        } /*else if($scope.uiRouterState.current.name === 'web.car.listOthers'){
-             
-            angular.forEach($scope.marcasRestantes, function(value, key){
-              
-              CarService.findByMarca(value.id).then(function(result){
-                $scope.arrayCarros.push(result.data);
-                 return $scope.cars = $scope.arrayCarros;
-              })
-            })
+           $scope.$watch('selectedMarca', function(newVal, oldVal){
+            if(newVal && oldVal && newVal != oldVal){
+             CarService.findByMarca(newVal.id).then(function(result){
+              $scope.cars = result.data;
+              $stateParams.marcaId = newVal.id;
+              $scope.marcaNome = newVal.nome;
+              $state.go('web.car.list', {'marcaId' : newVal.id})
+            });
+           }
+         }); 
 
-           }*/
-
-       return $scope.viewCar = function(carro, marcaNome){
-        return $state.go('web.car.details', { 'id' : carro.id, 'marcaNome' : marcaNome });
-        }
-          
+           if($scope.uiRouterState.current.name === 'web.car.list'){
+             CarService.findByMarca($stateParams.marcaId).then(function(result){
+              $scope.cars = result.data;
+              $scope.marcaNome = result.data[0].marca.nome;
+            }) 
+           } else if($scope.uiRouterState.current.name === 'web.car.listAll'){
+            $scope.cars = carros;
+          }
 
 
-    }]);
-})();
+            /*else if($scope.uiRouterState.current.name === 'web.car.listOthers'){
+                 
+                angular.forEach($scope.marcasRestantes, function(value, key){
+                  
+                  CarService.findByMarca(value.id).then(function(result){
+                    $scope.arrayCarros.push(result.data);
+                     return $scope.cars = $scope.arrayCarros;
+                  })
+                })
+
+  }*/
+
+          return $scope.viewCar = function(carro, marcaNome){
+            return $state.go('web.car.details', { 'id' : carro.id, 'marcaNome' : marcaNome });
+          }
+
+
+
+  }]);
+  })();
