@@ -11,9 +11,11 @@ INSERT INTO `MARCA`(`ID`, `NOME`, `LOGO`, `MARCAS_PRINCIPAIS`) VALUES (8, 'Ford'
 INSERT INTO `MARCA`(`ID`, `NOME`, `LOGO`, `MARCAS_PRINCIPAIS`) VALUES (9, 'Aston Martin', 'http://localhost/cebolutions/aston.jpg', 0);
 
 /*CORES*/
-INSERT INTO `COR` (`ID`, `NOME`, `VALOR`, `COR_PADRAO`) VALUES(1, 'Vermelho', 100, false);
-INSERT INTO `COR` (`ID`, `NOME`, `VALOR`, `COR_PADRAO`) VALUES(2, 'Branco', 50, true);
-INSERT INTO `COR` (`ID`, `NOME`, `VALOR`, `COR_PADRAO`) VALUES(3, 'Amarelo', 200, false);
+INSERT INTO `COR` (`ID`, `NOME`, `VALOR`, `COR_PADRAO`, `HEXADECIMAL`) VALUES(1, 'Vermelho', 100, false, '#FF0000');
+INSERT INTO `COR` (`ID`, `NOME`, `VALOR`, `COR_PADRAO`, `HEXADECIMAL`) VALUES(2, 'Branco', 50, true, '#ffffff');
+INSERT INTO `COR` (`ID`, `NOME`, `VALOR`, `COR_PADRAO`, `HEXADECIMAL`) VALUES(3, 'Amarelo', 200, false, '#FFFF00');
+INSERT INTO `COR` (`ID`, `NOME`, `VALOR`, `COR_PADRAO`, `HEXADECIMAL`) VALUES(4, 'Azul', 300, false, '#000099');
+INSERT INTO `COR` (`ID`, `NOME`, `VALOR`, `COR_PADRAO`, `HEXADECIMAL`) VALUES(5, 'Preto', 100, false, '#000000');
 
 
 /*FERRARI*/

@@ -15,7 +15,10 @@ public class Cor extends AbstractEntity {
 	private Long valor;
 	
 	@Column(name = "COR_PADRAO", length = 1)
-	private boolean corDefault;;
+	private Boolean corDefault;
+	
+	@Column(name = "HEXADECIMAL")
+	private String hexadecimal;
 
 	public String getNome() {
 		return nome;
@@ -34,10 +37,26 @@ public class Cor extends AbstractEntity {
 	}
 
 	public boolean isCorDefault() {
-		return corDefault;
+		return getCorDefault();
 	}
 
 	public void setCorDefault(boolean corDefault) {
+		this.corDefault = corDefault;
+	}
+
+	public String getHexadecimal() {
+		return hexadecimal;
+	}
+
+	public void setHexadecimal(String hexadecimal) {
+		this.hexadecimal = hexadecimal;
+	}
+
+	public Boolean getCorDefault() {
+		return corDefault;
+	}
+
+	public void setCorDefault(Boolean corDefault) {
 		this.corDefault = corDefault;
 	}
 }
