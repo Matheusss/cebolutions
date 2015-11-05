@@ -3,9 +3,10 @@
 
     angular.module('cebolutions.controllers')
     .controller('CarController', [
-        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'Feedback', 'CarService', '$stateParams', 'carro', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, Feedback, CarService, $stateParams, carro) {
+        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'Feedback', 'CarService', '$stateParams', 'carro', 'cores', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, Feedback, CarService, $stateParams, carro, cores) {
 
         $scope.carro = carro;
+        $scope.cores = cores;
         $scope.marcaNome = $stateParams.marcaNome;
         console.log(carro)
 

@@ -1,11 +1,14 @@
 angular.module('cebolutions.controllers')
 .controller('CreateUserController', [
-  '$scope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'UserService', 'Feedback', '$modalInstance', function($scope, $location, $timeout, $http, urlConfig, $state, UserService, Feedback, $modalInstance) {
+  '$scope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'UserService', 'Feedback', function($scope, $location, $timeout, $http, urlConfig, $state, UserService, Feedback) {
 
     $scope.user = {
       email: '',
-      senha: ''
+      senha: '',
+      cep: ''
     };
+
+
 
     $scope.btnDisabled = false;
     $scope.tipoForm = 'NOVO USUÁRIO';
@@ -14,15 +17,14 @@ angular.module('cebolutions.controllers')
 
       $scope.btnDisabled = true;
       UserService.create($scope.user).then(function(result) {
-
-        $scope.btnDisabled = false;
-        //return Feedback.success('User salvo com sucesso.');
+        console.log(result.data.cep);
+        $http.get('https://viacep.com.br/ws/' + result.data.cep + '/json/').then(function(result){
+          console.log(result.data);
+        })
+        $state.go('web.user.list');
       });
 
-      return function(error) {
-       // Feedback.fail('Falha ao salvar user.');
-        return $scope.btnDisabled = false;
-      };
+
     };
   }
 ]);

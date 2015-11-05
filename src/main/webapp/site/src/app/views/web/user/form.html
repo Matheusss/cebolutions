@@ -1,5 +1,5 @@
 <div class="container menu">
-
+<div class="loading-dialog" data-loading></div>
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
       <h3 class="text-center" style="color:#c9242c">{{tipoForm}}</h3>
@@ -17,6 +17,12 @@
     <div class="col-sm-12 col-md-12 col-lg-12">
       <label for="">Senha</label>
       <input class="form-control" ng-model="user.senha" ng-disabled="btnDisabled" type="text">
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <label for="">CEP</label>
+      <input class="form-control" ng-model="user.cep" ng-disabled="btnDisabled" type="text">
     </div>
   </div>
 

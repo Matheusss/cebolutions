@@ -186,7 +186,12 @@
         <div class="col-md-12">
             <h4>Escolha a  cor</h4>
                 <div class="col-md-12">
-                    <div id="red" ng-click="mudarCor('red')" style="height: 40px; border-radius: 50%; width: 40px;background-color: #bc2b3c;border: 1px  solid #ccc;margin: 5px;position:relative;float: left; cursor:pointer"></div>
+                <div ng-repeat="cor in cores">
+                    <div id="{{cor.nome}}" style="height: 40px; border-radius: 50%; width: 40px;background-color: {{cor.hexadecimal}};border: 1px  solid #ccc;margin: 5px;position:relative;float: left; cursor:pointer" data-toggle="tooltip" title="{{cor.nome}} | valor: ${{cor.valor}}"></div>
+                </div>
+                
+
+                    <!-- <div id="red" ng-click="mudarCor('red')" style="height: 40px; border-radius: 50%; width: 40px;background-color: #bc2b3c;border: 1px  solid #ccc;margin: 5px;position:relative;float: left; cursor:pointer"></div>
                     <div class="tip" style="display: none;">
                         <div>
                             <h5>Vermelho</h5>
@@ -230,7 +235,7 @@
                             <h5>Branco</h5>
                             <p><span> R$0,00</span></p>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
                     
@@ -238,7 +243,7 @@
     </div>
     
 
-    <uib-tabset>
+     <uib-tabset>
         <uib-tab>
             <tab-heading>
                 <span>Rodas</span>
@@ -345,6 +350,6 @@
 
         </uib-tab>
       
-    </uib-tabset>
+    </uib-tabset> 
 </div>
 </div>

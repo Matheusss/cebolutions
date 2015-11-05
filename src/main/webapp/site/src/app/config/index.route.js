@@ -129,13 +129,8 @@
         views: {
           "": {
             templateUrl   : 'app/views/web/user/list.html',
-            controller    : 'UserController'
-          },
-          "header@web": {
-            templateUrl: 'app/views/web/header.html',
-            controller:  'HeaderController'
-          },
-          resolve: {
+            controller    : 'UserController',
+            resolve: {
             users: [
             'UserService', function(UserService) {
               return UserService.findAll().then(function(result) {
@@ -143,7 +138,13 @@
               });
             }
             ]
+            }
+          },
+          "header@web": {
+            templateUrl: 'app/views/web/header.html',
+            controller:  'HeaderController'
           }
+
         }
 
       })
@@ -177,6 +178,13 @@
               carro: [
               'CarService', '$stateParams', function(CarService, $stateParams) {
                 return CarService.recuperar($stateParams.id).then(function(result) {
+                  return result.data;
+                });
+              }
+              ],
+              cores: [
+              'CorService', function(CorService) {
+                return CorService.findAll().then(function(result) {
                   return result.data;
                 });
               }

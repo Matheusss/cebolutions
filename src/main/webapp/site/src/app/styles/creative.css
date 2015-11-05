@@ -1525,3 +1525,14 @@ body > .navbar-collapse[data-color="purple"]:after {
   padding-right: 0px;
   padding-left: 0px;
 }
+
+.loading-dialog {
+    display: none!important;
+    position: fixed!important;
+    z-index: 1000!important;
+    top: 0!important;
+    left: 0!important;
+    height: 100%!important;
+    width: 100%!important;
+    background: rgba( 0, 0, 0, .2 ) url('http://localhost/ajax-loader.gif') 50% 50% no-repeat!important;
+}

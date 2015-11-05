@@ -18,7 +18,7 @@
     $scope.openModal = function(){
       modalInstance = $modal.open({
         templateUrl : 'app/views/web/user/loginModal.html',
-        controller  : 'UserController',
+        controller  : 'UserModalController',
         controllerAs: 'ctrl'
       });
     }
