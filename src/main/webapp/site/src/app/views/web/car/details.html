@@ -102,8 +102,93 @@
   #page-top {
     margin-top: 15px!important;
   }
+  .resumo{
+    width: 15%;
+    height: 50%;
+    position: fixed;
+    right: -18%;
+    transition: 1s;
+    margin-top: 10%;
+    background-color: #ccc;
+    padding: 15px;
+  }
+  #aba{
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: blue;
+    left: -40px;
+    margin-top: 1%;
+  }
+  #abaTitle{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-color: blue;
+    margin-top: 9%;
+    text-align: center;
+    color: white;
+  }
+  .resumo:hover {
+        right: 0;
+  }
+  #aba > img {
+      width: 20px;
+    height: 20px;
+    margin-top: 38%;
+    margin-left: 10%;
+}
+
 </style>
   
+<div class="resumo">
+    
+    <div id="aba">
+        <img src="http://localhost/img/close.png">
+    </div>
+    <div id="abaTitle">
+        <p>Compra</p>
+    </div>
+
+    <div style="margin-top: 40%">
+
+        <div class="panel-body">
+            <div class="input-group">
+                <span class="input-group-addon">Carro</span>
+                <span>"{{marcaNome}}"</span>
+            </div>
+        </div>
+        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+        <div class="panel-body">
+            <div class="input-group">
+                <span class="input-group-addon">Marca</span>
+                <span>"{{marcaNome}}"</span>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="input-group">
+                <span class="input-group-addon">Cor</span>
+                <span>"{{marcaNome}}"</span>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="input-group">
+                <span class="input-group-addon">Rodas</span>
+                <span>"{{marcaNome}}"</span>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="input-group">
+                <span class="input-group-addon">Insul-film</span>
+                <span>"{{marcaNome}}"</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <div id="page-top">
 <div class="container menu">
