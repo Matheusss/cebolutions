@@ -7,6 +7,7 @@ import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -38,7 +39,7 @@ public class Carro extends AbstractEntity {
 	@Column(name="DESCRICAO")
 	private String descricao;
 	
-	@ElementCollection
+	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name="IMAGENS")
 	private List<String> imagens = new ArrayList<String>();
 	

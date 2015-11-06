@@ -40,7 +40,7 @@ public class User extends AbstractEntity {
 	@Column(name="CEP")
 	private String cep;
 
-	@ManyToMany(fetch=FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name="ENDERECO_USUARIO", joinColumns = @JoinColumn(name="USER_ID"), inverseJoinColumns = @JoinColumn(name="ENDERECO_ID"))
 	private List<Endereco> endereco = new ArrayList<>(); 
 	

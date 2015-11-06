@@ -91,7 +91,32 @@
           }
         }
       })
-
+      .state('admin.vendas', {
+        url: '/vendas',
+        views: {
+          "": {
+            templateUrl: 'app/views/web/admin/vendas.html',
+            controller: 'AdminController',
+            resolve: {
+              cars: [
+              'VendaService', function(VendaService) {
+                return VendaService.getByCar().then(function(result) {
+                  return result.data;
+                });
+                }
+              ]
+            }
+          },
+          "header@admin": {
+            templateUrl: 'app/views/web/header-admin.html',
+            controller:  'HeaderAdminController'
+          },
+          "navbar@admin": {
+            templateUrl: 'app/views/web/navbar-admin.html',
+            controller:  'HeaderAdminController'
+          }
+        }
+      })
       .state('web.user', {
         url           : '/user',
         restrict      : true,

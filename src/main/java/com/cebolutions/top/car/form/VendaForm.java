@@ -16,7 +16,6 @@ public class VendaForm {
 	
 	private Boolean vendaCompleta;
 	
-	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	@JsonDeserialize(using = LocalDateJsonDeserializer.class)
 	private LocalDate data;
 

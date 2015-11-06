@@ -2,13 +2,13 @@ package com.cebolutions.top.car.controller;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
-import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -59,6 +60,24 @@ public class VendaController {
 	
 	public static final String MIN_QUANTITY = "carro.min.quantity";
 	
+	@Transactional(readOnly = true)
+	@RequestMapping(method = GET)
+	public List<VendaDTO> list(){
+		List<Venda> vendas = (List<Venda>) repository.findAll();
+		
+		return vendas.stream()
+				.map(VendaDTO::new)
+				.collect(Collectors.toList());
+	}
+	
+	@Transactional(readOnly = true)
+	@RequestMapping(value="/{id}",method = GET)
+	public VendaDTO findById(@PathVariable ("id") Long id){
+		Venda venda = repository.findOne(id);
+		
+		return new VendaDTO(venda);
+	}
+	
 	@Transactional
 	@RequestMapping(method=POST)
 	@ResponseStatus(value=HttpStatus.CREATED)
@@ -85,7 +104,7 @@ public class VendaController {
 	}
 	
 	@Transactional
-	@RequestMapping(method=PUT)
+	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public VendaDTO update(@PathVariable("id") Long id){
 		Venda venda = repository.findOne(id);
 		User user = userRepository.findOne(venda.getUsuario().getId());

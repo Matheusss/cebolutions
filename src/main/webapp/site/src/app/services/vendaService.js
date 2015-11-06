@@ -22,9 +22,11 @@
 
         editar: function(id) {
           return $http({
-            url: urlConfig.baseUrl + "/venda/carrosVendidos" + id,
-            method: "GET"
-
+            url: urlConfig.baseUrl + "/venda/" + id,
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json"
+            }
           });
         },
   
