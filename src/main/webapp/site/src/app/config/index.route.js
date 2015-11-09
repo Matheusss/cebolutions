@@ -316,9 +316,38 @@
             controller:  'HeaderController'
           }         
         }
+      })
+      .state('web.venda', {
+        url           : '/venda',
+        restrict      : true,
+        abstract      : true,
+        views: {
+          "": {
+            templateUrl   : 'app/views/web/venda/venda.html'
+          },
+          "header@web": {
+            templateUrl: 'app/views/web/header.html',
+            controller: 'HeaderController'
+          }
+        }
+      })
 
+      .state('web.venda.wizard', {
+        url       : '/confirmar-compra',
+
+        views: {
+          "":{
+              templateUrl    : 'app/views/web/venda/vendaWizard.html',
+              controller  : 'VendaController',
+              },
+          "header@web": {
+            templateUrl: 'app/views/web/header.html',
+            controller:  'HeaderController'
+          }        
+        }
 
       });
+
     }
 
   })();

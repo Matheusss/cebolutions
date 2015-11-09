@@ -66,12 +66,11 @@ public class UserController {
 		user.setCpf(form.getCpf());
 		user.setCnh(form.getCnh());
 		user.setDataNascimento(form.getDataNascimento());
-		user.setCep(form.getCep());
 		
-/*		for (Long id : form.getEnderecoId()) {
+		for (Long id : form.getEnderecoId()) {
 			enderecos.add(enderecoRepository.findOne(id));
 		}
-		user.setEndereco(enderecos);*/
+		user.setEndereco(enderecos);
 		
 
 		repository.save(user);
@@ -94,7 +93,6 @@ public class UserController {
 		user.setCpf(form.getCpf());
 		user.setCnh(form.getCnh());
 		user.setDataNascimento(form.getDataNascimento());
-		user.setCep(form.getCep());
 		
 		for (Long enderecoId : form.getEnderecoId()) {
 			enderecos.add(enderecoRepository.findOne(enderecoId));

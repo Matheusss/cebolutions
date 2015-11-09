@@ -365,11 +365,11 @@ header .header-content .header-content-inner p {
 }
 
 .default {
-    border-color: #fff!important;
-    color: #222!important;
-    background-color: #fff!important;
-    -webkit-transition: all .35s!important;
-    -moz-transition: all .35s!important;
+    border-color: #fff;
+    color: #222;
+    /*background-color: #fff;*/
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
     transition: all .35s!important;
 }
 

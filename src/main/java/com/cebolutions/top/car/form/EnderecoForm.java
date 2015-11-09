@@ -10,6 +10,8 @@ public class EnderecoForm {
 	
 	private String logradouro;
 	
+	private String cep;
+	
 	
 	public String getEstado() {
 		return estado;
@@ -34,6 +36,12 @@ public class EnderecoForm {
 	}
 	public void setLogradouro(String logradouro) {
 		this.logradouro = logradouro;
+	}
+	public String getCep() {
+		return cep;
+	}
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 	
 	

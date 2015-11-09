@@ -1,4 +1,13 @@
-INSERT INTO `USER` (`ID`, `EMAIL`, `SENHA`, `NOME`, `SOBRENOME`, `CPF`, `CNH`) VALUES (1, 'matheusb95@gmail.com', '$2a$10$xge0W5Ifz4nU33U0geXn4OG0BUrtvA363OK9i5ts6rpxoyv8OJ4/G','Matheus', 'Soares', '436771768/24', '0000000000' );
+INSERT INTO `USER` (`ID`, `EMAIL`, `SENHA`, `NOME`, `SOBRENOME`, `CPF`, `CNH`, `NUMERO_CARTAO`, `APROVADO`) VALUES (1, 'matheusb95@gmail.com', '$2a$10$xge0W5Ifz4nU33U0geXn4OG0BUrtvA363OK9i5ts6rpxoyv8OJ4/G','Matheus', 'Soares', '436771768/24', '0000000000', 098765, 1 );
+INSERT INTO `USER` (`ID`, `EMAIL`, `SENHA`, `NOME`, `SOBRENOME`, `CPF`, `CNH`, `NUMERO_CARTAO`, `APROVADO`) VALUES (2, 'ygoryuri@outlook.com', 'testeSenha','Ygor', 'Yuri', '123456789/12', '1111111111', 123456, 0 );
+
+/*ENDERECOS*/
+INSERT INTO `ENDERECO` (`ID`, `CEP`, `LOGRADOURO`, `CIDADE`, `ESTADO`, `BAIRRO`) VALUES (1, '04841250', 'Rua Joaquim Antonio Alves', 'São Paulo', 'SP', 'Parque Planalto');
+INSERT INTO `ENDERECO` (`ID`, `CEP`, `LOGRADOURO`, `CIDADE`, `ESTADO`, `BAIRRO`) VALUES (2, '04556758', 'Rua Quintana', 'São Paulo', 'SP', 'Brooklin');
+
+/*ENDERECOS USUARIO*/
+INSERT INTO `ENDERECO_USUARIO` (`USER_ID`, ENDERECO_ID) VALUES (1, 1);
+INSERT INTO `ENDERECO_USUARIO` (`USER_ID`, ENDERECO_ID) VALUES (1, 2);
 
 INSERT INTO `MARCA`(`ID`, `NOME`, `LOGO`, `MARCAS_PRINCIPAIS`) VALUES (1, 'Ferrari', 'http://localhost/cebolutions/ferrari-logo.jpg', 1);
 INSERT INTO `MARCA`(`ID`, `NOME`, `LOGO`, `MARCAS_PRINCIPAIS`) VALUES (2, 'Audi', 'http://localhost/cebolutions/audi.jpg', 1);
@@ -25,7 +34,8 @@ INSERT INTO `CARRO`(`ID`, `MARCA_ID`, `MODELO`, `PRECO`, `COR_ID`, `QUANTIDADE`)
 INSERT INTO `CARRO`(`ID`, `MARCA_ID`, `MODELO`, `PRECO`, `COR_ID`, `QUANTIDADE`) VALUES (4, 1, 'Italia', 500000, 1, 5);
 
 /*AUDI*/
-INSERT INTO `CARRO`(`ID`, `MARCA_ID`, `MODELO`, `PRECO`, `COR_ID`, `QUANTIDADE`) VALUES (5, 2, 'R8', 100000, 2, 5);
+INSERT INTO `CARRO`(`ID`, `MARCA_ID`, `MODELO`, `PRECO`, `COR_ID`, `QUANTIDADE`, `DESCRICAO`, `ANO`, `CV`, `MOTOR`, `TOP_SPEED`) VALUES (5, 2, 'R8', 100000, 2, 5, 'Arte performatica. o R8 tenues os limites entre a arte e performance com um estilo exotico e desempenho de manipulacao para corresponder. Com a escolha de 3 motores potentes, é excelente em "borrar" os arredores também.', 2014, 430, 4.0, 168 );
+
 INSERT INTO `CARRO`(`ID`, `MARCA_ID`, `MODELO`, `PRECO`, `COR_ID`, `QUANTIDADE`) VALUES (6, 2, 'A4', 90000, 2, 5);
 INSERT INTO `CARRO`(`ID`, `MARCA_ID`, `MODELO`, `PRECO`, `COR_ID`, `QUANTIDADE`) VALUES (7, 2, 'Q7', 50000, 1, 5);
 INSERT INTO `CARRO`(`ID`, `MARCA_ID`, `MODELO`, `PRECO`, `COR_ID`, `QUANTIDADE`) VALUES (13, 2, 'SPYDER', 50000, 1, 5);

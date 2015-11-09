@@ -24,9 +24,7 @@ public class UserDTO {
 	private String cnh;
 	
 	private Date dataNascimento;
-	
-	private String cep;
-	
+		
 	private List<EnderecoDTO> enderecos = new ArrayList<EnderecoDTO>();
 
 	public UserDTO(User user){
@@ -38,7 +36,6 @@ public class UserDTO {
 		this.cpf = user.getCpf();
 		this.cnh = user.getCnh();
 		this.dataNascimento = user.getDataNascimento();
-		this.cep = user.getCep();
 		if(user.getEndereco() != null){
 			for (Endereco e : user.getEndereco()) {
 				this.enderecos.add(new EnderecoDTO(e));
@@ -115,16 +112,6 @@ public class UserDTO {
 
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
-	}
-
-
-	public String getCep() {
-		return cep;
-	}
-
-
-	public void setCep(String cep) {
-		this.cep = cep;
 	}
 	
 }

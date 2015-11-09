@@ -25,7 +25,7 @@ public class CarroDTO {
 	
 	private Long cv;
 	
-	private Long motor;
+	private Double motor;
 	
 	private Long topSpeed;
 	
@@ -106,11 +106,11 @@ public class CarroDTO {
 		this.cv = cv;
 	}
 
-	public Long getMotor() {
+	public Double getMotor() {
 		return motor;
 	}
 
-	public void setMotor(Long motor) {
+	public void setMotor(Double motor) {
 		this.motor = motor;
 	}
 

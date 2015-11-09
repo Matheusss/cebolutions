@@ -17,9 +17,12 @@ public class Endereco extends AbstractEntity {
 	@Column(name="BAIRRO")
 	private String bairro;
 	
-	@Column(name="logradouro")
+	@Column(name="LOGRADOURO")
 	private String logradouro;
-
+	
+	@Column(name="CEP")
+	private String cep;
+	
 	public String getCidade() {
 		return cidade;
 	}
@@ -51,6 +54,14 @@ public class Endereco extends AbstractEntity {
 	public void setLogradouro(String logradouro) {
 		this.logradouro = logradouro;
 	}
-	
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
 
 }

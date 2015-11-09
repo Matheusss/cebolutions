@@ -18,9 +18,7 @@ public class UserForm {
 	private String cnh;
 	
 	private Date dataNascimento;
-	
-	private String cep;
-	
+		
 	
 	private List<Long> enderecoId;
 	
@@ -66,12 +64,7 @@ public class UserForm {
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-	public String getCep() {
-		return cep;
-	}
-	public void setCep(String cep) {
-		this.cep = cep;
-	}
+	
 	public List<Long> getEnderecoId() {
 		return enderecoId;
 	}

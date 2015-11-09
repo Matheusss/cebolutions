@@ -17,7 +17,7 @@
 
           $scope.venda = {
             usuarioId: 1,
-            carroId: 1,
+            carroId: 6,
             vendaCompleta: 1,
             valorTotal: ''
           }
@@ -34,7 +34,7 @@
           }
 
           $scope.update = function (){
-            VendaService.editar(16).then(function(result){
+            VendaService.editar(10).then(function(result){
               alert('kkkk');
               console.log(result.data);
             })

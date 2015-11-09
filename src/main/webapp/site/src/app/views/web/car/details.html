@@ -252,30 +252,42 @@
         </div>
         </div>
         <div class="col-md-4">
-                <h3>{{carro.modelo}}</h3>
-                <p>{{carro.descricao}}</p>
-                <ul>
-                    <li>{{carro.cv}} top horsepower</li>
-                    <li>0-60 mph em {{carro.motor}}s</li>
-                    <li>top speed de 168 mph</li>
-                    <li>Price: ${{carro.preco}}</li>
-                </ul>
+            <h3>{{carro.modelo}}</h3>
+            <p>{{carro.descricao}}</p>
+            <ul>
+                <li>{{carro.cv}} top horsepower</li>
+                <li>0-60 mph em {{carro.motor}}s</li>
+                <li>top speed de 168 mph</li>
+                <li>Price: ${{carro.preco}}</li>
+            </ul>
+            <div class="row">
+                <div class="col-md-6 col-lg-6">
+                <ngcart-addtocart id="{{ carro.id }}" name="{{ carro.modelo }}" price="{{ carro.preco }}" quantity="1" quantity-max="1" data="carro">Add to cart</ngcart-addtocart>
+            </div>
+            <div class="col-md-6 col-lg-6">
+                <button type="button" class="btn btn-primary" ui-sref="web.venda.wizard">Prosseguir</button>
+            </div>
+            </div>
+            <!-- <button type="button" class="btn btn-primary">Add to cart</button> -->
+            
         </div>
-    
-
-
     </div>
-
 
     <div class="row" style="margin-bottom: 30px; padding-bottom: 30px; background-color: ">
         <div class="col-md-12">
             <h4>Escolha a  cor</h4>
                 <div class="col-md-12">
-                <div ng-repeat="cor in cores">
-                    <div id="{{cor.nome}}" style="height: 40px; border-radius: 50%; width: 40px;background-color: {{cor.hexadecimal}};border: 1px  solid #ccc;margin: 5px;position:relative;float: left; cursor:pointer" data-toggle="tooltip" title="{{cor.nome}} | valor: ${{cor.valor}}"></div>
-                </div>
-                
+                <div ng-repeat="cor in cores" class="">
 
+                    <input id="cor" type="radio" name="cor" value="cor" style="height: 40px;position:relative;float: left; margin-left:50px;" ng-click="getCor( cor.id )">
+                    
+                    <div id="{{cor.nome}}" style="height: 40px; border-radius: 50%; width: 40px;background-color: {{cor.hexadecimal}};border: 1px  solid #ccc;margin: 5px;position:relative;float: left; cursor:pointer" data-toggle="tooltip" title="{{cor.nome}} | valor: ${{cor.valor}}"></div>
+
+                    
+                       
+
+                    
+                </div>
                     <!-- <div id="red" ng-click="mudarCor('red')" style="height: 40px; border-radius: 50%; width: 40px;background-color: #bc2b3c;border: 1px  solid #ccc;margin: 5px;position:relative;float: left; cursor:pointer"></div>
                     <div class="tip" style="display: none;">
                         <div>
@@ -327,7 +339,7 @@
         </div>
     </div>
     
-
+<!-- 
      <uib-tabset>
         <uib-tab>
             <tab-heading>
@@ -435,6 +447,6 @@
 
         </uib-tab>
       
-    </uib-tabset> 
+    </uib-tabset>  -->
 </div>
 </div>

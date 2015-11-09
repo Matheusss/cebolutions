@@ -1,0 +1,324 @@
+  <style type="text/css">
+  .wizard-h1  h1 {
+    color: red;
+    text-align: center;  
+  }
+  .input-form, fieldset {
+    margin: 3% 10%;
+  }
+
+  .logradouro-input {
+    width: 102%!important;
+  }
+
+  .enderecos input[type="radio"]{
+    margin-right: 5px;
+    margin-top: 20px;
+  }
+
+  input[type="radio"], [type="checkbox"] {
+    margin-right: 5px;
+    margin-left: 50px;
+  }
+
+  fieldset input[type="text"] {
+    width: 70%;
+    padding-left: 5px;
+  }
+
+  fieldset { 
+    display: block;
+    margin: 5% 8%;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+  }
+
+  </style>
+
+  <div id="page-top wizards">
+    <div class="container menu wizard-h1">
+      <wizard on-finish="finishedWizard()"> 
+
+        <wz-step title="Confirmar carrinho" wz-disabled="{{disabled}}">
+          <h1>Confirme os items em sua lista de compras</h1>
+           <ngcart-cart></ngcart-cart>
+          <div ng-if="carrinho.length > 0">
+            <input type="submit" class="btn btn-primary pull-right" wz-next value="Continuar" />  
+          </div> 
+          <div class="row">
+          </div>
+
+
+    
+            </wz-step>
+
+
+
+
+
+
+        <wz-step title="Confirmar dados" wz-disabled="{{disabled}}">
+          <h1>Confirme seus dados de endereço </h1>      
+          <!-- FIELDSET DADOS USUARIO -->
+          <fieldset>
+          <legend>Usuário:</legend>
+            <div class="row input-form">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+              <div class="row">
+                <label for="">Nome</label>
+              </div>
+              
+              <div class="row">
+                <input class="" ng-model="user.nome" type="text" disabled>
+              </div>
+              
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">    
+              <div class="row">
+                <label for="">Sobrenome</label>
+              </div>
+              
+              <div class="row">
+                <input class="" ng-model="user.sobrenome" type="text" disabled>
+              </div>
+            </div>
+          </div>
+          <div class="row input-form">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+              <div class="row">
+                <label for="">CPF</label>
+              </div>
+              
+              <div class="row">
+                <input class="" ng-model="user.cpf" type="text" disabled>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+              <div class="row">
+                <label for="">Email</label>
+              </div>
+              
+              <div class="row">
+                <input class="" ng-model="user.email" type="text" disabled>
+              </div>
+            </div>
+          </div>
+          </fieldset>
+
+          <!-- FIELDSET ENDEREÇOS JA CADASTRADOS -->
+          <fieldset>
+          <legend>Endereços</legend>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <input type="radio" name="endereco" ng-model="enderecosRadio" value="enderecos_cadastrados">
+              <strong>Selecione um endereço ja cadastrado</strong>
+              <input type="radio" name="endereco" ng-model="enderecosRadio" value="novo_endereco">
+              <strong>Cadastre outro:</strong>
+            </div>
+            <div ng-show="enderecosRadio==='enderecos_cadastrados'">
+    
+              <div ng-repeat="e in user.endereco">
+                <div class="col-sm-12 col-md-12 col-lg-12 enderecos">
+                <input type="radio" name="endereco_selecionado" ng-model="enderecoSelecionado" value="e[$index]"> 
+                  {{e.logradouro}}, {{e.bairro}}, {{e.cidade}}, {{e.estado}}, {{e.cep}}
+                </div>
+              </div>
+            </div>
+
+
+            <div ng-show="enderecosRadio==='novo_endereco'">
+              <div class="row input-form">
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                  <div class="row">
+                    <label for="">CEP</label>
+                  </div>
+                  
+                  <div class="row">
+                    <input class="" ng-model="endereco.cep" type="text">
+                  </div>
+                </div>
+                </div>
+                <div class="row input-form">
+                <div class="col-sm-10 col-md-10 col-lg-10 ">
+                  <div class="row ">
+                    <label for="" >Logradouro</label>
+                  </div>
+                  
+                  <div class="row">
+                    <input class="logradouro-input" ng-model="endereco.logradouro" type="text">
+                  </div>
+                </div>
+              </div>
+              <div class="row input-form">
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                  <div class="row">
+                    <label for="">Cidade</label>
+                  </div>
+                  
+                  <div class="row">
+                    <input class="" ng-model="endereco.cidade" type="text">
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                  <div class="row">
+                    <label for="">Estado</label>
+                  </div>
+                  
+                  <div class="row">
+                    <input class="" ng-model="endereco.estado" type="text">
+                  </div>
+                </div>
+              </div>
+              <div class="row input-form">
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                  <div class="row">
+                    <label for="">Bairro</label>
+                  </div>
+                  
+                  <div class="row">
+                    <input class="" ng-model="endereco.bairro" type="text">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <input type="submit" class="btn btn-primary pull-right" wz-next value="Continuar" />
+           </fieldset> 
+        </wz-step>
+
+
+
+
+        <wz-step title="Pagamento" wz-disabled="{{disabled}}">
+          <h1>Insira os dados para o pagamento</h1>
+          <div class="row input-form">
+            <div class="col-md-4 col-lg-4">
+              <div class="row input-form">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                  <div class="row">
+                    <input type="radio" name="cartao" ng-model="cartaoRadio" style="margin-left:0!important; margin-bottom: 40px;" checked>
+                    <strong>Cartão de crédito</strong>
+                  </div>  
+                </div>
+              </div>
+              <div class="row input-form" style="margin-bottom:30px!important;">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                  <div class="row">
+                    <label for="">Numero do cartão</label>
+                  </div>
+                  
+                  <div class="row">
+                    <input class="" ng-model="user.numeroCartao" type="text" >
+                  </div>
+                  
+                </div>
+              </div>
+              <div class="row input-form" style="margin-bottom:30px!important;">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                  <div class="row">
+                    <label for="">Data do cartão</label>
+                  </div>
+                  
+                  <div class="row ">
+                    <input class="" ng-model="user.dtCartao" type="text" >
+                  </div>
+                </div>   
+              </div>
+              <div class="row input-form" style="margin-bottom:30px!important;">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                  <div class="row">
+                    <label for="">Numero de segurança</label>
+                  </div>
+                  
+                  <div class="row">
+                    <input class="" ng-model="user.numeroSeguranca" type="text" >
+                  </div>
+                </div>   
+              </div>
+            </div>
+            <div class="col-md-8 col-lg-8">
+              <div class="row">
+              Lorem ipsum dolor sit amet, ne eos suas atqui scripta. Error philosophia vim ex. Id mel duis intellegam, nulla simul utinam te quo. Eum rationibus instructior te, ea iriure mentitum sed. Eum id ignota ridens possim, vis clita admodum interesset id.
+
+              Ius at sonet volumus detraxit. Meis similique percipitur no eam, viris audire cu cum, falli philosophia vis no. Sea ad solet libris, et quo libris philosophia. Verterem praesent ei vim, sit aperiri theophrastus no. Quo ne habeo principes definitiones, nam ad elit audire instructior. Ei tollit accumsan placerat vis.
+
+              Debet mentitum ad usu, usu et cibo partem bonorum, dicunt vituperata inciderint eu sea. In albucius petentium has, ut elitr vitae usu. Ius et falli legendos, ex corrumpit dignissim sit, et nec odio dictas adipiscing. Vis te dolor noluisse suscipiantur, nobis nostrum definitiones ius te, est fastidii antiopam id. Qui facilisi pertinax laboramus id. Dictas verear lucilius per id, vel justo accommodare te, laboramus theophrastus an vel.
+              </div>
+              <div class="row pull-right">
+                <input type="checkbox" name="agreed" ng-model="agreed" style="margin-top:30px;"> Eu concordo com os termos!
+              </div>
+
+            </div>
+
+          </div>
+          <div class="row input-form">
+            <div ng-if="agreed">
+              <input type="submit" ng-click="createCarroPersonalizado()"  class="btn btn-primary pull-right" wz-next value="Continuar" />  
+            </div>
+            
+          </div>
+        </wz-step>
+
+        <wz-step title="Confirmar compra" >
+          <h1>Finalizar compra!</h1>
+          <div class="input-form">
+          </br>
+            <h4>{{user.nome}} {{user.sobrenome}}</h4></br>
+            <h4>{{user.email}}</h4></br>
+            <h4>{{user.cpf}}</h4></br>
+            <h4>{{formattedEndereco}}</h4></br>
+          </div>
+
+          <div class="row input-form">
+          <div class="table-responsive col-lg-12" >
+
+              <table class="table">
+
+                  <thead>
+                  <tr>
+                      <th></th>
+                      <th>Quantidade</th>
+                      <th>Preço</th>
+                      <th>valor total</th>
+                  </tr>
+                  </thead>
+                  <tfoot>
+                  <tr ng-show="ngCart.getTax()">
+                      <td></td>
+                      <td></td>
+                      <td>Tax ({{ ngCart.getTaxRate() }}%):</td>
+                      <td>{{ ngCart.getTax() | currency }}</td>
+                  </tr>
+                  <tr ng-show="ngCart.getShipping()">
+                      <td></td>
+                      <td></td>
+                      <td>Shipping:</td>
+                      <td>{{ ngCart.getShipping() | currency }}</td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td></td>
+                      <td>Total:</td>
+                      <td>{{ venda.valorTotal | currency }}</td>
+                  </tr>
+                  </tfoot>
+                  <tbody>
+                  <tr ng-repeat="item in cart.items track by $index">
+
+                      <td>{{item._data.marca.nome}} {{ item.getName() }}</td>
+                      <td>
+                          {{ item.getQuantity() | number }}&nbsp;&nbsp;</td>
+                      <td>{{ item.getPrice() | currency}}</td>
+                      <td>{{ item.getTotal() | currency }}</td>
+                  </tr>
+                  </tbody>
+              </table>
+          </div>
+</div>
+          <button type="submit" class="btn btn-primary pull-right" ng-click="finalizarVenda()" value="Finalizar"> Finalizar </button>
+          
+        </wz-step>
+
+      </wizard>
+    </div>
+  </div>

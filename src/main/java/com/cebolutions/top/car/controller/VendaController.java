@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
@@ -84,21 +85,32 @@ public class VendaController {
 	public VendaDTO create(@RequestBody VendaForm form){
 		
 		Venda venda = new Venda();
+		User user = userRepository.findOne(form.getUsuarioId());
 		CarroVenda carroPersonalizado = carroVendaRepository.findOne(form.getCarroId());
-		Carro carro = carroRepository.findOne(carroPersonalizado.getId());
+		Carro carro = carroRepository.findOne(carroPersonalizado.getCarro().getId());
 		Cor cor = corRepository.findOne(carroPersonalizado.getCor().getId());
 		
+		
 		venda.setDate(LocalDate.now());
-		venda.setCarro(carroVendaRepository.findOne(form.getCarroId()));
-		venda.setUsuario(userRepository.findOne(form.getUsuarioId()));
+		venda.setDataVenda(LocalDateTime.now());
+		venda.setCarro(carroPersonalizado);
+		venda.setUsuario(user);
 		venda.setValorTotal(service.valorVendaTotal(carroPersonalizado.getId(), cor.getId()));
-		venda.setVendaCompleta(false);
 		
-		if(carro.getQuantidade() > 2){
-			carro.setQuantidade(carro.getQuantidade() - 1);
+		
+		/*if(user.getAprovado()){
+			if(carro.getQuantidade() > 2){
+				carro.setQuantidade(carro.getQuantidade() - 1);
+				venda.setVendaCompleta(true);
+				venda = repository.save(venda);
+			}
+		} if(!user.getAprovado()) {
+			venda.setVendaCompleta(false);
 			venda = repository.save(venda);
-		}
-		
+		} else {
+			repository.delete(venda.getId());
+			carroVendaRepository.delete(venda.getCarro().getId());
+		}*/
 		venda = repository.save(venda);
 		return new VendaDTO(venda);
 	}

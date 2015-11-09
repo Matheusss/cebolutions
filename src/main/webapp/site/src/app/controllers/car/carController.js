@@ -3,8 +3,45 @@
 
     angular.module('cebolutions.controllers')
     .controller('CarController', [
-        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'Feedback', 'CarService', '$stateParams', 'carro', 'cores', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, Feedback, CarService, $stateParams, carro, cores) {
+        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'Feedback', 'CarService', '$stateParams', 'carro', 'cores', 'CorService', 'ngCart', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, Feedback, CarService, $stateParams, carro, cores, CorService, ngCart) {
 
+
+        //Carrinho!!!!!
+
+        $scope.color = cores[1];
+        
+        $scope.getCor = function(id){
+
+            CorService.recuperar(id).then(function(result){
+            $scope.color = result.data;    
+             console.log($scope.color.id)
+             console.log(ngCart.getItems())
+             if(ngCart.getItems().length == 0){
+             ngCart.addItem( $scope.color.id,  'color',  $scope.color.valor, 1,  $scope.color);   
+             }
+             
+        })
+
+
+        }
+
+            $scope.$watch ('color', function(newVal, oldVal){
+                ngCart.removeItemById(oldVal.id);
+                
+
+                if (newVal && oldVal && newVal != oldVal){
+                     
+                    ngCart.addItem(newVal.id, newVal.nome, newVal.valor, 1, newVal);
+                    ngCart.removeItemById(oldVal.id);
+
+                    console.log('novo valooooor', newVal);
+                    console.log('velhoooooo', oldVal);
+                }
+            })
+
+
+
+        //Resto
         $scope.carro = carro;
         $scope.cores = cores;
         $scope.marcaNome = $stateParams.marcaNome;

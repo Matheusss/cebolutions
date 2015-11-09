@@ -37,13 +37,13 @@ public class CarroVendaController {
 	@Transactional
 	@RequestMapping(method=POST)
 	@ResponseStatus(value=HttpStatus.CREATED)
-	public CarroVendaDTO create(@RequestParam("id") Long id, @RequestBody CarroVendaForm form){
+	public CarroVendaDTO create(@RequestBody CarroVendaForm form){
 		
 		CarroVenda carroVenda = new CarroVenda();
-		Carro carro = carroRepository.findOne(id);
+		
 //		List<Cor> cor = (List<Cor>) corRepository.findAll();
 		
-		carroVenda.setCarro(carro);
+		carroVenda.setCarro(carroRepository.findOne(form.getCarroId()));
 		carroVenda.setCor(corRepository.findOne(form.getCorId()));
 		
 /*		if(carro.getCor().isCorDefault()){

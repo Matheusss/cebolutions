@@ -36,9 +36,6 @@ public class User extends AbstractEntity {
 	
 	@Column(name="DT_NASCIMENTO")
 	private Date dataNascimento;
-	
-	@Column(name="CEP")
-	private String cep;
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name="ENDERECO_USUARIO", joinColumns = @JoinColumn(name="USER_ID"), inverseJoinColumns = @JoinColumn(name="ENDERECO_ID"))
@@ -103,14 +100,6 @@ public class User extends AbstractEntity {
 
 	public void setCnh(String cnh) {
 		this.cnh = cnh;
-	}
-
-	public String getCep() {
-		return cep;
-	}
-
-	public void setCep(String cep) {
-		this.cep = cep;
 	}
 
 	public Date getDataNascimento() {

@@ -14,6 +14,8 @@ public class EnderecoDTO {
 	
 	private String logradouro;
 	
+	private String cep;
+	
 	public Long getId() {
 		return id;
 	}
@@ -24,6 +26,7 @@ public class EnderecoDTO {
 		this.cidade = endereco.getCidade();
 		this.bairro = endereco.getBairro();
 		this.logradouro = endereco.getLogradouro();
+		this.cep = endereco.getCep();
 	}
 
 	public void setId(Long id) {
@@ -60,6 +63,14 @@ public class EnderecoDTO {
 
 	public void setLogradouro(String logradouro) {
 		this.logradouro = logradouro;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 
 }

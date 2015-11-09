@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import com.cebolutions.top.car.entity.Carro;
 import com.cebolutions.top.car.entity.Marca;
 
 public interface MarcaRepository extends CrudRepository<Marca, Long> {

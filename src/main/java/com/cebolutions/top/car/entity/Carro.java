@@ -57,7 +57,7 @@ public class Carro extends AbstractEntity {
 	
 	//0 - 60mph
 	@Column(name="MOTOR")
-	private Long motor;
+	private Double motor;
 	
 	@Column(name="TOP_SPEED")
 	private Long topSpeed;
@@ -134,11 +134,11 @@ public class Carro extends AbstractEntity {
 		this.topSpeed = topSpeed;
 	}
 
-	public Long getMotor() {
+	public Double getMotor() {
 		return motor;
 	}
 
-	public void setMotor(Long motor) {
+	public void setMotor(Double motor) {
 		this.motor = motor;
 	}
 
