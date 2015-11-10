@@ -44,10 +44,11 @@
 
             //objeto venda
             $scope.venda = {
-                usuarioId: 1,
-                carroId: '',
-                valorTotal: ngCart.totalCost(),
-                vendaCompleta: false
+                usuarioId           : 1,
+                carroId             : '',
+                valorTotal          : ngCart.totalCost(),
+                enderecoEntregaId   : 1,
+                vendaCompleta       : false
 
             }
 
@@ -89,7 +90,11 @@
 
             //CRIA A VENDA
             $scope.finalizarVenda = function(){
-                $scope.vendaCompleta = true;
+                
+                console.log($scope.venda.vendaCompleta);
+                $scope.venda.vendaCompleta = true;
+                console.log($scope.venda.valorTotal);
+                console.log($scope.venda.vendaCompleta);
                 VendaService.create($scope.venda).then(function(result){
                     ngCart.removeItem($scope.carrinho[0]);
                     ngCart.removeItem($scope.carrinho[1]);
