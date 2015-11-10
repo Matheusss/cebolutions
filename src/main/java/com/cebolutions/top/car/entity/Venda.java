@@ -19,7 +19,6 @@ public class Venda extends AbstractEntity{
 	@Column(name="DT_VENDA")
 	private LocalDateTime dataVenda;
 	
-	
 	@Column(name="DATE_VENDA")
 	private LocalDate date;
 	
@@ -33,6 +32,10 @@ public class Venda extends AbstractEntity{
 	@ManyToOne
 	@JoinColumn(name="CARRO_ID")
 	private CarroVenda carro;
+	
+	@ManyToOne
+	@JoinColumn(name="ENDERECO_ENTREGA")
+	private Endereco enderecoEntrega;
 	
 	@Column(name="VENDA_COMPLETA")
 	private Boolean vendaCompleta;
@@ -84,6 +87,14 @@ public class Venda extends AbstractEntity{
 
 	public void setDataVenda(LocalDateTime dataVenda) {
 		this.dataVenda = dataVenda;
+	}
+
+	public Endereco getEnderecoEntrega() {
+		return enderecoEntrega;
+	}
+
+	public void setEnderecoEntrega(Endereco enderecoEntrega) {
+		this.enderecoEntrega = enderecoEntrega;
 	}
 
 

@@ -33,6 +33,7 @@ import com.cebolutions.top.car.form.VendaForm;
 import com.cebolutions.top.car.repository.CarroRepository;
 import com.cebolutions.top.car.repository.CarroVendaRepository;
 import com.cebolutions.top.car.repository.CorRepository;
+import com.cebolutions.top.car.repository.EnderecoRepository;
 import com.cebolutions.top.car.repository.UserRepository;
 import com.cebolutions.top.car.repository.VendaRepository;
 import com.cebolutions.top.car.service.VendaService;
@@ -52,6 +53,9 @@ public class VendaController {
 	
 	@Autowired
 	private CorRepository corRepository;
+	
+	@Autowired
+	private EnderecoRepository enderecoRepository;
 	
 	@Autowired
 	private CarroRepository carroRepository;
@@ -95,7 +99,10 @@ public class VendaController {
 		venda.setDataVenda(LocalDateTime.now());
 		venda.setCarro(carroPersonalizado);
 		venda.setUsuario(user);
-		venda.setValorTotal(service.valorVendaTotal(carroPersonalizado.getId(), cor.getId()));
+		venda.setEnderecoEntrega(enderecoRepository.findOne(form.getEnderecoEntregaId()));
+		venda.setValorTotal(form.getValorTotal());
+		venda.setVendaCompleta(form.getVendaCompleta());
+		//venda.setValorTotal(service.valorVendaTotal(carroPersonalizado.getId(), cor.getId()));
 		
 		
 		/*if(user.getAprovado()){

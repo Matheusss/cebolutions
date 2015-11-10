@@ -4,6 +4,7 @@ package com.cebolutions.top.car.dto;
 import org.joda.time.LocalDate;
 
 import com.cebolutions.top.car.entity.CarroVenda;
+import com.cebolutions.top.car.entity.Endereco;
 import com.cebolutions.top.car.entity.User;
 import com.cebolutions.top.car.entity.Venda;
 import com.cebolutions.top.car.json.LocalDateJsonSerializer;
@@ -23,6 +24,8 @@ public class VendaDTO {
 	private CarroVenda carro;
 	
 	private Boolean vendaCompleta;
+	
+	private Endereco enderecoEntrega;
 
 	public VendaDTO(Venda venda){
 		this.id = venda.getId();
@@ -31,6 +34,7 @@ public class VendaDTO {
 		this.usuario = venda.getUsuario();
 		this.carro = venda.getCarro();
 		this.vendaCompleta = venda.getVendaCompleta();
+		this.enderecoEntrega = venda.getEnderecoEntrega();
 		
 	}
 
@@ -80,6 +84,14 @@ public class VendaDTO {
 
 	public void setVendaCompleta(Boolean vendaCompleta) {
 		this.vendaCompleta = vendaCompleta;
+	}
+
+	public Endereco getEnderecoEntrega() {
+		return enderecoEntrega;
+	}
+
+	public void setEnderecoEntrega(Endereco enderecoEntrega) {
+		this.enderecoEntrega = enderecoEntrega;
 	}
 	
 }

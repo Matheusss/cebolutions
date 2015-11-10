@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -42,9 +41,13 @@ public class CarroVendaController {
 		CarroVenda carroVenda = new CarroVenda();
 		
 //		List<Cor> cor = (List<Cor>) corRepository.findAll();
+		Carro carro = carroRepository.findOne(form.getCarroId());
+		carroVenda.setCarro(carroRepository.findOne(carro.getId()));
 		
-		carroVenda.setCarro(carroRepository.findOne(form.getCarroId()));
-		carroVenda.setCor(corRepository.findOne(form.getCorId()));
+		if (form.getCorId() != null) {
+			carroVenda.setCor(corRepository.findOne(form.getCorId()));
+		} else
+			carroVenda.setCor(carro.getCor());
 		
 /*		if(carro.getCor().isCorDefault()){
 			carroVenda.setCor(carro.getCor());

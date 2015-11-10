@@ -1,7 +1,6 @@
 package com.cebolutions.top.car.form;
 
 import org.joda.time.LocalDate;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import com.cebolutions.top.car.json.LocalDateJsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -15,6 +14,8 @@ public class VendaForm {
 	private Double valorTotal;
 	
 	private Boolean vendaCompleta;
+	
+	private Long enderecoEntregaId;
 	
 	@JsonDeserialize(using = LocalDateJsonDeserializer.class)
 	private LocalDate data;
@@ -57,5 +58,13 @@ public class VendaForm {
 
 	public void setData(LocalDate data) {
 		this.data = data;
+	}
+
+	public Long getEnderecoEntregaId() {
+		return enderecoEntregaId;
+	}
+
+	public void setEnderecoEntregaId(Long enderecoentregaId) {
+		this.enderecoEntregaId = enderecoentregaId;
 	}
 }

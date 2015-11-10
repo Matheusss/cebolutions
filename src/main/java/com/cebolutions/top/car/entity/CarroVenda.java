@@ -4,11 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="CARRO_VENDA")
 public class CarroVenda extends AbstractEntity{
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="CARRO_ID")
 	private Carro carro;
