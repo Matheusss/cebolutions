@@ -262,7 +262,7 @@
             </ul>
             <div class="row">
                 <div class="col-md-6 col-lg-6">
-                <ngcart-addtocart id="{{ carro.id }}" name="{{ carro.modelo }}" price="{{ carro.preco }}" quantity="1" quantity-max="1" data="carro">Add to cart</ngcart-addtocart>
+                <ngcart-addtocart id="{{ carro.id }}" name="{{carro.marca.nome}} {{ carro.modelo }}" price="{{ carro.preco }}" quantity="1" quantity-max="1" data="carro">Add to cart</ngcart-addtocart>
             </div>
             <div class="col-md-6 col-lg-6">
                 <button type="button" class="btn btn-primary" ui-sref="web.venda.wizard">Prosseguir</button>

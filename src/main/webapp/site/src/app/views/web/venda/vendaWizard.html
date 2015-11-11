@@ -111,23 +111,23 @@
           <fieldset>
           <legend>Endereços</legend>
             <div class="col-sm-12 col-md-12 col-lg-12">
-              <input type="radio" name="endereco" ng-model="enderecosRadio" value="enderecos_cadastrados">
+              <input type="radio" ng-model="enderecosRadio" value="enderecosCadastrados" >
               <strong>Selecione um endereço ja cadastrado</strong>
-              <input type="radio" name="endereco" ng-model="enderecosRadio" value="novo_endereco">
+              <input type="radio" ng-model="enderecosRadio" value="novoEndereco">
               <strong>Cadastre outro:</strong>
             </div>
-            <div ng-show="enderecosRadio==='enderecos_cadastrados'">
+            <div ng-show="enderecosRadio === 'enderecosCadastrados'">
     
               <div ng-repeat="e in user.endereco">
                 <div class="col-sm-12 col-md-12 col-lg-12 enderecos">
-                <input type="radio" name="endereco_selecionado" ng-model="enderecoSelecionado" value="e[$index]"> 
+                <input type="radio" name="endereco_selecionado" ng-model="enderecoEntregaId" value="e" ng-click="getEndereco( e.id )"> 
                   {{e.logradouro}}, {{e.bairro}}, {{e.cidade}}, {{e.estado}}, {{e.cep}}
                 </div>
               </div>
             </div>
 
 
-            <div ng-show="enderecosRadio==='novo_endereco'">
+            <div ng-show="enderecosRadio === 'novoEndereco'">
               <div class="row input-form">
                 <div class="col-sm-3 col-md-3 col-lg-3">
                   <div class="row">
@@ -180,6 +180,7 @@
                     <input class="" ng-model="endereco.bairro" type="text">
                   </div>
                 </div>
+                <button type="button" class="btn btn-primary pull-rigth" ng-click="createEndereco()">Cadastrar endereço</button>
               </div>
             </div>
             <input type="submit" class="btn btn-primary pull-right" wz-next value="Continuar" />
@@ -190,74 +191,80 @@
 
 
         <wz-step title="Pagamento" wz-disabled="{{disabled}}">
+          <form name="form" class="modal-form" novalidate>
           <h1>Insira os dados para o pagamento</h1>
-          <div class="row input-form">
-            <div class="col-md-4 col-lg-4">
-              <div class="row input-form">
-                <div class="col-sm-12 col-md-12 col-lg-12">
-                  <div class="row">
-                    <input type="radio" name="cartao" ng-model="cartaoRadio" style="margin-left:0!important; margin-bottom: 40px;" checked>
-                    <strong>Cartão de crédito</strong>
-                  </div>  
+            <div class="row input-form">
+              <div class="col-md-4 col-lg-4">
+                <div class="row input-form">
+                  <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="row">
+                      <input type="radio" name="cartao" ng-model="cartaoRadio" style="margin-left:0!important; margin-bottom: 40px;" checked>
+                      <strong>Cartão de crédito</strong>
+                    </div>  
+                  </div>
+                </div>
+                <div class="row input-form" style="margin-bottom:30px!important;">
+                  <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="row">
+                      <label for="">Numero do cartão</label>
+                    </div>
+                    
+                    <div class="row">
+                      <input class="" ng-model="user.numeroCartao" type="number" required>
+                    </div>
+                    
+                  </div>
+                </div>
+                <div class="row input-form" style="margin-bottom:30px!important;">
+                  <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="row">
+                      <label for="">Data do cartão</label>
+                    </div>
+                    
+                    <div class="row ">
+                      <input class="" ng-model="user.dtCartao" type="date" required>
+                    </div>
+                  </div>   
+                </div>
+                <div class="row input-form" style="margin-bottom:30px!important;">
+                  <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="row">
+                      <label for="">Numero de segurança</label>
+                    </div>
+                    
+                    <div class="row controls">
+                      <input class="" ng-model="user.numeroSeguranca" type="text" ng-minlength="3" maxlength="3" ng-maxlength="3" required>
+
+                    </div>
+                  </div>   
                 </div>
               </div>
-              <div class="row input-form" style="margin-bottom:30px!important;">
-                <div class="col-sm-12 col-md-12 col-lg-12">
-                  <div class="row">
-                    <label for="">Numero do cartão</label>
-                  </div>
-                  
-                  <div class="row">
-                    <input class="" ng-model="user.numeroCartao" type="text" >
-                  </div>
-                  
+              <div class="col-md-8 col-lg-8">
+                <div class="row">
+                Lorem ipsum dolor sit amet, ne eos suas atqui scripta. Error philosophia vim ex. Id mel duis intellegam, nulla simul utinam te quo. Eum rationibus instructior te, ea iriure mentitum sed. Eum id ignota ridens possim, vis clita admodum interesset id.
+
+                Ius at sonet volumus detraxit. Meis similique percipitur no eam, viris audire cu cum, falli philosophia vis no. Sea ad solet libris, et quo libris philosophia. Verterem praesent ei vim, sit aperiri theophrastus no. Quo ne habeo principes definitiones, nam ad elit audire instructior. Ei tollit accumsan placerat vis.
+
+                Debet mentitum ad usu, usu et cibo partem bonorum, dicunt vituperata inciderint eu sea. In albucius petentium has, ut elitr vitae usu. Ius et falli legendos, ex corrumpit dignissim sit, et nec odio dictas adipiscing. Vis te dolor noluisse suscipiantur, nobis nostrum definitiones ius te, est fastidii antiopam id. Qui facilisi pertinax laboramus id. Dictas verear lucilius per id, vel justo accommodare te, laboramus theophrastus an vel.
                 </div>
-              </div>
-              <div class="row input-form" style="margin-bottom:30px!important;">
-                <div class="col-sm-12 col-md-12 col-lg-12">
-                  <div class="row">
-                    <label for="">Data do cartão</label>
-                  </div>
-                  
-                  <div class="row ">
-                    <input class="" ng-model="user.dtCartao" type="text" >
-                  </div>
-                </div>   
-              </div>
-              <div class="row input-form" style="margin-bottom:30px!important;">
-                <div class="col-sm-12 col-md-12 col-lg-12">
-                  <div class="row">
-                    <label for="">Numero de segurança</label>
-                  </div>
-                  
-                  <div class="row">
-                    <input class="" ng-model="user.numeroSeguranca" type="text" >
-                  </div>
-                </div>   
-              </div>
-            </div>
-            <div class="col-md-8 col-lg-8">
-              <div class="row">
-              Lorem ipsum dolor sit amet, ne eos suas atqui scripta. Error philosophia vim ex. Id mel duis intellegam, nulla simul utinam te quo. Eum rationibus instructior te, ea iriure mentitum sed. Eum id ignota ridens possim, vis clita admodum interesset id.
+                <div class="row pull-right">
+                  <input type="checkbox" name="agreed" ng-model="agreed" style="margin-top:30px;"> Eu concordo com os termos!
+                </div>
 
-              Ius at sonet volumus detraxit. Meis similique percipitur no eam, viris audire cu cum, falli philosophia vis no. Sea ad solet libris, et quo libris philosophia. Verterem praesent ei vim, sit aperiri theophrastus no. Quo ne habeo principes definitiones, nam ad elit audire instructior. Ei tollit accumsan placerat vis.
-
-              Debet mentitum ad usu, usu et cibo partem bonorum, dicunt vituperata inciderint eu sea. In albucius petentium has, ut elitr vitae usu. Ius et falli legendos, ex corrumpit dignissim sit, et nec odio dictas adipiscing. Vis te dolor noluisse suscipiantur, nobis nostrum definitiones ius te, est fastidii antiopam id. Qui facilisi pertinax laboramus id. Dictas verear lucilius per id, vel justo accommodare te, laboramus theophrastus an vel.
-              </div>
-              <div class="row pull-right">
-                <input type="checkbox" name="agreed" ng-model="agreed" style="margin-top:30px;"> Eu concordo com os termos!
               </div>
 
             </div>
-
-          </div>
-          <div class="row input-form">
-            <div ng-if="agreed">
-              <input type="submit" ng-click="createCarroPersonalizado()"  class="btn btn-primary pull-right" wz-next value="Continuar" />  
+            <div class="row input-form">
+              <div ng-if="agreed">
+                <input type="submit" ng-disabled="form.$invalid" ng-click="createCarroPersonalizado()" class="btn btn-primary pull-right" wz-next value="Continuar" />  
+              </div>
             </div>
-            
-          </div>
+          </form>
+  
+
         </wz-step>
+
+
 
         <wz-step title="Confirmar compra" >
           <h1>Finalizar compra!</h1>

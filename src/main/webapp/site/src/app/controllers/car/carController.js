@@ -7,6 +7,8 @@
 
 
         //Carrinho!!!!!
+        ngCart.setTaxRate(7.5);
+        ngCart.setShipping(192.99);
 
         $scope.color = cores[1];
         
@@ -17,7 +19,7 @@
              console.log($scope.color.id)
              console.log(ngCart.getItems())
              if(ngCart.getItems().length == 0){
-             ngCart.addItem( $scope.color.id,  'color',  $scope.color.valor, 1,  $scope.color);   
+             ngCart.addItem( $scope.color.id,  $scope.color.nome,  $scope.color.valor, 1,  $scope.color);   
              }
              
         })
