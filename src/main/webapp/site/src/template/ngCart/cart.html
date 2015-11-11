@@ -1,6 +1,6 @@
 
-<div class="alert alert-warning" role="alert" ng-show="ngCart.getTotalItems() === 0">
-    Your cart is empty
+<div class="alert alert-warning" role="alert" ng-show="ngCart.getTotalItems() === 0" style="color: #000;">
+    Você não possui items no carrinho!
 </div>
 
 <div class="table-responsive col-lg-12" ng-show="ngCart.getTotalItems() > 0">
@@ -60,5 +60,14 @@
     }
     .ngCart.cart .glyphicon.disabled {
         color:#aaa;
+    }
+
+    table > thead > tr > th {
+        color: #000!important;
+        font-weight: bold!important;
+    }
+
+    table tfoot td {
+        font-weight: bold!important;
     }
 </style>

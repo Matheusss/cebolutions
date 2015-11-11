@@ -48,7 +48,6 @@ angular.module("cebolutions").config(function($httpProvider, $provide) {
         if (verifyRequest(response.config)) {
           removeLoader();
         }
-        console.log('response')
         return response || $q.when(response);
       }
     };
