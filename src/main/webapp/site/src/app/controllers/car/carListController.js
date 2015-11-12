@@ -43,8 +43,7 @@
 
            //Listagem apenas dos veiculos selecionados por marca
            if($scope.uiRouterState.current.name === 'web.car.list'){
-             CarService.findByMarca($stateParams.marcaId).then(function(result){
-              console.log(result.data)
+             $scope.findByMarca = CarService.findByMarca($stateParams.marcaId).then(function(result){
               if(result.data == '' || result.data == []){
                 $scope.cars = [];
                   MarcaService.recuperar($stateParams.marcaId).then(function(result){
@@ -59,7 +58,11 @@
            } 
            //Listagem de todos os veiculos
            else if($scope.uiRouterState.current.name === 'web.car.listAll'){
-            $scope.cars = carros;
+               // $scope.callAtTimeout = function() {
+       // console.log("$scope.callAtTimeout - Timeout occurred");
+        $scope.cars = carros;
+    //}
+           // $timeout( function(){ $scope.callAtTimeout(); }, 3000);
           }
 
 

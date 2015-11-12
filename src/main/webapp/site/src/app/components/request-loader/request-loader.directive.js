@@ -6,12 +6,12 @@ angular.module("cebolutions")
         scope: {},
         replace: true,
         templateUrl: 'request-loader/request-loader.html',
-        link: function(scope, elem) {
+        link: function(scope, element) {
           scope.showElement = function() {
-            return elem.show();
+            return element.show();
           };
           scope.hideElement = function() {
-            return elem.hide();
+            return element.hide();
           };
           scope.$on('requestLoader:show', function() {
             return scope.showElement();
@@ -19,7 +19,7 @@ angular.module("cebolutions")
           scope.$on('requestLoader:hide', function() {
             return scope.hideElement();
           });
-          return elem.hide();
+          return element.hide();
         }
       };
     });

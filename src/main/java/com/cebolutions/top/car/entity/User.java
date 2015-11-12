@@ -42,11 +42,11 @@ public class User extends AbstractEntity {
 	private List<Endereco> endereco = new ArrayList<>(); 
 	
 	//DADOS VENDA
-	@Column(name="NUMERO_CARTAO")
+/*	@Column(name="NUMERO_CARTAO")
 	private Long numeroCartao;
 	
 	@Column(name="DT_CARTAO")
-	private Date dtCartao;
+	private Date dtCartao;*/
 	
 	@Column(name="APROVADO")
 	private Boolean aprovado;
@@ -118,7 +118,7 @@ public class User extends AbstractEntity {
 		this.endereco = endereco;
 	}
 
-	public Long getNumeroCartao() {
+/*	public Long getNumeroCartao() {
 		return numeroCartao;
 	}
 
@@ -132,7 +132,7 @@ public class User extends AbstractEntity {
 
 	public void setDtCartao(Date dtCartao) {
 		this.dtCartao = dtCartao;
-	}
+	}*/
 
 	public Boolean getAprovado() {
 		return aprovado;

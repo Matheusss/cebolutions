@@ -312,7 +312,7 @@
                   <tbody>
                   <tr ng-repeat="item in cart.items track by $index">
 
-                      <td>{{item._data.marca.nome}} {{ item.getName() }}</td>
+                      <td>{{ item.getName() }}</td>
                       <td>
                           {{ item.getQuantity() | number }}&nbsp;&nbsp;</td>
                       <td>{{ item.getPrice() | currency}}</td>

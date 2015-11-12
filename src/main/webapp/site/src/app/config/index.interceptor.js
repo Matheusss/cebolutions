@@ -7,7 +7,7 @@ angular.module("cebolutions").config(function($httpProvider, $provide) {
     requestCount = 0;
     messageDivider = '::';
 
-    verifyRequest = function(config) {
+    var verifyRequest = function(config) {
       var shouldHandle;
       shouldHandle = true;
 
@@ -15,38 +15,37 @@ angular.module("cebolutions").config(function($httpProvider, $provide) {
     };
 
 
-    addLoader = function() {
+    var addLoader = function() {
       $rootScope.$broadcast('requestLoader:show');
       return $rootScope.loading = true;
     };
 
 
-    removeLoader = function() {
+    var removeLoader = function() {
       if (!--requestCount) {
         $rootScope.$broadcast('requestLoader:hide');
         return $rootScope.loading = false;
       }
     };
 
-
     return {
-      request: function(config) {
-          addLoader()
+      'request': function(config) {
+          
+          addLoader();
           //$timeout( 50000);
           requestCount++;
-          //console.log('request', $timeout())
         
         return config;
       },
-      requestError: function(rejection) {
+      'requestError': function(rejection) {
         if (verifyRequest(rejection.config)) {
-          removeLoader();
+         // removeLoader();
         }
         return $q.reject(rejection);
       },
-      response: function(response) {
+      'response': function(response) {
         if (verifyRequest(response.config)) {
-          removeLoader();
+          //removeLoader();
         }
         return response || $q.when(response);
       }

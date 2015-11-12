@@ -16,8 +16,6 @@
 
             CorService.recuperar(id).then(function(result){
             $scope.color = result.data;    
-             console.log($scope.color.id)
-             console.log(ngCart.getItems())
              if(ngCart.getItems().length == 0){
              ngCart.addItem( $scope.color.id,  $scope.color.nome,  $scope.color.valor, 1,  $scope.color);   
              }
@@ -35,9 +33,6 @@
                      
                     ngCart.addItem(newVal.id, newVal.nome, newVal.valor, 1, newVal);
                     ngCart.removeItemById(oldVal.id);
-
-                    console.log('novo valooooor', newVal);
-                    console.log('velhoooooo', oldVal);
                 }
             })
 
@@ -47,7 +42,6 @@
         $scope.carro = carro;
         $scope.cores = cores;
         $scope.marcaNome = $stateParams.marcaNome;
-        console.log(carro)
 
         $scope.myInterval = 0;
         $scope.noWrapSlides = false;

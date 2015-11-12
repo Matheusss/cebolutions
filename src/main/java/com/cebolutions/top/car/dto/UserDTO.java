@@ -26,6 +26,8 @@ public class UserDTO {
 	private Date dataNascimento;
 		
 	private List<EnderecoDTO> enderecos = new ArrayList<EnderecoDTO>();
+	
+	private Boolean aprovado;
 
 	public UserDTO(User user){
 		this.id = user.getId();
@@ -41,6 +43,7 @@ public class UserDTO {
 				this.enderecos.add(new EnderecoDTO(e));
 			}
 		}
+		this.aprovado = user.getAprovado();
 	}
 	
 	
@@ -112,6 +115,16 @@ public class UserDTO {
 
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+
+
+	public Boolean getAprovado() {
+		return aprovado;
+	}
+
+
+	public void setAprovado(Boolean aprovado) {
+		this.aprovado = aprovado;
 	}
 	
 }

@@ -8,14 +8,14 @@ public class UserVendaForm {
 
 	private Long id;
 	
-	private Long numeroCartao;
+/*	private Long numeroCartao;
 	
-	private Date dtCartao;
+	private Date dtCartao;*/
 		
 	public UserVendaForm(User user){
 		this.id = user.getId();
-		this.numeroCartao = user.getNumeroCartao();
-		this.dtCartao = user.getDtCartao();
+/*		this.numeroCartao = user.getNumeroCartao();
+		this.dtCartao = user.getDtCartao();*/
 	}
 
 	public Long getId() {
@@ -26,7 +26,7 @@ public class UserVendaForm {
 		this.id = id;
 	}
 
-	public Long getNumeroCartao() {
+	/*public Long getNumeroCartao() {
 		return numeroCartao;
 	}
 
@@ -40,6 +40,6 @@ public class UserVendaForm {
 
 	public void setDtCartao(Date dtCartao) {
 		this.dtCartao = dtCartao;
-	}
+	}*/
 	
 }

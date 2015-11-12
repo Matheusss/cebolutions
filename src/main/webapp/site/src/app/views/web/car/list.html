@@ -3,10 +3,18 @@
     margin-top: 15px!important;
   }
   </style>
-<div class="loading-dialog" data-loading></div>
+<div cg-busy="{promise:findByMarca, backdrop:false,minDuration:1500, templateUrl:'request-loader/request-loader.html'}">
+<!-- <div ng-if="">
+  <div class=\"request-loader\">
+    <span us-spinner="{lines:9, radius:6, width:3, length: 6, trail: 40}">
+      
+    </span>
+  </div>
+</div> -->
 <!-- <div class="loading-dialog" ng-show="loading"></div>
  -->  <div id="page-top">
     <div class="container">
+
       <div class="row" >
         <div class="col-lg-12">
           <h1 class="page-header">{{marcaNome}}
@@ -26,6 +34,7 @@
          </div>
       </div>
     </div>
+
     <div ng-repeat="c in cars |orderBy:sortKey:reverse|filter:search">
       
             <div class="col-md-6 img-marcas">
@@ -41,3 +50,4 @@
     </div>
     
   </div>
+</div>
