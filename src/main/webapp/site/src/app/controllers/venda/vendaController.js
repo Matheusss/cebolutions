@@ -88,7 +88,7 @@
                 });
 
 
-             //   $scope.disabled = true;
+                $scope.disabled = true;
             }
 
             //CRIA A VENDA

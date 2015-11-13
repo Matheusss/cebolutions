@@ -1,57 +1,48 @@
  <div class="wrapper">
- <div class="main-panel">
- <div class="content">
-            <div class="container-fluid">
-            <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12">
-      <h3 class="text-center" style="color:#c9242c">VENDAS</h3>
-    </div>
-  </div>
+   <div class="main-panel">
+     <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <h3 class="text-center" style="color:#c9242c">VENDAS</h3>
+          </div>
+        </div>
 
+        <div class="row">
+          <perfect-scrollbar class="scroller" wheel-propagation="true" wheel-speed="1" min-scrollbar-length="20">
 
-  <div class="row">
-
-    <div style="margin-top:15px;">
-      <div class="col-sm-12 col-md-12 col-lg-12">
-        <table class="table table-bordered" style="margin: 0 10px 0 0;">
-          <thead>
-            <tr class="headerTable">
-              <th class="th-center"><a href="">CARRO</a></th>
-              <th class="th-center"><a href="">USUARIO</a></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="venda in vendas" ng-mouseover="openPopover($index)">
-              <td align="center">{{venda.carro.carro.marca.nome}} {{venda.carro.carro.modelo}}</td>
-              <td align="center">{{venda.usuario.nome}} {{venda.usuario.sobrenome}}</td>
-              <td align="center">
-                <button class="btn btn-spark" alt="Alterar usuario" title="Alterar usuario" ng-disabled="btnDisabled" >
-                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                </button>
-                <button class="btn btn-spark" alt="Excluir usuario" title="Excluir usuario" ng-disabled="btnDisabled" ng-click="excluirUsuario(venda)">
-                  <span class="glyphicon glyphicon-trash"></span>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          <div >
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <table class="table table-bordered" style="margin: 0 10px 0 0;">
+                <thead>
+                  <tr class="headerTable">
+                    <th class="th-center"><a href="">CARRO</a></th>
+                    <th class="th-center"><a href="">USUARIO</a></th>
+                    <th class="th-center"><a href="">DATA DA VENDA</a></th>
+                    <th class="th-center"><a href="">VALOR DA VENDA</a></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="venda in vendas" ng-mouseover="openPopover($index)">
+                    <td align="center">{{venda.carro.carro.marca.nome}} {{venda.carro.carro.modelo}}</td>
+                    <td align="center">{{venda.usuario.nome}} {{venda.usuario.sobrenome}}</td>
+                    <td align="center">{{venda.dataVenda}}</td>
+                    <td align="center">${{venda.valorTotal}}</td>
+                    <td align="center">
+                      <button class="btn btn-spark" alt="Excluir usuario" title="Excluir usuario" ng-disabled="btnDisabled" ng-click="excluirUsuario(venda)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </perfect-scrollbar>
       </div>
-    </div>
-
+    </div>    
   </div>
-  <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12">
-      <button class="btn btn-spark pull-left" ng-click="criar()">
-        teste
-      </button>
-      <button class="btn btn-spark pull-left" ng-click="update()">
-        teste update
-      </button>
-    </div>
-  </div>
-              </div>    
-        </div>
-        </div>
-        </div>
+</div>
+</div>
 

@@ -49,22 +49,22 @@
     }
 }*/
 
-#red:hover + .tip {
+#vermelho:hover + .tip {
     display: block !important;
 }
-#gray:hover + .tip {
+#cinza:hover + .tip {
     display: block !important;
 }
-#blue:hover + .tip {
+#azul:hover + .tip {
     display: block !important;
 }
-#black:hover + .tip {
+#preto:hover + .tip {
     display: block !important;
 }
-#white:hover + .tip {
+#branco:hover + .tip {
     display: block !important;
 }
-#yellow:hover + .tip {
+#amarelo:hover + .tip {
     display: block !important;
 }
 .tip{
@@ -117,7 +117,7 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background-color: blue;
+    background-color: azul;
     left: -40px;
     margin-top: 1%;
   }
@@ -126,10 +126,10 @@
     left: 0;
     width: 100%;
     height: 40px;
-    background-color: blue;
+    background-color: azul;
     margin-top: 9%;
     text-align: center;
-    color: white;
+    color: branco;
   }
   .resumo:hover {
         right: 0;
@@ -219,33 +219,33 @@
 
     <div ng-if="carro.modelo === 'COUPE'">
 
-            <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'black'">
-                <uib-slide ng-repeat="car in car.black"  active="slide.active">
+            <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'preto'">
+                <uib-slide ng-repeat="car in car.preto"  active="slide.active">
                     <img class="image" ng-src="{{car}}" style="margin:auto;">
                 </uib-slide>
             </uib-carousel>
-            <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'red'">
-                <uib-slide ng-repeat="car in car.red" ng-show="selectedColor == 'red'" active="slide.active">
+            <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'vermelho'">
+                <uib-slide ng-repeat="car in car.vermelho" ng-show="selectedColor == 'vermelho'" active="slide.active">
                     <img ng-src="{{car}}" style="margin:auto;">
                 </uib-slide>
             </uib-carousel>
-            <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'yellow'">
-                <uib-slide ng-repeat="car in car.yellow" ng-show="selectedColor == 'yellow'" active="slide.active">
+            <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'amarelo'">
+                <uib-slide ng-repeat="car in car.amarelo" ng-show="selectedColor == 'amarelo'" active="slide.active">
                     <img ng-src="{{car}}" style="margin:auto;">
                 </uib-slide>
             </uib-carousel>
-            <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'gray'">
-                <uib-slide ng-repeat="car in car.gray" ng-show="selectedColor == 'gray'" active="slide.active">
+            <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'cinza'">
+                <uib-slide ng-repeat="car in car.cinza" ng-show="selectedColor == 'cinza'" active="slide.active">
                     <img ng-src="{{car}}" style="margin:auto;">
                 </uib-slide>
             </uib-carousel>
-            <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'blue'">
-                <uib-slide ng-repeat="car in car.blue" ng-show="selectedColor == 'blue'" active="slide.active">
+            <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'azul'">
+                <uib-slide ng-repeat="car in car.azul" ng-show="selectedColor == 'azul'" active="slide.active">
                     <img ng-src="{{car}}" style="margin:auto;">
                 </uib-slide>
             </uib-carousel>
-            <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'white'">
-                <uib-slide ng-repeat="car in car.white" ng-show="selectedColor == 'white'" active="slide.active">
+            <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'branco'">
+                <uib-slide ng-repeat="car in car.branco" ng-show="selectedColor == 'branco'" active="slide.active">
                     <img ng-src="{{car}}" style="margin:auto;">
                 </uib-slide>
             </uib-carousel>
@@ -279,7 +279,7 @@
                 <div class="col-md-12">
                 <div ng-repeat="cor in cores" class="">
 
-                    <input id="cor" type="radio" name="cor" value="cor" style="height: 40px;position:relative;float: left; margin-left:50px;" ng-click="getCor( cor.id )">
+                    <input id="cor" type="radio" name="cor" value="cor" style="height: 40px;position:relative;float: left; margin-left:50px;" ng-click="getCor( cor.id ); mudarCor( cor.nome )">
                     
                     <div id="{{cor.nome}}" style="height: 40px; border-radius: 50%; width: 40px;background-color: {{cor.hexadecimal}};border: 1px  solid #ccc;margin: 5px;position:relative;float: left; cursor:pointer" data-toggle="tooltip" title="{{cor.nome}} | valor: ${{cor.valor}}"></div>
 
@@ -288,7 +288,7 @@
 
                     
                 </div>
-                    <!-- <div id="red" ng-click="mudarCor('red')" style="height: 40px; border-radius: 50%; width: 40px;background-color: #bc2b3c;border: 1px  solid #ccc;margin: 5px;position:relative;float: left; cursor:pointer"></div>
+                    <!-- <div id="vermelho" ng-click="mudarCor('vermelho')" style="height: 40px; border-radius: 50%; width: 40px;background-color: #bc2b3c;border: 1px  solid #ccc;margin: 5px;position:relative;float: left; cursor:pointer"></div>
                     <div class="tip" style="display: none;">
                         <div>
                             <h5>Vermelho</h5>
@@ -296,7 +296,7 @@
                         </div>
                     </div>
 
-                    <div id="blue" ng-click="mudarCor('blue')"style="height: 40px; border-radius: 50%; width: 40px;background-color: #24316c;border: 1px solid #ccc;margin: 5px;position: relative;float: left;cursor:pointer"></div>
+                    <div id="azul" ng-click="mudarCor('azul')"style="height: 40px; border-radius: 50%; width: 40px;background-color: #24316c;border: 1px solid #ccc;margin: 5px;position: relative;float: left;cursor:pointer"></div>
                     <div class="tip" style="display: none;">
                         <div>
                             <h5>Azul</h5>
@@ -304,7 +304,7 @@
                         </div>
                     </div>
 
-                    <div id="black" ng-click="mudarCor('black')" style="height: 40px; border-radius: 50%; width: 40px;background-color: black;border: 1px solid #ccc;margin: 5px;position: relative;float: left;cursor:pointer"></div>
+                    <div id="preto" ng-click="mudarCor('preto')" style="height: 40px; border-radius: 50%; width: 40px;background-color: preto;border: 1px solid #ccc;margin: 5px;position: relative;float: left;cursor:pointer"></div>
                     <div class="tip" style="display: none;">
                         <div>
                             <h5>Preto</h5>
@@ -312,21 +312,21 @@
                         </div>
                     </div>
 
-                    <div id="yellow" ng-click="mudarCor('yellow')" style="height: 40px; border-radius: 50%; width: 40px;background-color: #c6a624;border: 1px solid #ccc;margin: 5px;position: relative;float: left;cursor:pointer"></div>
+                    <div id="amarelo" ng-click="mudarCor('amarelo')" style="height: 40px; border-radius: 50%; width: 40px;background-color: #c6a624;border: 1px solid #ccc;margin: 5px;position: relative;float: left;cursor:pointer"></div>
                     <div class="tip" style="display: none;">
                         <div>
                             <h5>Amarelo</h5>
                             <p><span> R$1.500,00</span></p>
                         </div>
                     </div>
-                    <div id="gray" ng-click="mudarCor('gray')" style="height: 30px;width: 40px;background-color: #767676;border: 1px solid #ccc;margin: 5px;position: relative;float: left;cursor:pointer"></div>
+                    <div id="cinza" ng-click="mudarCor('cinza')" style="height: 30px;width: 40px;background-color: #767676;border: 1px solid #ccc;margin: 5px;position: relative;float: left;cursor:pointer"></div>
                     <div class="tip" style="display: none;">
                         <div>
                             <h5>Cinza</h5>
                             <p><span> R$1.000,00</span></p>
                         </div>
                     </div>
-                    <div id="white" ng-click="mudarCor('white')" style="height: 40px; width: 40px;background-color: white;border: 1px solid #ccc;margin: 5px;position: relative;float: left;cursor:pointer"></div>
+                    <div id="branco" ng-click="mudarCor('branco')" style="height: 40px; width: 40px;background-color: branco;border: 1px solid #ccc;margin: 5px;position: relative;float: left;cursor:pointer"></div>
                     <div class="tip" style="display: none;">
                         <div>
                             <h5>Branco</h5>
