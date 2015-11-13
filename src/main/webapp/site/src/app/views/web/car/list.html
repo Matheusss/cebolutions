@@ -13,7 +13,7 @@
 </div> -->
 <!-- <div class="loading-dialog" ng-show="loading"></div>
  -->  <div id="page-top">
-    <div class="container">
+    <div class=" col-md-12 col-lg-12">
 
       <div class="row" >
         <div class="col-lg-12">
@@ -37,7 +37,7 @@
 
     <div ng-repeat="c in cars |orderBy:sortKey:reverse|filter:search">
       
-            <div class="col-md-6 img-marcas">
+            <div class="col-md-6 col-lg-6 img-marcas">
                 <a ng-click="viewCar(c, marcaNome)" style="cursor:pointer;">
                     <img ng-src="{{c.imagens[0]}}" height="100%!important" width="100%!important"/>
                 </a>
