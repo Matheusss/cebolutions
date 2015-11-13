@@ -1,6 +1,8 @@
 <style type="text/css">
 
-/*.active.left,
+
+
+.active.left,
     .active.right {
       left: 0;
       opacity: 0 !important;
@@ -11,7 +13,7 @@
     .prev.right {
       opacity: 1 !important;
     }
-  }
+  
 .item {
       opacity: 0 !important;
       -moz-transition: 2s ease-in-out opacity;
@@ -23,12 +25,6 @@
       opacity: 1 !important;
     }
 
-.image{
-    -moz-transition: .6s ease-in-out opacity;
-  -webkit-transition: .6s ease-in-out opacity;
-  -o-transition: .6s ease-in-out opacity;
-  transition: .6s ease-in-out opacity;
-}
 
 @media all and (transform-3d), (-webkit-transform-3d) {
     .carousel-inner > .item.next,
@@ -47,7 +43,42 @@
        -webkit-transform: translate3d(0, 0, 0);
        transform: translate3d(0, 0, 0);
     }
-}*/
+}
+
+.carousel .item {
+    opacity: 1;
+      -webkit-transition: opacity .6s; /*adjust timing here */
+         -moz-transition: opacity .6s;
+           -o-transition: opacity .6s;
+              transition: opacity .6s;
+}
+.carousel-control {
+    background-image: none !important; /* remove background gradients on controls */
+    z-index: 2;
+}
+/* Fade controls with items */
+
+
+
+
+
+
+
+
+
+  #page-top {
+    margin-top: 15px!important;
+  }
+  .resumo{
+    width: 15%;
+    height: 50%;
+    position: fixed;
+    right: -18%;
+    transition: 1s;
+    margin-top: 10%;
+    background-color: #ccc;
+    padding: 15px;
+  }
 
 #vermelho:hover + .tip {
     display: block !important;
@@ -77,41 +108,7 @@
     background-color: #EEEEEE;
     z-index: 100
 }
-.carousel .item {
-    opacity: 1 !important;
-      -webkit-transition: opacity .0.9s; /*adjust timing here */
-         -moz-transition: opacity .0.9s;
-           -o-transition: opacity .0.9s;
-              transition: opacity .0.9s;
-}
-.carousel-control {
-    background-image: none !important; /* remove background gradients on controls */
-}
-/* Fade controls with items */
-.next.left,
-.prev.right {
-    opacity: 1;
-    z-index: 1;
-}
-.active.left,
-.active.right {
-    opacity: 0;
-    z-index: 1;
-}
 
-  #page-top {
-    margin-top: 15px!important;
-  }
-  .resumo{
-    width: 15%;
-    height: 50%;
-    position: fixed;
-    right: -18%;
-    transition: 1s;
-    margin-top: 10%;
-    background-color: #ccc;
-    padding: 15px;
-  }
   #aba{
     position: absolute;
     width: 80px;
