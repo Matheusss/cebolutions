@@ -325,7 +325,7 @@ input:checked + .color span {
 
                     <input id="cor" type="radio" name="cor" value="cor" style="height: 40px;position:relative;float: left; margin-left:50px;" ng-click="getCor( cor.id ); mudarCor( cor.nome )">
                     
-                    <div id="{{cor.nome}}" class="color" style="" data-toggle="tooltip" title="{{cor.nome}} | valor: ${{cor.valor}}">
+                    <div id="{{cor.nome}}" class="color" style="background-color: {{cor.hexadecimal}}" data-toggle="tooltip" title="{{cor.nome}} | valor: ${{cor.valor}}">
                         
                         <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                     </div>
