@@ -44,20 +44,14 @@
         <wz-step title="Confirmar carrinho" wz-disabled="{{disabled}}">
           <h1>Confirme os items em sua lista de compras</h1>
            <ngcart-cart></ngcart-cart>
-          <div ng-if="carrinho.length > 0">
+           <!-- <pre>{{carrinho[1]._data.marca | json}}</pre> -->
+          <div ng-if="carrinho.length > 0 || carrinho[0]._data.marca || carrinho[1]._data.marca">
             <input type="submit" class="btn btn-primary pull-right" wz-next value="Continuar" />  
           </div> 
           <div class="row">
           </div>
 
-
-    
-            </wz-step>
-
-
-
-
-
+        </wz-step>
 
         <wz-step title="Confirmar dados" wz-disabled="{{disabled}}">
           <h1>Confirme seus dados de endereço </h1>      

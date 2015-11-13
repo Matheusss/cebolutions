@@ -1566,7 +1566,7 @@ body > .navbar-collapse[data-color="purple"]:after {
 
 .scroller {
     white-space: pre-line!important;
-    height: 775px!important;
+    height: 475px!important;
     overflow-y: hidden!important;
     position: relative!important;
 }
