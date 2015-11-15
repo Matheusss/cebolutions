@@ -50,7 +50,7 @@
 
             //objeto venda
             $scope.venda = {
-                usuarioId           : 3,
+                usuarioId           : 1,
                 carroId             : '',
                 valorTotal          : ngCart.totalCost(),
                 enderecoEntregaId   : null,

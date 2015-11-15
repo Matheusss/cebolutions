@@ -15,7 +15,9 @@
 
         $scope.tabs = [
           { title:'Dashboard', content:'admin.home' },
-          { title:'Vendas', content:'admin.vendas', disabled: true }
+          { title:'Vendas', content:'admin.vendas', disabled: true },
+          { title:'Carros', content:'admin.carros' },
+
         ];
 
 /*      $scope.$watch('activeTab', function(newVal){

@@ -121,12 +121,6 @@ public class UserController {
 		repository.delete(user);
 		
 		return new UserDTO(user);
-		
-/*		List<User> findAll = new ArrayList<User>();
-		repository.delete(id);
-		findAll = (List<User>) repository.findAll();
-
-		return findAll;*/
 	}
 
 /*	@RequestMapping(value = "/login", method = GET)

@@ -105,20 +105,17 @@ public class VendaController {
 		//venda.setValorTotal(service.valorVendaTotal(carroPersonalizado.getId(), cor.getId()));
 		
 		
-		/*if(user.getAprovado()){
+		if(user.getAprovado() == true){
 			if(carro.getQuantidade() > 2){
 				carro.setQuantidade(carro.getQuantidade() - 1);
-				venda.setVendaCompleta(true);
 				venda = repository.save(venda);
 			}
-		} if(!user.getAprovado()) {
-			venda.setVendaCompleta(false);
+		} else if(user.getAprovado() == false) {
 			venda = repository.save(venda);
 		} else {
 			repository.delete(venda.getId());
 			carroVendaRepository.delete(venda.getCarro().getId());
-		}*/
-		venda = repository.save(venda);
+		}
 		return new VendaDTO(venda);
 	}
 	

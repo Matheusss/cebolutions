@@ -1,0 +1,50 @@
+ <div class="wrapper">
+   <div class="main-panel">
+     <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <h3 class="text-center" style="color:#c9242c">CARROS</h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <perfect-scrollbar class="scroller" wheel-propagation="true" wheel-speed="1" min-scrollbar-length="20">
+
+          <div >
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <table class="table table-bordered" style="margin: 0 10px 0 0;">
+                <thead>
+                  <tr class="headerTable">
+                    <th class="th-center"><a href="">MARCA</a></th>
+                    <th class="th-center"><a href="">MODELO</a></th>
+                    <th class="th-center"><a href="">COR</a></th>
+                    <th class="th-center"><a href="">PREÇO</a></th>
+                    <th class="th-center"><a href="">QUANTIDADE</a></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="carro in carros" ng-mouseover="openPopover($index)">
+                    <td align="center">{{carro.marca.nome}}</td>
+                    <td align="center">{{carro.modelo}}</td>
+                    <td align="center">{{carro.cor.nome}}</td>
+                    <td align="center">${{carro.preco}}</td>
+                    <td align="center">{{carro.quantidade}}</td>
+                    <td align="center">
+                      <button class="btn btn-spark" alt="Excluir usuario" title="Excluir usuario" ng-disabled="btnDisabled" ng-click="excluirUsuario(venda)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </perfect-scrollbar>
+      </div>
+    </div>    
+  </div>
+</div>
+</div>
+

@@ -23,9 +23,6 @@
       });
     }
 
-    $scope.closeModal = function(){
-      $modalInstance.close();
-    }
 
 
     $scope.$on('$destroy', function() {

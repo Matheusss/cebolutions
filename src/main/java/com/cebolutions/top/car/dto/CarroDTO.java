@@ -29,6 +29,8 @@ public class CarroDTO {
 	
 	private Long topSpeed;
 	
+	private Long quantidade;
+	
 	private List<String> imagens = new ArrayList<String>();
 	
 	public CarroDTO(Carro carro){
@@ -42,6 +44,7 @@ public class CarroDTO {
 		this.cv = carro.getCv();
 		this.motor = carro.getMotor();
 		this.topSpeed = carro.getTopSpeed();
+		this.setQuantidade(carro.getQuantidade());
 		
 		if(carro.getImagens() != null){
 			for (String s : carro.getImagens()) {
@@ -136,5 +139,13 @@ public class CarroDTO {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Long getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(Long quantidade) {
+		this.quantidade = quantidade;
 	}
 }

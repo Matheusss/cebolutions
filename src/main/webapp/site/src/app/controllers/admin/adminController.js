@@ -3,7 +3,7 @@
 
     angular.module('cebolutions.controllers')
     .controller('AdminController', [
-        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'Feedback', 'VendaService', 'CarService', 'cars', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, Feedback, VendaService, CarService, cars) {
+        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'Feedback', 'VendaService', 'CarService', 'cars', 'carros', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, Feedback, VendaService, CarService, cars, carros) {
 
 
 
@@ -12,39 +12,16 @@
           $scope.carsName = [];
           $scope.datass = [];
           $scope.j = [];
+          $scope.carros = carros;
 
-          $scope.vendas = '';
-
-          $scope.venda = {
-            usuarioId: 1,
-            carroId: 6,
-            vendaCompleta: 1,
-            valorTotal: ''
-          }
 
           VendaService.findAll().then(function(result){
             $scope.vendas = result.data;
           })
 
-          $scope.criar = function (venda){
-            VendaService.create($scope.venda).then(function(result){
-              alert('alskdbhaudgauidaiudgasu');
-              console.log(result.data);
-            })
-          }
-
-          $scope.update = function (){
-            VendaService.editar(10).then(function(result){
-              alert('kkkk');
-              console.log(result.data);
-            })
-          }
-
             for (var i = 0; i < $scope.cars.length; i++) {
               $scope.carsName.push(cars[i].modelo);
-              $scope.datass.push(cars[i].numeroVendas);
-              console.log(cars[0].numeroVendas)
-                
+              $scope.datass.push(cars[i].numeroVendas);                
               };
 
 
