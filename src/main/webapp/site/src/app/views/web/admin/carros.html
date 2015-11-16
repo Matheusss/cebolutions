@@ -32,8 +32,11 @@
                     <td align="center">${{carro.preco}}</td>
                     <td align="center">{{carro.quantidade}}</td>
                     <td align="center">
-                      <button class="btn btn-spark" alt="Excluir usuario" title="Excluir usuario" ng-disabled="btnDisabled" ng-click="excluirUsuario(venda)">
-                        <span class="glyphicon glyphicon-trash"></span>
+                      <button class="btn btn-spark" alt="Editar carro" title="Editar carro" ng-disabled="btnDisabled" ng-click="editarCarro(carro.id, carro)" style="font-size: 140%">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                      </button>
+                      <button class="btn btn-spark" alt="Excluir carro" title="Excluir carro" ng-disabled="btnDisabled" ng-click="excluirCarro(carro)" style="font-size: 140%;">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                       </button>
                     </td>
                   </tr>

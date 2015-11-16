@@ -9,14 +9,20 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cebolutions.top.car.dto.CarroDTO;
 import com.cebolutions.top.car.dto.MarcaDTO;
+import com.cebolutions.top.car.dto.UserDTO;
 import com.cebolutions.top.car.entity.Carro;
+import com.cebolutions.top.car.entity.Endereco;
 import com.cebolutions.top.car.entity.Marca;
+import com.cebolutions.top.car.entity.User;
+import com.cebolutions.top.car.form.CarroForm;
+import com.cebolutions.top.car.form.UserForm;
 import com.cebolutions.top.car.repository.CarroRepository;
 import com.cebolutions.top.car.repository.MarcaRepository;
 
@@ -91,6 +97,17 @@ public class CarroController {
 
 		return findAll;
 	}
+	
+	@Transactional
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public CarroDTO update(@PathVariable("id") Long id, @RequestBody CarroForm form) {
+		Carro carro = repository.findOne(id);
+
+		carro.setQuantidade(form.getQuantidade());
+
+		repository.save(carro);
+		return new CarroDTO(carro);
+		}
 	
 
 

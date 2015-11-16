@@ -25,6 +25,23 @@
               };
 
 
+
+              /*EDITAR ESTOQUE*/
+
+              $scope.editarCarro = function(id, carro) {
+                CarService.editar(id, carro).then(function(result){
+                  console.log('teste')
+                })
+              }
+
+
+
+
+
+
+
+
+
 /*            VendaService.getByCar().then(function(result){
                   console.log(result.data);
                   $scope.cars = result.data;
