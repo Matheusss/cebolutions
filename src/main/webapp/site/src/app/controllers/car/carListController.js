@@ -5,7 +5,6 @@
       .controller('CarListController', [
         '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'carros', 'CarService', '$stateParams', 'MarcaService', '$filter', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, carros, CarService, $stateParams, MarcaService, $filter) {
 
-
           $scope.loading = true;
           $scope.cars = [];
 

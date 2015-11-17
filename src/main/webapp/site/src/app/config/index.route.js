@@ -10,22 +10,23 @@
 
       $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
-      $urlRouterProvider.otherwise('/home');
+      $urlRouterProvider.otherwise('/login');
       $stateProvider
 
       .state('web.login', {
         url: '/login',
-        
-        views: {
-          "": {
-            templateUrl: 'app/views/web/user/loginModal.html',
-            controller: 'HeaderController'
-          },
-          "header@web": {
-            templateUrl: 'app/views/web/header.html',
-            controller: 'HeaderController'
-          }
-        }
+
+        onEnter: ['$stateParams', '$state', '$modal', '$resource', function($stateParams, $state, $modal, $$resource) {
+          var uiRouterState = $state.current;
+          $modal.open({
+            templateUrl : 'app/views/web/user/loginModal.html',
+            controller  : 'UserModalController',
+            controllerAs: 'ctrl'
+          }).result.finally(function() {
+            $state.go(uiRouterState);
+        });
+        }]
+
       })
 
       .state('web', {
