@@ -7,6 +7,10 @@
       '$rootScope', '$http', 'urlConfig', function($rootScope, $http, urlConfig) {
 
       return {
+
+
+
+
         findAll: function() {
           return $http({
             url: urlConfig.baseUrl + "/user",
@@ -45,7 +49,19 @@
               "Content-Type": "application/json"
             }
           });
-        }
+        },
+
+        login: function(params){
+          return $http({
+            url       : urlConfig.baseUrl + "/login/authenticate",
+            method    : "POST",
+            data      : $.param(params),
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            }
+          })
+
+        },
       };
     }
   ]);

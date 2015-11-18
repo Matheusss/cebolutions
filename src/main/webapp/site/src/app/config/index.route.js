@@ -15,13 +15,13 @@
 
       .state('web.login', {
         url: '/login',
+        params        : {'marcaNome': null},
 
         onEnter: ['$stateParams', '$state', '$modal', '$resource', function($stateParams, $state, $modal, $$resource) {
-          var uiRouterState = $state.current;
+          var uiRouterState   = $state.current;
           $modal.open({
             templateUrl : 'app/views/web/user/loginModal.html',
             controller  : 'UserModalController',
-            controllerAs: 'ctrl'
           }).result.finally(function() {
             $state.go(uiRouterState);
         });
@@ -294,7 +294,6 @@
         url           : '/:marcaId/list',
         restrict      : true,
         params        : {'marcaId': null},
-
         views: {
           "": {
             templateUrl   : 'app/views/web/car/list.html',

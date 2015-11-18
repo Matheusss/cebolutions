@@ -6,13 +6,25 @@
         '$scope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'UserService', 'Feedback', 'users', function($scope, $location, $timeout, $http, urlConfig, $state, UserService, Feedback, users) {
 
           $scope.users = users;
-          $scope.btnDisabled = false;
 
           // $scope.alterarUser = function(user) {
           //   return $state.go('user.edit', {
           //     'id': user.id
           //   });
           // };
+
+
+
+
+
+
+
+
+
+
+
+
+
 
           $scope.newUser = function() {
             return $state.go('web.user.create');

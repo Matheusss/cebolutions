@@ -239,25 +239,25 @@ textarea {
         <div id="login">   
           <h1>Bem vindo de volta!</h1>
           
-          <form action="/" method="post">
+          <form >
           
             <div class="field-wrap">
             <label>
               Email<span class="req">*</span>
             </label>
-            <input type="email"required autocomplete="off"/>
+            <input type="text" ng-model="us.username"/>
           </div>
           
           <div class="field-wrap">
             <label>
               Senha<span class="req">*</span>
             </label>
-            <input type="password"required autocomplete="off"/>
+            <input type="password" ng-model="us.password"/>
           </div>
           
           <p class="forgot"><a href="#">Esqueci minha senha</a></p>
           
-          <button class="button button-block">Login</button>
+          <button class="button button-block" ng-click="login()">Login</button>
           
           </form>
 
