@@ -10,4 +10,7 @@ import com.cebolutions.top.car.entity.Marca;
 public interface CarroRepository extends CrudRepository<Carro, Long> {
 
 	List<Carro> findByMarca(Marca marca);
+	
+	
+	List<Carro> findByMarcaPrincipalFalse(Marca marcas);
 }

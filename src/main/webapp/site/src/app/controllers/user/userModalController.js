@@ -14,6 +14,7 @@
           UserService.login($scope.us).then(function(result){
             $state.go('web.home')
             alert('Login realizado com sucesso!')
+            $scope.closeModal();
           })
         }
 

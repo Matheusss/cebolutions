@@ -3,14 +3,14 @@
 
       angular.module('cebolutions.controllers')
       .controller('CarListController', [
-        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'carros', 'CarService', '$stateParams', 'MarcaService', '$filter', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, carros, CarService, $stateParams, MarcaService, $filter) {
+        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'carros', 'CarService', '$stateParams', 'MarcaService', '$filter', 'marcasRestantes', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, carros, CarService, $stateParams, MarcaService, $filter, marcasRestantes) {
 
           $scope.loading = true;
           $scope.cars = [];
 
-           // $scope.marcasRestantes = marcasRestantes;
-           $scope.uiRouterState = $state;
-           $scope.arrayCarros = [];
+          $scope.marcasRestantes = marcasRestantes;
+          $scope.uiRouterState = $state;
+          $scope.arrayCarros = [];
 
            // Retorna todas as marcas e preenche o dropdown
            MarcaService.findAll().then(function(result){
@@ -22,7 +22,7 @@
 
            //Watch na marca selecionada e muda o conteudo de acordo
            $scope.$watch('selectedMarca', function(newVal, oldVal){
-            if(newVal && oldVal && newVal != oldVal){
+            if(newVal && newVal != oldVal){
              CarService.findByMarca(newVal.id).then(function(result){
               if(result.data == '' || result.data == []){
                 $scope.cars = [];
@@ -56,13 +56,14 @@
             }) 
            } 
            //Listagem de todos os veiculos
-           else if($scope.uiRouterState.current.name === 'web.car.listAll'){
-               // $scope.callAtTimeout = function() {
-       // console.log("$scope.callAtTimeout - Timeout occurred");
-        $scope.cars = carros;
-    //}
-           // $timeout( function(){ $scope.callAtTimeout(); }, 3000);
-          }
+           else if ($scope.uiRouterState.current.name === 'web.car.listAll'){
+            $scope.cars = carros;
+
+          } 
+
+            else if ($scope.uiRouterState.current.name === 'web.car.listOthers'){
+              $scope.cars = marcasRestantes;
+            }
 
 
             /*else if($scope.uiRouterState.current.name === 'web.car.listOthers'){

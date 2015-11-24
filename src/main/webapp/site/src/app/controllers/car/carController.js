@@ -54,7 +54,7 @@
             azul: ["http://localhost/img/mustang/blue/blueFront.png","http://localhost/img/mustang/blue/blueSide.png","http://localhost/img/mustang/blue/blueBack.png" ]
         };
 
-        $scope.selectedColor = 'preto';
+        $scope.selectedColor = 'vermelho';
         $scope.mudarCor = function(cor){
             console.log(cor)
             $scope.selectedColor = cor.toLowerCase();

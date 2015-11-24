@@ -79,12 +79,27 @@ public class CarroController {
 	
 	@RequestMapping(value="/marcasRestantes", method=GET)
 	@Transactional(readOnly=true)
-	public List<MarcaDTO>findByRestantes(){
+	public List<CarroDTO>findByRestantes(){
+				
+		List<Marca> marcasRestantes = (List<Marca>)marcaRepository.findByPrincipalFalse();		
+
+		List<Carro> carrosRestantes = new ArrayList<>(); 
+
+		List<Carro> carros = new ArrayList<Carro>(); 
+
 		
-		List<Marca> restantes = (List<Marca>)marcaRepository.findByPrincipalFalse();
+				
+		for (Marca marca : marcasRestantes) {
+			carros = (List<Carro>)repository.findByMarca(marca);
+			for (Carro carro : carros) {
+				carrosRestantes.add(carro);
+			}
+		}
 		
-		return restantes.stream()
-				.map(MarcaDTO::new)
+		
+		
+		return carrosRestantes.stream()
+				.map(CarroDTO::new)
 				.collect(Collectors.toList());
 	}
 

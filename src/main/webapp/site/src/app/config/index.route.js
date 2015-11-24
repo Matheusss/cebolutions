@@ -305,6 +305,13 @@
                   return result.data;
                 });
               }
+              ],
+            marcasRestantes: [
+              'MarcaService', function(MarcaService){
+                return MarcaService.findByRestantes().then(function(result){
+                  return result.data;
+                });
+              }
               ]
             }
           },
@@ -331,14 +338,14 @@
                   return result.data;
                 });
               }
-              ]/*,
-              marcas: [
-                'MarcaService', function(MarcaService){
-                  return MarcaService.findAll().then(function(result){
-                    return result.data;
-                  });
-                }
-                ]*/
+              ],              
+              marcasRestantes: [
+              'MarcaService', function(MarcaService){
+                return MarcaService.findByRestantes().then(function(result){
+                  return result.data;
+                });
+              }
+              ]
               }
             },
             "header@web": {

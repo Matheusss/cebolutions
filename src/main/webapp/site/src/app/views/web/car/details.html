@@ -190,51 +190,6 @@ input:checked + .color span {
 }
 
 </style>
-  
-<!-- <div class="resumo">
-    
-    <div id="aba">
-        <img src="http://localhost/img/close.png">
-    </div>
-    <div id="abaTitle">
-        <p>Compra</p>
-    </div>
-
-    <div style="margin-top: 40%">
-
-        <div class="panel-body">
-            <div class="input-group">
-                <span class="input-group-addon">Carro</span>
-                <span>"{{marcaNome}}"</span>
-            </div>
-        </div>
-        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-        <div class="panel-body">
-            <div class="input-group">
-                <span class="input-group-addon">Marca</span>
-                <span>"{{marcaNome}}"</span>
-            </div>
-        </div>
-        <div class="panel-body">
-            <div class="input-group">
-                <span class="input-group-addon">Cor</span>
-                <span>"{{marcaNome}}"</span>
-            </div>
-        </div>
-        <div class="panel-body">
-            <div class="input-group">
-                <span class="input-group-addon">Rodas</span>
-                <span>"{{marcaNome}}"</span>
-            </div>
-        </div>
-        <div class="panel-body">
-            <div class="input-group">
-                <span class="input-group-addon">Insul-film</span>
-                <span>"{{marcaNome}}"</span>
-            </div>
-        </div>
-    </div>
-</div> -->
 
 
 
@@ -255,49 +210,54 @@ input:checked + .color span {
     </div>
 
     <div class="row" style="margin-top: 150px">
-        <div class="col-md-8" style="background-image: url(http://localhost/img/bg.png); background-size: cover">
 
-        <div ng-hide="carro.modelo === 'COUPE'">
-            <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
-                <uib-slide ng-repeat="i in carro.imagens" active="slide.active">
-                    <img ng-src="{{i}}" style="margin:auto;">
-                </uib-slide>
-            </uib-carousel>
+
+        <div ng-if="carro.modelo !== 'COUPE'">
+            <div class="col-md-8">
+                <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
+                    <uib-slide ng-repeat="i in carro.imagens" active="slide.active">
+                        <img ng-src="{{i}}" style="margin:auto;">
+                    </uib-slide>
+                </uib-carousel>
+            </div>
         </div>
 
-    <div ng-if="carro.modelo === 'COUPE'">
 
-            <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'preto'">
-                <uib-slide ng-repeat="car in car.preto"  active="slide.active">
-                    <img class="image" ng-src="{{car}}" style="margin:auto;">
-                </uib-slide>
-            </uib-carousel>
-            <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'vermelho'">
-                <uib-slide ng-repeat="car in car.vermelho" ng-show="selectedColor == 'vermelho'" active="slide.active">
-                    <img ng-src="{{car}}" style="margin:auto;">
-                </uib-slide>
-            </uib-carousel>
-            <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'amarelo'">
-                <uib-slide ng-repeat="car in car.amarelo" ng-show="selectedColor == 'amarelo'" active="slide.active">
-                    <img ng-src="{{car}}" style="margin:auto;">
-                </uib-slide>
-            </uib-carousel>
-            <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'cinza'">
-                <uib-slide ng-repeat="car in car.cinza" ng-show="selectedColor == 'cinza'" active="slide.active">
-                    <img ng-src="{{car}}" style="margin:auto;">
-                </uib-slide>
-            </uib-carousel>
-            <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'azul'">
-                <uib-slide ng-repeat="car in car.azul" ng-show="selectedColor == 'azul'" active="slide.active">
-                    <img ng-src="{{car}}" style="margin:auto;">
-                </uib-slide>
-            </uib-carousel>
-            <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'branco'">
-                <uib-slide ng-repeat="car in car.branco" ng-show="selectedColor == 'branco'" active="slide.active">
-                    <img ng-src="{{car}}" style="margin:auto;">
-                </uib-slide>
-            </uib-carousel>
-        </div>
+
+
+        <div ng-if="carro.modelo === 'COUPE'">
+            <div class="col-md-8" style="background-image: url(http://localhost/img/bg.png); background-size: cover">
+                <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'preto'">
+                    <uib-slide ng-repeat="car in car.preto"  active="slide.active">
+                        <img class="image" ng-src="{{car}}" style="margin:auto;">
+                    </uib-slide>
+                </uib-carousel>
+                <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'vermelho'">
+                    <uib-slide ng-repeat="car in car.vermelho" ng-show="selectedColor == 'vermelho'" active="slide.active">
+                        <img ng-src="{{car}}" style="margin:auto;">
+                    </uib-slide>
+                </uib-carousel>
+                <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'amarelo'">
+                    <uib-slide ng-repeat="car in car.amarelo" ng-show="selectedColor == 'amarelo'" active="slide.active">
+                        <img ng-src="{{car}}" style="margin:auto;">
+                    </uib-slide>
+                </uib-carousel>
+                <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'cinza'">
+                    <uib-slide ng-repeat="car in car.cinza" ng-show="selectedColor == 'cinza'" active="slide.active">
+                        <img ng-src="{{car}}" style="margin:auto;">
+                    </uib-slide>
+                </uib-carousel>
+                <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'azul'">
+                    <uib-slide ng-repeat="car in car.azul" ng-show="selectedColor == 'azul'" active="slide.active">
+                        <img ng-src="{{car}}" style="margin:auto;">
+                    </uib-slide>
+                </uib-carousel>
+                <uib-carousel interval="myInterval" no-wrap="noWrapSlides" ng-show="selectedColor == 'branco'">
+                    <uib-slide ng-repeat="car in car.branco" ng-show="selectedColor == 'branco'" active="slide.active">
+                        <img ng-src="{{car}}" style="margin:auto;">
+                    </uib-slide>
+                </uib-carousel>
+            </div>
         </div>
         <div class="col-md-4">
             <h3>{{carro.modelo}}</h3>
@@ -310,11 +270,11 @@ input:checked + .color span {
             </ul>
             <div class="row">
                 <div class="col-md-6 col-lg-6">
-                <ngcart-addtocart id="{{ carro.id }}" name="{{carro.marca.nome}} {{ carro.modelo }}" price="{{ carro.preco }}" quantity="1" quantity-max="1" data="carro">Add to cart</ngcart-addtocart>
-            </div>
-            <div class="col-md-6 col-lg-6">
-                <button type="button" class="btn btn-primary" ui-sref="web.venda.wizard">Prosseguir</button>
-            </div>
+                    <ngcart-addtocart id="{{ carro.id }}" name="{{carro.marca.nome}} {{ carro.modelo }}" price="{{ carro.preco }}" quantity="1" quantity-max="1" data="carro">Add to cart</ngcart-addtocart>
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <button type="button" class="btn btn-primary" ui-sref="web.venda.wizard">Prosseguir</button>
+                </div>
             </div>
             <!-- <button type="button" class="btn btn-primary">Add to cart</button> -->
             
@@ -325,65 +285,32 @@ input:checked + .color span {
         <div class="col-md-12">
             <h4>Escolha a  cor</h4>
                 <div class="col-md-12">
+
                 <div ng-repeat="cor in cores" class="">
 
-                    <input id="cor" type="radio" name="cor" value="cor" style="height: 40px;position:relative;float: left; margin-left:50px;" ng-click="getCor( cor.id ); mudarCor( cor.nome )">
-                    
-                    <div id="{{cor.nome}}" class="color" style="background-color: {{cor.hexadecimal}}" data-toggle="tooltip" title="{{cor.nome}} | valor: ${{cor.valor}}">
+                    <div ng-if="carro.modelo === 'COUPE'">
+                        <div ng-hide="cor.nome == 'Verde'">
+                            <input id="cor" type="radio" name="cor" value="cor" style="height: 40px;position:relative;float: left; margin-left:50px;" ng-click="getCor( cor.id ); mudarCor( cor.nome )">
+
+                            <div id="{{cor.nome}}" class="color" style="background-color: {{cor.hexadecimal}}" data-toggle="tooltip" title="{{cor.nome}} | valor: ${{cor.valor}}">
                         
-                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        
                     </div>
+                    <div ng-if="carro.modelo !== 'COUPE'">
+                            <input id="cor" type="radio" name="cor" value="cor" style="height: 40px;position:relative;float: left; margin-left:50px;" ng-click="getCor( cor.id ); mudarCor( cor.nome )">
 
+                            <div id="{{cor.nome}}" class="color" style="background-color: {{cor.hexadecimal}}" data-toggle="tooltip" title="{{cor.nome}} | valor: ${{cor.valor}}">
+                        
+                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            </div>
+                        
+                    </div>
                     
-                       
 
-                    
                 </div>
-                    <!-- <div id="vermelho" ng-click="mudarCor('vermelho')" style="height: 40px; border-radius: 50%; width: 40px;background-color: #bc2b3c;border: 1px  solid #ccc;margin: 5px;position:relative;float: left; cursor:pointer"></div>
-                    <div class="tip" style="display: none;">
-                        <div>
-                            <h5>Vermelho</h5>
-                            <p><span> R$1.000,00</span></p>
-                        </div>
-                    </div>
-
-                    <div id="azul" ng-click="mudarCor('azul')"style="height: 40px; border-radius: 50%; width: 40px;background-color: #24316c;border: 1px solid #ccc;margin: 5px;position: relative;float: left;cursor:pointer"></div>
-                    <div class="tip" style="display: none;">
-                        <div>
-                            <h5>Azul</h5>
-                            <p><span> R$1.000,00</span></p>
-                        </div>
-                    </div>
-
-                    <div id="preto" ng-click="mudarCor('preto')" style="height: 40px; border-radius: 50%; width: 40px;background-color: preto;border: 1px solid #ccc;margin: 5px;position: relative;float: left;cursor:pointer"></div>
-                    <div class="tip" style="display: none;">
-                        <div>
-                            <h5>Preto</h5>
-                            <p><span> R$0,00</span></p>
-                        </div>
-                    </div>
-
-                    <div id="amarelo" ng-click="mudarCor('amarelo')" style="height: 40px; border-radius: 50%; width: 40px;background-color: #c6a624;border: 1px solid #ccc;margin: 5px;position: relative;float: left;cursor:pointer"></div>
-                    <div class="tip" style="display: none;">
-                        <div>
-                            <h5>Amarelo</h5>
-                            <p><span> R$1.500,00</span></p>
-                        </div>
-                    </div>
-                    <div id="cinza" ng-click="mudarCor('cinza')" style="height: 30px;width: 40px;background-color: #767676;border: 1px solid #ccc;margin: 5px;position: relative;float: left;cursor:pointer"></div>
-                    <div class="tip" style="display: none;">
-                        <div>
-                            <h5>Cinza</h5>
-                            <p><span> R$1.000,00</span></p>
-                        </div>
-                    </div>
-                    <div id="branco" ng-click="mudarCor('branco')" style="height: 40px; width: 40px;background-color: branco;border: 1px solid #ccc;margin: 5px;position: relative;float: left;cursor:pointer"></div>
-                    <div class="tip" style="display: none;">
-                        <div>
-                            <h5>Branco</h5>
-                            <p><span> R$0,00</span></p>
-                        </div>
-                    </div> -->
 
                 </div>
                     
@@ -468,36 +395,6 @@ input:checked + .color span {
             </div>
 
         </uib-tab>
-        <uib-tab>
-            <tab-heading>
-              <span>hello</span><em>1</em>
-            </tab-heading>
-            
-            <div class="row">
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://192.168.1.10:80/img/parts.png" alt="...">
-                        <div class="caption">
-                            <h3>Roda A</h3>
-                            <p>.descricao </p>
-                            <p><a href="#" class="btn btn-primary" role="button">Adicionar ao carro</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://192.168.1.10:80/img/parts.png" alt="...">
-                        <div class="caption">
-                            <h3>Roda B</h3>
-                            <p>.descricao </p>
-                            <p><a href="#" class="btn btn-primary" role="button">Adicionar ao carro</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </uib-tab>
-      
     </uib-tabset>
 </div>
 </div>
