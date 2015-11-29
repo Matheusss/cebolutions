@@ -20,7 +20,7 @@ public class CebolutionsSecurityContext implements ApplicationContextAware {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
 		UserRepository bean = context.getBean(UserRepository.class);
-		User usuario = bean.findByUser(authentication.getName());
+		User usuario = bean.findByUsername(authentication.getName());
 
 		return usuario;
 	}

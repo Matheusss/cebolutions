@@ -50,7 +50,7 @@
 
             //objeto venda
             $scope.venda = {
-                usuarioId           : 1,
+                usuarioId           : $rootScope.loggedUser.id,
                 carroId             : '',
                 valorTotal          : ngCart.totalCost(),
                 enderecoEntregaId   : null,
@@ -141,23 +141,47 @@
                    SweetAlert.swal("Removido!");
                 });
             };*/
-
+            $scope.teste = [];
 
             UserService.recuperar($scope.venda.usuarioId).then(function(result){
                 $scope.user = result.data;
+
             })
 
             //RECUPERA OS ENDERECOS DE UM USUARIO
             EnderecoService.findByUser($scope.venda.usuarioId).then(function(result){
                 $scope.user.endereco = result.data;
+                for (var i = 0; i < result.data.length; i++) {
+                    $scope.teste.push(result.data[i].id);
+                };
+                console.log($scope.teste)
                 $scope.formattedEndereco = $scope.user.endereco[0].logradouro + ", " + $scope.user.endereco[0].bairro + ", " + $scope.user.endereco[0].cidade + ", " + $scope.user.endereco[0].estado + " - " + $scope.user.endereco[0].cep;
             });
 
             //CRIA UM NOVO ENDERECO PARA ENTREGA
             $scope.createEndereco = function(){
                 EnderecoService.create($scope.endereco).then(function(result){
-                    $scope.endereco.enderecoEntregaId = result.data.id;
+                    $scope.venda.enderecoEntregaId = result.data.id;
+                    $scope.teste.push(result.data.id);
+                    $scope.user.endereco = $scope.teste;
+                    console.log($scope.teste)
+                    UserService.atualizarEnderecos($scope.user.id, $scope.teste).then(function(result){
+                        console.log(result.data);
+
+                    });
+                    
                 });
+            }
+
+            $scope.verificarCep = function(cep){
+                $http.get('https://viacep.com.br/ws/' + cep + '/json/').then(function(result){
+                    console.log(result.data);
+                    $scope.endereco.cep = result.data.cep;
+                    $scope.endereco.logradouro = result.data.logradouro;
+                    $scope.endereco.cidade = result.data.localidade;
+                    $scope.endereco.estado = result.data.uf;
+                    $scope.endereco.bairro = result.data.bairro;
+                })
             }
           
     }]);

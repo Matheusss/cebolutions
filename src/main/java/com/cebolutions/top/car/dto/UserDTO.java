@@ -11,7 +11,7 @@ public class UserDTO {
 
 	private Long id;
 	
-	private String senha;
+	private String passsword;
 	
 	private String email;
 	
@@ -28,10 +28,12 @@ public class UserDTO {
 	private List<EnderecoDTO> enderecos = new ArrayList<EnderecoDTO>();
 	
 	private Boolean aprovado;
+	
+	private String username;
 
 	public UserDTO(User user){
 		this.id = user.getId();
-		this.senha = user.getSenha();
+		this.passsword = user.getPassword();
 		this.email = user.getEmail();
 		this.nome = user.getNome();
 		this.sobrenome = user.getSobrenome();
@@ -44,6 +46,7 @@ public class UserDTO {
 			}
 		}
 		this.aprovado = user.getAprovado();
+		this.username = user.getUsername();
 	}
 	
 	
@@ -55,12 +58,12 @@ public class UserDTO {
 		this.id = id;
 	}
 
-	public String getSenha() {
-		return senha;
+	public String getPassword() {
+		return passsword;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setPassword(String senha) {
+		this.passsword = senha;
 	}
 
 	public String getEmail() {
@@ -125,6 +128,16 @@ public class UserDTO {
 
 	public void setAprovado(Boolean aprovado) {
 		this.aprovado = aprovado;
+	}
+
+
+	public String getUsername() {
+		return username;
+	}
+
+
+	public void setUsername(String user) {
+		this.username = user;
 	}
 	
 }

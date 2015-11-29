@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,6 +17,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import com.cebolutions.top.car.security.CustomAuthenticationEntryPoint;
 
 @Configuration
+@EnableWebSecurity
 @EnableWebMvcSecurity
 @ComponentScan("com.cebolutions.top.car.security")
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter{
@@ -44,8 +46,9 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(customUserDetailsService)
-			.passwordEncoder(new BCryptPasswordEncoder());
+		auth
+			.userDetailsService(customUserDetailsService)
+				.passwordEncoder(new BCryptPasswordEncoder());
 	}
 
 	@Override
@@ -54,15 +57,34 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter{
 		http
 			.csrf().disable()
 			.authorizeRequests()
-				.antMatchers("/admin/*").authenticated()
+				.antMatchers("/venda/**").authenticated()
+				.antMatchers("/admin/**").authenticated()
 				.anyRequest().permitAll()
 				.and()
-			.formLogin()
-				.loginPage("/login")
+				.formLogin()
+				.loginPage("/")
 				.loginProcessingUrl("/login/authenticate")
+				.successHandler(customAuthenticationSuccessHandler)
+				.failureHandler(customAuthenticateFailureHandler)
 				.permitAll()
 				.and()
 			.exceptionHandling()
-				.authenticationEntryPoint(customAuthenticationEntryPoint);
+				.authenticationEntryPoint(customAuthenticationEntryPoint).and()
+		
+			.logout()
+				.logoutUrl("/logout")
+				.logoutSuccessUrl("/home")
+				.invalidateHttpSession(true);			
+		
+		
+/*			.csrf().disable()
+			.authorizeRequests()
+				.antMatchers("/admin/*").authenticated()
+				.antMatchers("/venda/*").authenticated()
+				.anyRequest().permitAll()
+				.and()
+			.formLogin()
+				.loginProcessingUrl("/login/authenticate")
+				.permitAll();*/
 		}
 }

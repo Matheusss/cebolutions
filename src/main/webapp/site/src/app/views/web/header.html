@@ -15,26 +15,30 @@
                           <a class="page-scroll" ui-sref="admin.home">Admin</a>
                       </li>
                       <li>
-                          <a class="page-scroll" ui-sref="web.venda.wizard">Sobre</a>
+                          <a class="page-scroll">Sobre</a>
                       </li>
                       <li>
-                          <a class="page-scroll" ui-sref="web.user.create">Services</a>
+                          <a class="page-scroll">Services</a>
                       </li>
                       <li>
                           <a class="page-scroll" ui-sref="web.car.listAll">Todos os veículos</a>
                       </li>
                       <li>
-                          <a class="page-scroll" ui-sref="web.car.details">Contato</a>
+                          <a class="page-scroll">Contato</a>
                       </li>
-                      <li>
+                      <li ng-if="!isLogado">
                           <a class="page-scroll" ui-sref="web.login">Login</a>
                       </li>
-                      <li>
-                      <a ui-sref="web.venda.wizard" style="padding: 5px; width: 180px; ">
-                        <ngcart-summary class="ng-isolate-scope"></ngcart-summary>
-                      </a>
-                        
+                      <li ng-if="isLogado" style="list-style-position:inside; border: 1px solid black">
+                          <a class="page-scroll">{{loggedUser.nome}}</a>
                       </li>
+                      <li ng-show="isLogado">
+                        <a ui-sref="web.venda.wizard" style="padding: 5px; width: 180px; ">
+                          <ngcart-summary class="ng-isolate-scope"></ngcart-summary>
+                        </a>
+                      </li>
+
+
                   </ul>
               </div>
           </div>

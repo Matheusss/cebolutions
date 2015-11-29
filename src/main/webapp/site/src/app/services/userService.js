@@ -5,11 +5,12 @@
       .module('cebolutions.services')
       .service('UserService', [
       '$rootScope', '$http', 'urlConfig', function($rootScope, $http, urlConfig) {
+      
+      var user;
+      user = {};
+      
 
       return {
-
-
-
 
         findAll: function() {
           return $http({
@@ -21,6 +22,27 @@
           return $http({
             url: urlConfig.baseUrl + "/user/" + id,
             method: "GET"
+          });
+        },
+
+        recuperarSenha: function(id, user) {
+          return $http({
+            url: urlConfig.baseUrl + "/user/" + id + "/senha",
+            method: "PUT",
+            data: user,
+            headers: {
+              "Content-Type": "application/json"
+            }
+          });
+        },
+        atualizarEnderecos: function(id, user) {
+          return $http({
+            url: urlConfig.baseUrl + "/user/" + id + "/endereco",
+            method: "PUT",
+            data: user,
+            headers: {
+              "Content-Type": "application/json"
+            }
           });
         },
         editar: function(id, user) {
@@ -62,6 +84,26 @@
           })
 
         },
+        getUser: function(){
+          return user || null;
+        },
+        setUser: function(session) {
+          return user = session;
+        },
+        session: function() {
+          return $http.get(urlConfig.baseUrl + "/user/logged");
+        },
+        checkSession: function() {
+          var that;
+          that = this;
+          return this.session().then(function(result) {
+            return that.setUser(result.data);
+          }, function(error) {
+            if (error.status === 500) {
+              return $rootScope.$emit('sessionFailed');
+            }
+          });
+  }
       };
     }
   ]);

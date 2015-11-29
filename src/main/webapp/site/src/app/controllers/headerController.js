@@ -11,23 +11,16 @@
  */
   angular.module('cebolutions.controllers')
    .controller('HeaderController', [
-    '$scope', '$modal', function($scope, $modal) {
-    
-    var modalInstance = null;
-
-    $scope.openModal = function(){
-      modalInstance = $modal.open({
-        templateUrl : 'app/views/web/user/loginModal.html',
-        controller  : 'UserModalController',
-        controllerAs: 'ctrl'
-      });
-    }
+    '$scope', '$modal', 'UserService', '$rootScope', function($scope, $modal, UserService, $rootScope) {
+   /**/
 
 
 
-    $scope.$on('$destroy', function() {
-      return typeof modalInstance !== "undefined" && modalInstance !== null ? modalInstance.close() : void 0;
-    });
+   console.log($rootScope.isLogado);
+   console.log($rootScope.loggedUser);
+   
+
+
 
 
     }

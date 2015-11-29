@@ -3,11 +3,15 @@ package com.cebolutions.top.car.controller;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +27,7 @@ import com.cebolutions.top.car.entity.User;
 import com.cebolutions.top.car.form.UserForm;
 import com.cebolutions.top.car.repository.EnderecoRepository;
 import com.cebolutions.top.car.repository.UserRepository;
+import com.cebolutions.top.car.security.CebolutionsSecurityContext;
 
 @RestController
 @RequestMapping(value = "/user")
@@ -51,26 +56,30 @@ public class UserController {
 
 	@Transactional
 	@RequestMapping(method = POST)
-//	@ResponseStatus(value = HttpStatus.CREATED)
 	public UserDTO create(@RequestBody UserForm form) {
 		User user = new User();
-		List<Endereco> enderecos = new ArrayList<Endereco>();
 		
 		user.setEmail(form.getEmail());
 		
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		user.setSenha(passwordEncoder.encode(form.getSenha()));
+		user.setPassword(passwordEncoder.encode(form.getPassword()));
 		
 		user.setNome(form.getNome());
 		user.setSobrenome(form.getSobrenome());
-		user.setCpf(form.getCpf());
-		user.setCnh(form.getCnh());
-		user.setDataNascimento(form.getDataNascimento());
+		user.setUsername(form.getUsername());
+		user.setAprovado(form.getAprovado());
 		
-		for (Long id : form.getEnderecoId()) {
+		
+/*			List<Endereco> enderecos = new ArrayList<Endereco>();
+	
+ * user.setCpf(form.getCpf());
+		user.setCnh(form.getCnh());
+		user.setDataNascimento(form.getDataNascimento());*/
+		
+/*		for (Long id : form.getEnderecoId()) {
 			enderecos.add(enderecoRepository.findOne(id));
 		}
-		user.setEndereco(enderecos);
+		user.setEndereco(enderecos);*/
 		
 
 		repository.save(user);
@@ -84,9 +93,10 @@ public class UserController {
 		List<Endereco> enderecos = new ArrayList<Endereco>();
 
 		String email = form.getEmail();
-		String senha = form.getSenha();
+		String senha = form.getPassword();
 		user.setEmail(email);
-		user.setSenha(senha);
+		user.setPassword(senha);
+		user.setUsername(form.getUsername());
 		
 		user.setNome(form.getNome());
 		user.setSobrenome(form.getSobrenome());
@@ -98,6 +108,7 @@ public class UserController {
 			enderecos.add(enderecoRepository.findOne(enderecoId));
 		}
 		user.setEndereco(enderecos);
+		user.setAprovado(form.getAprovado());
 		
 	   /* UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(email, senha);
 	    Authentication authentication = authenticationManager.authenticate(authRequest);
@@ -109,6 +120,32 @@ public class UserController {
 	    session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);*/
 
 
+		repository.save(user);
+		return new UserDTO(user);
+		}
+	
+	@Transactional
+	@RequestMapping(value = "/{id}/senha", method = RequestMethod.PUT)
+	public UserDTO updateSenha(@PathVariable("id") Long id, @RequestBody UserForm form) {
+		User user = repository.findOne(id);
+
+		String senha = form.getPassword();
+		user.setPassword(senha);
+		repository.save(user);
+		return new UserDTO(user);
+		}
+	
+	@Transactional
+	@RequestMapping(value = "/{id}/endereco", method = RequestMethod.PUT)
+	public UserDTO updateEndereco(@PathVariable("id") Long id, @PathVariable List<Long> ids) {
+		User user = repository.findOne(id);
+		List<Endereco> enderecos = new ArrayList<Endereco>();
+
+		for (Long enderecoId : ids) {
+			enderecos.add(enderecoRepository.findOne(enderecoId));
+		}
+		user.setEndereco(enderecos);
+		
 		repository.save(user);
 		return new UserDTO(user);
 		}
@@ -138,5 +175,17 @@ public class UserController {
 		}*/
 
 	//}
+	
+	@RequestMapping(value="/logged", method = GET)
+	public UserDTO recupera(HttpServletResponse response) throws IOException {
+		
+		User usuario = CebolutionsSecurityContext.getLoggedUser();
+		
+		if (usuario == null) {
+			response.sendError(HttpStatus.UNAUTHORIZED.value());
+		}
+		
+		return new UserDTO( usuario );
+	}
 
 }

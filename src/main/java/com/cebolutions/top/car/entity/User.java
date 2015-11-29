@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class User extends AbstractEntity {
 
 	@Column(name="SENHA")
-	private String senha; 
+	private String password; 
 	
 	@Column(name="EMAIL")
 	private String email;
@@ -41,25 +41,18 @@ public class User extends AbstractEntity {
 	@JoinTable(name="ENDERECO_USUARIO", joinColumns = @JoinColumn(name="USER_ID"), inverseJoinColumns = @JoinColumn(name="ENDERECO_ID"))
 	private List<Endereco> endereco = new ArrayList<>(); 
 	
-	//DADOS VENDA
-/*	@Column(name="NUMERO_CARTAO")
-	private Long numeroCartao;
-	
-	@Column(name="DT_CARTAO")
-	private Date dtCartao;*/
-	
 	@Column(name="APROVADO")
 	private Boolean aprovado;
 	
 	@Column(name = "USER")
-	private String user;
+	private String username;
 
-	public String getSenha() {
-		return senha;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setPassword(String senha) {
+		this.password = senha;
 	}
 
 	public String getEmail() {
@@ -118,22 +111,6 @@ public class User extends AbstractEntity {
 		this.endereco = endereco;
 	}
 
-/*	public Long getNumeroCartao() {
-		return numeroCartao;
-	}
-
-	public void setNumeroCartao(Long numeroCartao) {
-		this.numeroCartao = numeroCartao;
-	}
-
-	public Date getDtCartao() {
-		return dtCartao;
-	}
-
-	public void setDtCartao(Date dtCartao) {
-		this.dtCartao = dtCartao;
-	}*/
-
 	public Boolean getAprovado() {
 		return aprovado;
 	}
@@ -143,11 +120,11 @@ public class User extends AbstractEntity {
 	}
 
 
-	public String getUser() {
-		return user;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setUsername(String user) {
+		this.username = user;
 	}
 }

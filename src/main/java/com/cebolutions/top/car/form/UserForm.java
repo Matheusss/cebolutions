@@ -5,7 +5,7 @@ import java.util.List;
 
 public class UserForm {
 	
-	private String senha;
+	private String password;
 	
 	private String email;
 	
@@ -18,15 +18,18 @@ public class UserForm {
 	private String cnh;
 	
 	private Date dataNascimento;
-		
 	
 	private List<Long> enderecoId;
+
+	private Boolean aprovado;
 	
-	public String getSenha() {
-		return senha;
+	private String username;
+	
+	public String getPassword() {
+		return password;
 	}
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setPassword(String senha) {
+		this.password = senha;
 	}
 	public String getEmail() {
 		return email;
@@ -70,6 +73,18 @@ public class UserForm {
 	}
 	public void setEnderecoId(List<Long> enderecoId) {
 		this.enderecoId = enderecoId;
+	}
+	public Boolean getAprovado() {
+		return aprovado;
+	}
+	public void setAprovado(Boolean aprovado) {
+		this.aprovado = aprovado;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String user) {
+		this.username = user;
 	}
 	
 }

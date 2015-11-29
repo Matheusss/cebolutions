@@ -13,6 +13,7 @@
           $scope.datass = [];
           $scope.j = [];
           $scope.carros = carros;
+           $scope.vendas = [];
 
 
           VendaService.findAll().then(function(result){

@@ -82,21 +82,15 @@ public class CarroController {
 	public List<CarroDTO>findByRestantes(){
 				
 		List<Marca> marcasRestantes = (List<Marca>)marcaRepository.findByPrincipalFalse();		
-
 		List<Carro> carrosRestantes = new ArrayList<>(); 
-
 		List<Carro> carros = new ArrayList<Carro>(); 
 
-		
-				
 		for (Marca marca : marcasRestantes) {
 			carros = (List<Carro>)repository.findByMarca(marca);
 			for (Carro carro : carros) {
 				carrosRestantes.add(carro);
 			}
 		}
-		
-		
 		
 		return carrosRestantes.stream()
 				.map(CarroDTO::new)

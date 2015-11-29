@@ -21,7 +21,7 @@
             </div>
                        
             <ul class="nav" ng-model="activeTab" >
-                <li ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" ng-init="tab.active = $index === 0" ng-model="tab.active" ng-class="active">
+                <li ng-repeat="tab in tabs" active="tab.active" ng-model="tab" ng-class="{'active' : tab.active == true}">
                     <a ui-sref="{{tab.content}}">
                         <i class="active"></i> 
                         <p>{{tab.title}}</p>

@@ -190,60 +190,24 @@ textarea {
   <div class="form">
       
       <ul class="tab-group">
-        <li class="tab active"><a href="#signup">Registre-se</a></li>
-        <li class="tab"><a href="#login">Login</a></li>
+        <li class="tab active"><a href="#login">Login</a></li>
+
+        <li class="tab "><a href="#signup">Registre-se</a></li>
       </ul>
       
       <div class="tab-content">
-        <div id="signup">   
-          <h1>Cadastro</h1>
-          
-          <form action="/" method="post">
-          
-          <div class="top-row">
-            <div class="field-wrap">
-              <label>
-                Nome<span class="req">*</span>
-              </label>
-              <input type="text" required autocomplete="off" />
-            </div>
-        
-            <div class="field-wrap">
-              <label>
-                Sobrenome<span class="req">*</span>
-              </label>
-              <input type="text"required autocomplete="off"/>
-            </div>
+       <div id="login">   
+          <h1>Bem vindo!</h1>
+
+          <div ng-if="loginFailed">
+            <uib-alert type="danger" >Usuário e/ou senha incorretos!</uib-alert>
           </div>
 
-          <div class="field-wrap">
-            <label>
-              Email<span class="req">*</span>
-            </label>
-            <input type="email"required autocomplete="off"/>
-          </div>
-          
-          <div class="field-wrap">
-            <label>
-              Senha<span class="req">*</span>
-            </label>
-            <input type="password"required autocomplete="off"/>
-          </div>
-          
-          <button type="submit" class="button button-block">Prosseguir</button>
-          
-          </form>
-
-        </div>
-        
-        <div id="login">   
-          <h1>Bem vindo de volta!</h1>
-          
-          <form >
+          <form role="form" method="post" ng-submit="login()">
           
             <div class="field-wrap">
             <label>
-              Email<span class="req">*</span>
+              Username<span class="req">*</span>
             </label>
             <input type="text" ng-model="us.username"/>
           </div>
@@ -257,11 +221,58 @@ textarea {
           
           <p class="forgot"><a href="#">Esqueci minha senha</a></p>
           
-          <button class="button button-block" ng-click="login()">Login</button>
+          <button class="button button-block" type="submit">Login</button>
           
           </form>
 
         </div>
+        <div id="signup">   
+          <h1>Cadastro</h1>
+          
+          <form>
+          
+          <div class="top-row">
+            <div class="field-wrap">
+              <label>
+                Nome<span class="req">*</span>
+              </label>
+              <input type="text" required autocomplete="off" ng-model="newUser.nome"/>
+            </div>
+        
+            <div class="field-wrap">
+              <label>
+                Sobrenome<span class="req">*</span>
+              </label>
+              <input type="text"required autocomplete="off" ng-model="newUser.sobrenome"/>
+            </div>
+          </div>
+          <div class="field-wrap">
+            <label>
+              Username<span class="req">*</span>
+            </label>
+            <input type="text"required autocomplete="off" ng-model="newUser.username"/>
+          </div>
+          <div class="field-wrap">
+            <label>
+              Email<span class="req">*</span>
+            </label>
+            <input type="email"required autocomplete="off" ng-model="newUser.email"/>
+          </div>
+          
+          <div class="field-wrap">
+            <label>
+              Senha<span class="req">*</span>
+            </label>
+            <input type="password"required autocomplete="off" ng-model="newUser.password"/>
+          </div>
+          
+          <button type="submit" class="button button-block" ng-click="cadastro()">Prosseguir</button>
+          
+          </form>
+
+        </div>
+        
+       
         
       </div><!-- tab-content -->
       

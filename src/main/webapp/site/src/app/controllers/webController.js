@@ -10,8 +10,7 @@
   * Controller of the emailOverviewWebApp
  */
   angular.module('cebolutions.controllers')
-         .controller('WebController', ['$scope', function($scope) {
-          
+         .controller('WebController', ['$scope', '$rootScope', function($scope, $rootScope) {
          }]);
 
 })();
