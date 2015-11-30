@@ -65,19 +65,6 @@
               $scope.cars = marcasRestantes;
             }
 
-
-            /*else if($scope.uiRouterState.current.name === 'web.car.listOthers'){
-                 
-                angular.forEach($scope.marcasRestantes, function(value, key){
-                  
-                  CarService.findByMarca(value.id).then(function(result){
-                    $scope.arrayCarros.push(result.data);
-                     return $scope.cars = $scope.arrayCarros;
-                  })
-                })
-
-  }*/
-
           return $scope.viewCar = function(carro, marcaNome){
             return $state.go('web.car.details', { 'id' : carro.id, 'marcaNome' : marcaNome });
           }

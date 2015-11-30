@@ -15,27 +15,38 @@ angular.module("cebolutions").config(function($httpProvider, $provide) {
     };
 
 
-    var addLoader = function() {
-      $rootScope.$broadcast('requestLoader:show');
-      return $rootScope.loading = true;
+
+    var checkSession, noCache;
+
+    noCache = function(url) {
+      return url + "?_=" + (Math.random());
     };
 
+    checkSession = function(request) {
+      if (request.status === 401) {
+        alert("Não autenticado");
+        $rootScope.$emit("loginRequired");
+        $rootScope.isLogado = false;
+      }
+      if (request.status === 0) {
+        $rootScope.$emit("loginRequired");
+        return $rootScope.isLogado = false;
+      }
+    };
+    var setRequestHeader;
 
-    var removeLoader = function() {
-      if (!--requestCount) {
-        $rootScope.$broadcast('requestLoader:hide');
-        return $rootScope.loading = false;
+    setRequestHeader = function(config) {
+      if (config.method === 'DELETE') {
+        config.headers['X-HTTP-Method-Override'] = config.method;
       }
     };
 
+
     return {
       'request': function(config) {
-          
-          addLoader();
-          //$timeout( 50000);
-          requestCount++;
-        
-        return config;
+        setRequestHeader(config);
+
+        return config || $q.when(config);
       },
       'requestError': function(rejection) {
         if (verifyRequest(rejection.config)) {

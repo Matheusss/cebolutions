@@ -11,8 +11,8 @@
               </div>
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav navbar-right">
-                      <li>
-                          <a class="page-scroll" ui-sref="admin.home">Admin</a>
+                      <li style="cursor:pointer;">
+                          <a class="page-scroll" ng-click="verifyLogin()">Admin</a>
                       </li>
                       <li>
                           <a class="page-scroll">Sobre</a>
@@ -29,10 +29,13 @@
                       <li ng-if="!isLogado">
                           <a class="page-scroll" ui-sref="web.login">Login</a>
                       </li>
-                      <li ng-if="isLogado" style="list-style-position:inside; border: 1px solid black">
+                      <li ng-if="isLogado" style="cursor:pointer;">
+                          <a class="page-scroll" ng-click="logout()">Sair</a>
+                      </li>
+                      <li ng-if="isLogado" ng-click="editCadastro()" style="list-style-position:inside; border: 1px solid black">
                           <a class="page-scroll">{{loggedUser.nome}}</a>
                       </li>
-                      <li ng-show="isLogado">
+                      <li>
                         <a ui-sref="web.venda.wizard" style="padding: 5px; width: 180px; ">
                           <ngcart-summary class="ng-isolate-scope"></ngcart-summary>
                         </a>

@@ -84,6 +84,18 @@
           })
 
         },
+
+        logout: function(){
+          return $http({
+            url     :   urlConfig.baseUrl + "/logout",
+            method  :   "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            }
+          })
+        },
+
+
         getUser: function(){
           return user || null;
         },

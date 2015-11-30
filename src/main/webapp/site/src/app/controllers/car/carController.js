@@ -20,23 +20,30 @@
              ngCart.addItem( $scope.color.id,  $scope.color.nome,  $scope.color.valor, 1,  $scope.color);   
              }
              
+            })
+        }
+
+        $scope.$watch ('color', function(newVal, oldVal){
+            ngCart.removeItemById(oldVal.id);
+            
+
+            if (newVal && oldVal && newVal != oldVal){
+                 
+                ngCart.addItem(newVal.id, newVal.nome, newVal.valor, 1, newVal);
+                ngCart.removeItemById(oldVal.id);
+            }
         })
 
 
+
+        $scope.verifyLogin = function(){
+            if ($rootScope.isLogado){
+                $state.go('web.venda.wizard');
+            } else {
+                $state.go('web.login');
+
+            }
         }
-
-            $scope.$watch ('color', function(newVal, oldVal){
-                ngCart.removeItemById(oldVal.id);
-                
-
-                if (newVal && oldVal && newVal != oldVal){
-                     
-                    ngCart.addItem(newVal.id, newVal.nome, newVal.valor, 1, newVal);
-                    ngCart.removeItemById(oldVal.id);
-                }
-            })
-
-
 
         //Resto
         $scope.carro = carro;

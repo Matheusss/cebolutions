@@ -3,7 +3,7 @@
 
       angular.module('cebolutions.controllers')
       .controller('UserModalController', [
-        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'UserService', 'Feedback', '$modalInstance', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, UserService, Feedback, $modalInstance) {
+        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'UserService', '$cookies', '$modalInstance', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, UserService, $cookies, $modalInstance) {
 
           $rootScope.loggedUser = {};
 
@@ -18,20 +18,23 @@
             email: '',
             password: '',
             username: '',
+            cpf: '',
             aprovado: !!Math.floor(Math.random() * 2)
 
           }
 
 
         $scope.login = function(){
-          console.log($scope.us)
           UserService.login($scope.us).then(function(result){
             $rootScope.isLogado = true;
+            $cookies.put('isLogado', true);
             $state.go('web.home');
 
             UserService.session().then(function(result){
               UserService.setUser(result.data);
               $rootScope.loggedUser = result.data;
+              
+              $cookies.putObject('loggedUs',result.data);
               $state.go('web.home');
               $scope.closeModal();
             });
@@ -47,13 +50,13 @@
           UserService.create($scope.newUser).then(function (result) {
             $scope.us = result.data;
             alert('Cadastro realizado com sucesso')
-            console.log( '$scope.us', $scope.us);
             $state.go('web.home');
-            
-            $scope.login();
 
           });
+
         }
+
+
 
 
           $scope.newUs = function() {

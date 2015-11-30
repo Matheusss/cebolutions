@@ -3,18 +3,6 @@
 
   angular
     .module('cebolutions')
-    .run(runBlock);
-
-  /** @ngInject */
-  function runBlock($log) {
-
-    $log.debug('runBlock end');
-  }
-
-
-
-  angular
-    .module('cebolutions')
     .run(['$rootScope', '$state', '$modalStack', 'UserService', function($rootScope, $state, $modalStack, UserService) {
     
       return $rootScope.isLogado = false;
@@ -35,14 +23,14 @@
       checkLogin = function(state, ev) {
         var checkRoute;
         checkRoute = function() {
-          if (state.restrict && !UserService.getUser().id) {
+          if (state.restrict && !$rootScope.loggedUser.id) {
             ev.preventDefault();
             return $state.go("web.login", {
               redir: state.name
             });
           }
         };
-        if (_.isEmpty(UserService.getUser())) {
+        if (!$rootScope.loggedUser) {
           return UserService.checkSession().then(function() {
             checkRoute();
           });

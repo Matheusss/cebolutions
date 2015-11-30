@@ -15,13 +15,36 @@
 
       .state('web.login', {
         url: '/login',
-        params        : {'marcaNome': null},
 
         onEnter: ['$stateParams', '$state', '$modal', '$resource', function($stateParams, $state, $modal, $$resource) {
           var uiRouterState   = $state.current;
           $modal.open({
             templateUrl : 'app/views/web/user/loginModal.html',
             controller  : 'UserModalController',
+          }).result.finally(function() {
+            $state.go(uiRouterState);
+        });
+        }]
+
+      })
+
+      .state('web.user.edit', {
+        url: '/:id/edit-profile',
+
+        onEnter: ['$stateParams', '$state', '$modal', '$resource', function($stateParams, $state, $modal, $resource) {
+          var uiRouterState   = $state.current;
+          $modal.open({
+            templateUrl : 'app/views/web/user/editModal.html',
+            controller  : 'EditUserController',
+            resolve: {
+              us: [ 'UserService', '$stateParams', '$rootScope', function(UserService, $stateParams, $rootScope){
+                  return UserService.recuperar($rootScope.loggedUser.id).then(function(result){
+                    return result.data;
+                  })
+              }
+
+              ]
+            }
           }).result.finally(function() {
             $state.go(uiRouterState);
         });
@@ -294,6 +317,13 @@
         url           : '/:marcaId/list',
         restrict      : true,
         params        : {'marcaId': null},
+        resolve : {
+          marcaId: [  '$stateParams', function($stateParams){
+              return $stateParams.marcaId;
+          }
+
+          ]
+        },
         views: {
           "": {
             templateUrl   : 'app/views/web/car/list.html',

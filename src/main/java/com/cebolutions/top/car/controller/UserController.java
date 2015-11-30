@@ -104,8 +104,8 @@ public class UserController {
 		user.setCnh(form.getCnh());
 		user.setDataNascimento(form.getDataNascimento());
 		
-		for (Long enderecoId : form.getEnderecoId()) {
-			enderecos.add(enderecoRepository.findOne(enderecoId));
+		for (Endereco enderecoId : form.getEnderecoId()) {
+			enderecos.add(enderecoRepository.findOne(enderecoId.getId()));
 		}
 		user.setEndereco(enderecos);
 		user.setAprovado(form.getAprovado());

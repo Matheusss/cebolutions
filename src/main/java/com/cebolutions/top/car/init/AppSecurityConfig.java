@@ -61,7 +61,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/admin/**").authenticated()
 				.anyRequest().permitAll()
 				.and()
-				.formLogin()
+			.formLogin()
 				.loginPage("/")
 				.loginProcessingUrl("/login/authenticate")
 				.successHandler(customAuthenticationSuccessHandler)
@@ -73,7 +73,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter{
 		
 			.logout()
 				.logoutUrl("/logout")
-				.logoutSuccessUrl("/home")
+				//.logoutSuccessUrl("/home")
 				.invalidateHttpSession(true);			
 		
 		

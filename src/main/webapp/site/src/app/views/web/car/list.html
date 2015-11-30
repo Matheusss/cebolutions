@@ -42,7 +42,7 @@
                     <img ng-src="{{c.imagens[0]}}" height="100%!important" width="100%!important"/>
                 </a>
                 <h3>
-                    <a ui-sref="web.car.details">{{c.modelo}}</a>
+                    <a ng-click="viewCar(c, marcaNome)">{{c.modelo}}</a>
                 </h3>
                 <p></p>
             </div>

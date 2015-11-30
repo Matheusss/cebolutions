@@ -3,6 +3,8 @@ package com.cebolutions.top.car.form;
 import java.util.Date;
 import java.util.List;
 
+import com.cebolutions.top.car.entity.Endereco;
+
 public class UserForm {
 	
 	private String password;
@@ -19,7 +21,7 @@ public class UserForm {
 	
 	private Date dataNascimento;
 	
-	private List<Long> enderecoId;
+	private List<Endereco> enderecoId;
 
 	private Boolean aprovado;
 	
@@ -68,10 +70,10 @@ public class UserForm {
 		this.dataNascimento = dataNascimento;
 	}
 	
-	public List<Long> getEnderecoId() {
+	public List<Endereco> getEnderecoId() {
 		return enderecoId;
 	}
-	public void setEnderecoId(List<Long> enderecoId) {
+	public void setEnderecoId(List<Endereco> enderecoId) {
 		this.enderecoId = enderecoId;
 	}
 	public Boolean getAprovado() {
