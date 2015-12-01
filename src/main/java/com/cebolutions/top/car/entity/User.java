@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -36,10 +36,6 @@ public class User extends AbstractEntity {
 	
 	@Column(name="DT_NASCIMENTO")
 	private Date dataNascimento;
-
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name="ENDERECO_USUARIO", joinColumns = @JoinColumn(name="USER_ID"), inverseJoinColumns = @JoinColumn(name="ENDERECO_ID"))
-	private List<Endereco> endereco = new ArrayList<>(); 
 	
 	@Column(name="APROVADO")
 	private Boolean aprovado;
@@ -101,14 +97,6 @@ public class User extends AbstractEntity {
 
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
-	}
-
-	public List<Endereco> getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(List<Endereco> endereco) {
-		this.endereco = endereco;
 	}
 
 	public Boolean getAprovado() {

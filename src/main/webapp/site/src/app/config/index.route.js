@@ -10,10 +10,10 @@
 
       $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
-      $urlRouterProvider.otherwise('/login');
+      $urlRouterProvider.otherwise('/home');
       $stateProvider
 
-      .state('web.login', {
+/*      .state('web.login', {
         url: '/login',
 
         onEnter: ['$stateParams', '$state', '$modal', '$resource', function($stateParams, $state, $modal, $$resource) {
@@ -26,7 +26,7 @@
         });
         }]
 
-      })
+      })*/
 
       .state('web.user.edit', {
         url: '/:id/edit-profile',

@@ -14,20 +14,20 @@
                       <li style="cursor:pointer;">
                           <a class="page-scroll" ng-click="verifyLogin()">Admin</a>
                       </li>
-                      <li>
+                     <!--  <li>
                           <a class="page-scroll">Sobre</a>
                       </li>
                       <li>
                           <a class="page-scroll">Services</a>
-                      </li>
+                      </li> -->
                       <li>
                           <a class="page-scroll" ui-sref="web.car.listAll">Todos os veículos</a>
                       </li>
-                      <li>
+      <!--                 <li>
                           <a class="page-scroll">Contato</a>
-                      </li>
+                      </li> -->
                       <li ng-if="!isLogado">
-                          <a class="page-scroll" ui-sref="web.login">Login</a>
+                          <a class="page-scroll" style="cursor:pointer;" ng-click="openModal()">Login</a>
                       </li>
                       <li ng-if="isLogado" style="cursor:pointer;">
                           <a class="page-scroll" ng-click="logout()">Sair</a>

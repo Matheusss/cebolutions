@@ -2,6 +2,9 @@ package com.cebolutions.top.car.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +25,10 @@ public class Endereco extends AbstractEntity {
 	
 	@Column(name="CEP")
 	private String cep;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="USER_ID")
+	private User user;
 	
 	public String getCidade() {
 		return cidade;
@@ -61,6 +68,14 @@ public class Endereco extends AbstractEntity {
 
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 

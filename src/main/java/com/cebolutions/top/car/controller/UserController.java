@@ -90,7 +90,6 @@ public class UserController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public UserDTO update(@PathVariable("id") Long id, @RequestBody UserForm form) {
 		User user = repository.findOne(id);
-		List<Endereco> enderecos = new ArrayList<Endereco>();
 
 		String email = form.getEmail();
 		String senha = form.getPassword();
@@ -104,10 +103,6 @@ public class UserController {
 		user.setCnh(form.getCnh());
 		user.setDataNascimento(form.getDataNascimento());
 		
-		for (Endereco enderecoId : form.getEnderecoId()) {
-			enderecos.add(enderecoRepository.findOne(enderecoId.getId()));
-		}
-		user.setEndereco(enderecos);
 		user.setAprovado(form.getAprovado());
 		
 	   /* UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(email, senha);
@@ -131,21 +126,6 @@ public class UserController {
 
 		String senha = form.getPassword();
 		user.setPassword(senha);
-		repository.save(user);
-		return new UserDTO(user);
-		}
-	
-	@Transactional
-	@RequestMapping(value = "/{id}/endereco", method = RequestMethod.PUT)
-	public UserDTO updateEndereco(@PathVariable("id") Long id, @PathVariable List<Long> ids) {
-		User user = repository.findOne(id);
-		List<Endereco> enderecos = new ArrayList<Endereco>();
-
-		for (Long enderecoId : ids) {
-			enderecos.add(enderecoRepository.findOne(enderecoId));
-		}
-		user.setEndereco(enderecos);
-		
 		repository.save(user);
 		return new UserDTO(user);
 		}

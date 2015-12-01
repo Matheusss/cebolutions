@@ -29,7 +29,7 @@
         if ($rootScope.isLogado){
             $state.go('admin.home');
         } else {
-            $state.go('web.login');
+            $scope.openModal();
 
         }
       }
@@ -60,14 +60,27 @@
   $cookies.putObject('userCart', $scope.userCart);
 
   $scope.editCadastro = function(){
-
-
     return $state.go('web.user.edit', {'id': $rootScope.loggedUser.id});
-
-console.log($rootScope.loggedUser.id);
   }
-  
 
+
+  var modalInstance = null;
+    $scope.openModal = function(){
+      modalInstance = $modal.open({
+        templateUrl : 'app/views/web/user/loginModal.html',
+        controller  : 'UserModalController',
+        controllerAs: 'ctrl'
+      });
+    }
+
+    $scope.closeModal = function(){
+      $modalInstance.close();
+    }
+
+
+    $scope.$on('$destroy', function() {
+      return typeof modalInstance !== "undefined" && modalInstance !== null ? modalInstance.close() : void 0;
+    });
 
 
 

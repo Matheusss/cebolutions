@@ -21,8 +21,6 @@ public class UserForm {
 	
 	private Date dataNascimento;
 	
-	private List<Endereco> enderecoId;
-
 	private Boolean aprovado;
 	
 	private String username;
@@ -70,12 +68,6 @@ public class UserForm {
 		this.dataNascimento = dataNascimento;
 	}
 	
-	public List<Endereco> getEnderecoId() {
-		return enderecoId;
-	}
-	public void setEnderecoId(List<Endereco> enderecoId) {
-		this.enderecoId = enderecoId;
-	}
 	public Boolean getAprovado() {
 		return aprovado;
 	}

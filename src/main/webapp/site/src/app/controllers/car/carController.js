@@ -3,7 +3,7 @@
 
     angular.module('cebolutions.controllers')
     .controller('CarController', [
-        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'Feedback', 'CarService', '$stateParams', 'carro', 'cores', 'CorService', 'ngCart', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, Feedback, CarService, $stateParams, carro, cores, CorService, ngCart) {
+        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'Feedback', 'CarService', '$stateParams', 'carro', 'cores', 'CorService', 'ngCart', '$modal', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, Feedback, CarService, $stateParams, carro, cores, CorService, ngCart, $modal) {
 
 
         //Carrinho!!!!!
@@ -34,13 +34,20 @@
             }
         })
 
-
+var modalInstance = null;
+    $scope.openModal = function(){
+      modalInstance = $modal.open({
+        templateUrl : 'app/views/web/user/loginModal.html',
+        controller  : 'UserModalController',
+        controllerAs: 'ctrl'
+      });
+    }
 
         $scope.verifyLogin = function(){
             if ($rootScope.isLogado){
                 $state.go('web.venda.wizard');
             } else {
-                $state.go('web.login');
+                $scope.openModal();
 
             }
         }

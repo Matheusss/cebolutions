@@ -1,6 +1,7 @@
 package com.cebolutions.top.car.dto;
 
 import com.cebolutions.top.car.entity.Endereco;
+import com.cebolutions.top.car.entity.User;
 
 public class EnderecoDTO {
 	
@@ -16,6 +17,8 @@ public class EnderecoDTO {
 	
 	private String cep;
 	
+	private User user;
+	
 	public Long getId() {
 		return id;
 	}
@@ -27,6 +30,7 @@ public class EnderecoDTO {
 		this.bairro = endereco.getBairro();
 		this.logradouro = endereco.getLogradouro();
 		this.cep = endereco.getCep();
+		this.user = endereco.getUser();
 	}
 
 	public void setId(Long id) {
@@ -71,6 +75,14 @@ public class EnderecoDTO {
 
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

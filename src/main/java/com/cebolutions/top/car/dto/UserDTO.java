@@ -24,9 +24,7 @@ public class UserDTO {
 	private String cnh;
 	
 	private Date dataNascimento;
-		
-	private List<EnderecoDTO> enderecos = new ArrayList<EnderecoDTO>();
-	
+			
 	private Boolean aprovado;
 	
 	private String username;
@@ -40,11 +38,6 @@ public class UserDTO {
 		this.cpf = user.getCpf();
 		this.cnh = user.getCnh();
 		this.dataNascimento = user.getDataNascimento();
-		if(user.getEndereco() != null){
-			for (Endereco e : user.getEndereco()) {
-				this.enderecos.add(new EnderecoDTO(e));
-			}
-		}
 		this.aprovado = user.getAprovado();
 		this.username = user.getUsername();
 	}

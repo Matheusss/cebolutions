@@ -45,7 +45,8 @@
                 bairro: '',
                 cidade: '',
                 estado: '',
-                cep: ''
+                cep: '',
+                userId: $rootScope.loggedUser.id
             }
 
             //objeto venda
@@ -93,7 +94,11 @@
 
             //CRIA A VENDA
             $scope.finalizarVenda = function(){
+                if($scope.user.aprovado){
                 $scope.venda.vendaCompleta = true;
+            } else {
+                $scope.venda.vendaCompleta = false;
+            }
                 VendaService.create($scope.venda).then(function(result){
                     ngCart.removeItem($scope.carrinho[0]);
                     ngCart.removeItem($scope.carrinho[1]);
@@ -110,6 +115,7 @@
                     function(){   
                         
                         if($scope.user.aprovado){
+
                             setTimeout(function(){ 
                             SweetAlert.swal("Compra finalizada com sucesso!", "Logo você receberá um email de confirmação!", "success");
                             $state.go('web.home');
@@ -141,46 +147,34 @@
                    SweetAlert.swal("Removido!");
                 });
             };*/
-            $scope.teste = [];
+            $scope.enderecosByUser = [];
 
             UserService.recuperar($scope.venda.usuarioId).then(function(result){
                 $scope.user = result.data;
 
             })
+            
 
             //RECUPERA OS ENDERECOS DE UM USUARIO
             EnderecoService.findByUser($scope.venda.usuarioId).then(function(result){
-                $scope.user.endereco = result.data;
-                for (var i = 0; i < result.data.length; i++) {
-                    $scope.teste.push(result.data[i]);
-                };
-                console.log($scope.teste)
-                $scope.formattedEndereco = $scope.user.endereco[0].logradouro + ", " + $scope.user.endereco[0].bairro + ", " + $scope.user.endereco[0].cidade + ", " + $scope.user.endereco[0].estado + " - " + $scope.user.endereco[0].cep;
+                $scope.enderecosByUser = result.data;
+                $scope.formattedEndereco = $scope.enderecosByUser[0].logradouro + ", " + $scope.enderecosByUser[0].bairro + ", " + $scope.enderecosByUser[0].cidade + ", " + $scope.enderecosByUser[0].estado + " - " + $scope.enderecosByUser[0].cep;
             });
 
 
 
             //CRIA UM NOVO ENDERECO PARA ENTREGA
-            $scope.createEndereco = function(){
+    
+
+             $scope.createEndereco = function(){
                 EnderecoService.create($scope.endereco).then(function(result){
-                    $scope.venda.enderecoEntregaId = result.data.id;
-                    $scope.teste.push(result.data);
-                    console.log($scope.teste)
-                    
+                $scope.venda.enderecoEntregaId = result.data.id;
+                SweetAlert.swal("Good job!", "Endereço cadastrado com sucesso!", "success"); 
+                $scope.enderecosByUser.push(result.data);
                 });
             }
 
-            $scope.atualizaEnderecosUser = function(){
-                $scope.user.endereco = [];
-                for (var i = 0; i < $scope.teste.length; i++) {
-                    $scope.user.endereco.push($scope.teste[i].id);
-                };
 
-                UserService.editar($scope.user.id, _.omit($scope.user, 'id')).then(function(result){
-                    console.log(result.data);
-
-                });
-            }
 
             $scope.verificarCep = function(cep){
                 $http.get('https://viacep.com.br/ws/' + cep + '/json/').then(function(result){

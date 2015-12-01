@@ -3,7 +3,6 @@ package com.cebolutions.top.car.controller;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,9 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cebolutions.top.car.dto.EnderecoDTO;
+import com.cebolutions.top.car.dto.UserDTO;
 import com.cebolutions.top.car.entity.Endereco;
 import com.cebolutions.top.car.entity.User;
 import com.cebolutions.top.car.form.EnderecoForm;
@@ -54,16 +55,8 @@ public class EnderecoController {
 	public List<EnderecoDTO> findByUser(@PathVariable("userId") Long userId){
 		
 		User user = userRepository.findOne(userId);
-		List<Endereco> enderecos = (List<Endereco>) repository.findAll();		
-		List<Endereco> enderecosByUser = new ArrayList<>();
 		
-		for (Endereco e : enderecos) {
-			for (Endereco eUser : user.getEndereco()) {
-				if(e == eUser){
-					enderecosByUser.add(e);
-				}
-			}
-		}
+		List<Endereco> enderecosByUser = (List<Endereco>)repository.findByUser(user);
 		
 		
 		
@@ -83,11 +76,21 @@ public class EnderecoController {
 		endereco.setBairro(form.getBairro());
 		endereco.setLogradouro(form.getLogradouro());
 		endereco.setCep(form.getCep());
+		endereco.setUser(userRepository.findOne(form.getUserId()));
 
 		repository.save(endereco);
 		return new EnderecoDTO(endereco);
 	}
 	
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@Transactional
+	public EnderecoDTO delete(@PathVariable("id") Long id) {
+		
+		Endereco endereco = repository.findOne(id);
+		repository.delete(endereco);
+		
+		return new EnderecoDTO(endereco);
+	}
 /*	@Transactional
 	@RequestMapping(value="/{id}", method=PUT, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public EnderecoDTO update(@PathVariable("id") Long id, @RequestBody EnderecoForm form){

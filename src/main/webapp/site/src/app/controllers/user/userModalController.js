@@ -3,7 +3,7 @@
 
       angular.module('cebolutions.controllers')
       .controller('UserModalController', [
-        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'UserService', '$cookies', '$modalInstance', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, UserService, $cookies, $modalInstance) {
+        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'UserService', '$cookies', '$modalInstance', 'SweetAlert', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, UserService, $cookies, $modalInstance, SweetAlert) {
 
           $rootScope.loggedUser = {};
 
@@ -28,14 +28,12 @@
           UserService.login($scope.us).then(function(result){
             $rootScope.isLogado = true;
             $cookies.put('isLogado', true);
-            $state.go('web.home');
 
             UserService.session().then(function(result){
               UserService.setUser(result.data);
               $rootScope.loggedUser = result.data;
               
               $cookies.putObject('loggedUs',result.data);
-              $state.go('web.home');
               $scope.closeModal();
             });
 
@@ -49,7 +47,8 @@
         $scope.cadastro = function(){
           UserService.create($scope.newUser).then(function (result) {
             $scope.us = result.data;
-            alert('Cadastro realizado com sucesso')
+            SweetAlert.swal("Good job!", "Cadastro realizado com sucesso!", "success");           
+            $scope.closeModal();
             $state.go('web.home');
 
           });

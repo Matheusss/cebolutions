@@ -20,6 +20,7 @@
                     <th class="th-center"><a href="">USUARIO</a></th>
                     <th class="th-center"><a href="">DATA DA VENDA</a></th>
                     <th class="th-center"><a href="">VALOR DA VENDA</a></th>
+                    <th class="th-center"><a href="">VENDA COMPLETA</a></th>
                     <th></th>
                   </tr>
                 </thead>
@@ -29,6 +30,7 @@
                     <td align="center">{{venda.usuario.nome}} {{venda.usuario.sobrenome}}</td>
                     <td align="center">{{venda.dataVenda}}</td>
                     <td align="center">${{venda.valorTotal}}</td>
+                    <td align="center">{{venda.vendaCompleta ? 'Sim' : 'Não'}}</td>
                     <td align="center">
                       <button class="btn btn-spark" alt="Excluir usuario" title="Excluir usuario" ng-disabled="btnDisabled" ng-click="excluirUsuario(venda)">
                         <span class="glyphicon glyphicon-trash"></span>

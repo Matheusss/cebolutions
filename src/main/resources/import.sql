@@ -1,9 +1,8 @@
 INSERT INTO `USER` (`ID`, `EMAIL`, `SENHA`, `NOME`, `SOBRENOME`, `CPF`, `CNH`, `APROVADO`, `USER`) VALUES (1, 'matheusb95@gmail.com', '$2a$10$xge0W5Ifz4nU33U0geXn4OG0BUrtvA363OK9i5ts6rpxoyv8OJ4/G','Matheus', 'Soares', '436771768/24', '0000000000', 1, 'Matheus' );
 
 /*ENDERECOS*/
-INSERT INTO `ENDERECO` (`ID`, `CEP`, `LOGRADOURO`, `CIDADE`, `ESTADO`, `BAIRRO`) VALUES (1, '04841250', 'Rua Joaquim Antonio Alves', 'Sao Paulo', 'SP', 'Parque Planalto');
-INSERT INTO `ENDERECO` (`ID`, `CEP`, `LOGRADOURO`, `CIDADE`, `ESTADO`, `BAIRRO`) VALUES (2, '04556758', 'Rua Quintana', 'Sao Paulo', 'SP', 'Brooklin');
-INSERT INTO `ENDERECO` (`ID`, `CEP`, `LOGRADOURO`, `CIDADE`, `ESTADO`, `BAIRRO`) VALUES (3, '01234567', 'Rua Teste', 'Cidade Teste', 'Estado Teste', 'Bairro Teste');
+INSERT INTO `ENDERECO` (`ID`, `CEP`, `LOGRADOURO`, `CIDADE`, `ESTADO`, `BAIRRO`, `USER_ID`) VALUES (1, '04841250', 'Rua Joaquim Antonio Alves', 'Sao Paulo', 'SP', 'Parque Planalto', 1);
+INSERT INTO `ENDERECO` (`ID`, `CEP`, `LOGRADOURO`, `CIDADE`, `ESTADO`, `BAIRRO`, `USER_ID`) VALUES (2, '04556758', 'Rua Quintana', 'Sao Paulo', 'SP', 'Brooklin', 1);
 
 /*ENDERECOS USUARIO*/
 INSERT INTO `ENDERECO_USUARIO` (`USER_ID`, ENDERECO_ID) VALUES (1, 1);

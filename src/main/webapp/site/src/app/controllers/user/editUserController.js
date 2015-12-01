@@ -3,7 +3,7 @@
 
       angular.module('cebolutions.controllers')
       .controller('EditUserController', [
-        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'UserService', '$cookies', '$modalInstance', 'us', 'EnderecoService', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, UserService, $cookies, $modalInstance, us, EnderecoService) {
+        '$scope', '$rootScope', '$location', '$timeout', '$http', 'urlConfig', '$state', 'UserService', '$cookies', '$modalInstance', 'us', 'EnderecoService', 'SweetAlert', function($scope, $rootScope, $location, $timeout, $http, urlConfig, $state, UserService, $cookies, $modalInstance, us, EnderecoService, SweetAlert) {
 
           $scope.newUser = {
             nome: '',
@@ -13,8 +13,7 @@
             username: '',
             cpf: '',
             cnh: '',
-            dataNascimento: '',
-            endereco: []
+            dataNascimento: ''
           }
 
           $scope.us = us;
@@ -55,38 +54,37 @@
     opened: false
   };
 
-
+$scope.enderecosByUser = [];
 
 
 
               EnderecoService.findByUser($scope.us.id).then(function(result){
-                $scope.us.endereco = result.data;
-
-                $scope.formattedEndereco = $scope.us.endereco[0].logradouro + ", " + $scope.us.endereco[0].bairro + ", " + $scope.us.endereco[0].cidade + ", " + $scope.us.endereco[0].estado + " - " + $scope.us.endereco[0].cep;
+                $scope.enderecosByUser = result.data;
+                $scope.formattedEndereco = $scope.enderecosByUser[0].logradouro + ", " + $scope.enderecosByUser[0].bairro + ", " + $scope.enderecosByUser[0].cidade + ", " + $scope.enderecosByUser[0].estado + " - " + $scope.enderecosByUser[0].cep;
             });
 
         $scope.enderecoSelected = '';
 
         $scope.excluirEndereco = function(){
-          var index = $scope.us.endereco.indexOf($scope.enderecoSelected.id);
-          console.log($scope.us.endereco);
-            $scope.us.endereco.splice(index, 1);
-            console.log($scope.us.endereco);
+          var index = $scope.enderecosByUser.indexOf($scope.enderecoSelected.id);
+            $scope.enderecosByUser.splice(index, 1);
+          EnderecoService.excluir($scope.enderecoSelected.id).then(function(result){
+            alert('Endereço excluido com suvesso!');
+
+          })
           
         }
 
-        $scope.teste = [];
+        $scope.getEndereco = function(id){
+          EnderecoService.recuperar(id).then(function(result){
+            $scope.enderecoSelected = result.data;
+          })
+        }
+
         $scope.editarCadastro = function(){
 
-/*        for (var i = 0; i < $scope.us.endereco.length; i++) {
-          $scope.teste.push($scope.us.endereco[i].id);
-        };
-
-        $scope.us.endereco = $scope.teste;*/
-        console.log($scope.us.endereco);
-
           UserService.editar($scope.us.id, _.omit($scope.us, 'id')).then(function (result) {
-            alert('Cadastro atualizado realizado com sucesso')
+          SweetAlert.swal("Good job!", "Cadastro atualizado com sucesso!", "success"); 
             $state.go('web.home');
             $scope.closeModal();
 
@@ -99,13 +97,12 @@
                 bairro: '',
                 cidade: '',
                 estado: '',
-                cep: ''
+                cep: '',
+                userId: $scope.us.id
             }             
              $scope.createEndereco = function(){
                 EnderecoService.create($scope.endereco).then(function(result){
-                
-                  $scope.us.endereco.push(result.data);
-
+                $scope.enderecosByUser.push(result.data);
                 });
             }
 

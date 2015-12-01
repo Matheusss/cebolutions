@@ -112,7 +112,7 @@
             </div>
             <div ng-show="enderecosRadio === 'enderecosCadastrados'">
     
-              <div ng-repeat="e in user.endereco">
+              <div ng-repeat="e in enderecosByUser">
                 <div class="col-sm-12 col-md-12 col-lg-12 enderecos">
                 <input type="radio" name="endereco_selecionado" ng-model="enderecoEntregaId" value="e" ng-click="getEndereco( e.id )"> 
                   {{e.logradouro}}, {{e.bairro}}, {{e.cidade}}, {{e.estado}}, {{e.cep}}

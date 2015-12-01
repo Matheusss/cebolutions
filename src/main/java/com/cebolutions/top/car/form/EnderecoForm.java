@@ -12,6 +12,8 @@ public class EnderecoForm {
 	
 	private String cep;
 	
+	private Long userId;
+	
 	
 	public String getEstado() {
 		return estado;
@@ -42,6 +44,12 @@ public class EnderecoForm {
 	}
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+	public Long getUserId() {
+		return userId;
+	}
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 	
 	
